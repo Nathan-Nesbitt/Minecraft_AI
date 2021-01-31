@@ -1,7 +1,9 @@
 import json
 import asyncio
 import websockets
-
+"""
+This file was developed by Carlos
+"""
 global file_list = []
 
 def establish_connection():
