@@ -2,6 +2,7 @@ import json
 import asyncio
 import websockets
 
+global file_list = []
 
 def establish_connection():
     start_connection = websockets.serve(response, host='localhost', port=5678)
@@ -23,6 +24,7 @@ def targetProcessId(json_dictionary):
         print("Incorrect naming for targetProcess")
 
 def store(json_dictionary):
+    file_name = json_dictionary['header']['fileName']
     print("Sent to storage")
 
 def minecraft_learns(json_dictionary):
