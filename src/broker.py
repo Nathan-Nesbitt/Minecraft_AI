@@ -4,7 +4,7 @@ import websockets
 """
 This file was developed by Carlos
 """
-global file_list = []
+file_list = []
 
 def establish_connection():
     start_connection = websockets.serve(response, host='localhost', port=5678)
