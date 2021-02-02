@@ -3,21 +3,25 @@ import json
 import asyncio
 
 """
-This file was developed by Carlos
+	Testing file to mimic client sending message.
+	Run client.py again but switching targetProcess = Storage for different result
+	
+	This file was developed by: Carlos Rueda Carrasco
+    Date: 30-01-2021
 """
-# Testing class to mimic client sending message
-# Run client.py again but switching targetProcess = Storage for different result
 
 async def send_message():
     async with websockets.connect("ws://localhost:5678") as socket:
         message = {
 	                    "header": {
 		                    "targetProcess": "MinecraftLearns",
-		                    "fileName": "MyData"
+		                    "fileName": "MyData",
+							"modelFunction": "Linear Regression"
 	                    },
 	                    "body": {
-		                    "biome": "desert",
-		                    "version": 1
+		                    "data": {
+
+							}
 	                    }
                     }
         message_string = json.dumps(message)
