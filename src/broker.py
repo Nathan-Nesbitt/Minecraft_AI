@@ -31,7 +31,8 @@ async def response(websocket, path):
         message = await websocket.recv()
         json_dict = json.loads(message)
         targetProcessId(json_dict)
-        await websocket.send("Message received")
+        for_client = message_sent_back(json_dict)
+        await websocket.send(for_client)
 
 def targetProcessId(json_dictionary):
     """
@@ -45,6 +46,10 @@ def targetProcessId(json_dictionary):
         minecraft_learns(json_dictionary)
     else:
         print("Incorrect naming for targetProcess")
+
+def message_sent_back(message):
+    
+
 
 def store(json_dictionary):
     """
