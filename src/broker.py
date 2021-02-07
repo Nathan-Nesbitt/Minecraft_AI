@@ -1,6 +1,7 @@
 import json
 import asyncio
 import websockets
+#from Minecraft_Store import Minecraft_Store
 """
     This is the broker file which handles communication between the client and the backend.
     It manages json objects send from the client side and redirects them to the appropriate libraries.
@@ -30,8 +31,8 @@ async def response(websocket, path):
     while True:
         message = await websocket.recv()
         json_dict = json.loads(message)
-        targetProcessId(json_dict)
-        for_client = message_sent_back(json_dict)
+        status = targetProcessId(json_dict)
+        for_client = message_sent_back(json_dict, status)
         await websocket.send(for_client)
 
 def targetProcessId(json_dictionary):
@@ -47,9 +48,21 @@ def targetProcessId(json_dictionary):
     else:
         print("Incorrect naming for targetProcess")
 
-def message_sent_back(message):
-    
+def message_sent_back(json_dictionary, status):
+    """
+        Handles the message that is being sent back to the front end so it knows if it was successfully handled or not. 
 
+        @param json_dictionary: The json object that was converted into a dictionary
+        @param status: True or False depending if the action failed
+    """
+    message_for_client = {
+                            "header": {
+                                "UUID": json_dictionary['header']['UUID'],
+                                "status": str(status)
+                            }
+                        }
+    message_for_client = json.dumps(message_for_client)
+    return message_for_client
 
 def store(json_dictionary):
     """
@@ -57,8 +70,15 @@ def store(json_dictionary):
 
         @param json_dictionary: The json object that was converted into a dictionary
     """
-    file_name = json_dictionary['header']['fileName']
-    print("Sent to storage")
+    try:
+        file_name = json_dictionary['header']['fileName']
+        #storage = Minecraft_Store()
+        #storage.store_filesystem(json_dictionary, file_name)
+        print("Sent to storage")
+        return True
+    except Exception:
+        print("Failed to store")
+        return False
 
 def minecraft_learns(json_dictionary):
     """
@@ -66,7 +86,12 @@ def minecraft_learns(json_dictionary):
 
         @param json_dictionary: The json object that was converted into a dictionary
     """
-    print("Sent to Minecraft Learns")
+    try:
+        print("Sent to Minecraft Learns")
+        return True
+    except Exception:
+        print("Failed to send to Minecraft_Learns")
+        return False
 
 # Starts the connection and the command handling commences
 establish_connection()
