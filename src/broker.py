@@ -27,10 +27,11 @@ async def response(websocket, path):
         @param  websocket: An initialized websocket that handles messages being sent over
         @param path: Path of the request
     """
-    message = await websocket.recv()
-    json_dict = json.loads(message)
-    targetProcessId(json_dict)
-    await websocket.send("Message received")
+    while True:
+        message = await websocket.recv()
+        json_dict = json.loads(message)
+        targetProcessId(json_dict)
+        await websocket.send("Message received")
 
 def targetProcessId(json_dictionary):
     """
