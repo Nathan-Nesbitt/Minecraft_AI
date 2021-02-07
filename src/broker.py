@@ -39,7 +39,7 @@ def targetProcessId(json_dictionary):
 
         @param json_dictionary: The json object that was converted into a dictionary
     """
-    if (json_dictionary['header']['targetProcess']=='Storage'):
+    if (json_dictionary['header']['targetProcess']=='MinecraftStore'):
         store(json_dictionary)
     elif(json_dictionary['header']['targetProcess']=='MinecraftLearns'):
         minecraft_learns(json_dictionary)
