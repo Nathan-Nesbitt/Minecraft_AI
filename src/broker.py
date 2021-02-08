@@ -6,7 +6,7 @@ import websockets
     This is the broker file which handles communication between the client and the backend.
     It manages json objects send from the client side and redirects them to the appropriate libraries.
 
-    This file was developed by: Carlos Rueda Carrasco
+    This file was developed by: Carlos Rueda Carrasco and Nathan Nesbitt
     Date: 30-01-2021
 """
 
