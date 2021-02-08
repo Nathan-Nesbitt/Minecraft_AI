@@ -42,11 +42,12 @@ def targetProcessId(json_dictionary):
         @param json_dictionary: The json object that was converted into a dictionary
     """
     if (json_dictionary['header']['targetProcess']=='MinecraftStore'):
-        store(json_dictionary)
+        return store(json_dictionary)
     elif(json_dictionary['header']['targetProcess']=='MinecraftLearns'):
-        minecraft_learns(json_dictionary)
+        return minecraft_learns(json_dictionary)
     else:
         print("Incorrect naming for targetProcess")
+        return False
 
 def message_sent_back(json_dictionary, status):
     """
