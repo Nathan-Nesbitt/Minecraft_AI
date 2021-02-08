@@ -34,6 +34,7 @@ async def response(websocket, path):
         status = targetProcessId(json_dict)
         for_client = message_sent_back(json_dict, status)
         await websocket.send(for_client)
+    #websocket.close()
 
 def targetProcessId(json_dictionary):
     """
@@ -74,7 +75,8 @@ def store(json_dictionary):
     try:
         file_name = json_dictionary['header']['fileName']
         #storage = Minecraft_Store()
-        #storage.store_filesystem(json_dictionary, file_name)
+        #file_location = storage.store_filesystem(json_dictionary, file_name)
+        #file_list[file_name] = file_location
         print("Sent to storage")
         return True
     except Exception:
