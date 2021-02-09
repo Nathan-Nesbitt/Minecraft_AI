@@ -10,7 +10,6 @@ import websockets
     Date: 30-01-2021
 """
 
-file_list = {}
 
 def establish_connection():
     """
@@ -35,7 +34,7 @@ async def response(websocket, path):
             status = targetProcessId(json_dict)
             for_client = message_sent_back(json_dict, status)
             await websocket.send(for_client)
-        except Exception:
+        except websockets.exceptions.ConnectionClosedOK:
             print("Successfully closed!")
             await websocket.close()
             break 
@@ -80,7 +79,6 @@ def store(json_dictionary):
         file_name = json_dictionary['header']['fileName']
         #storage = Minecraft_Store()
         #file_location = storage.store_filesystem(json_dictionary, file_name)
-        #file_list[file_name] = file_location
         print("Sent to storage")
         return True
     except Exception:
