@@ -12,6 +12,8 @@ Has the following methods:
 
 - `targetProcessId`: Handles the dictionary and extracts the information from the header and sends it over to `store` of `minecraft_learns`.
 
+- `message_sent_back`: Handles the message that will be sent back to the front end, stating which specific message was successful or failed in being processed by the backend.
+
 - `store`: Calls on the Store class to store the command with the game data into the clients local computer.
 
 - `minecraft_learns`: Calls on the Minecraft_Learns class to manipulate the data in the command to produce machine learning models.
@@ -33,6 +35,7 @@ The json format sent from the client side to the broker.
 ```py
 message = {
 	    "header": {
+			"UUID": "<XXXX....>",
 		    "targetProcess": "MinecraftLearns",
 		    "fileName": "MyData",
 			"modelFunction": "Linear Regression"
@@ -45,6 +48,7 @@ message = {
 }
 ```
 From the header:
+- `UUID`: An ID to identify the specific messages being pass between the interfaces.
 - `targetProcess`: Where the command needs to be sent to either Storage of MinecraftLearns for further processing.
 - `fileName`: The file in which the game data is to be stored or used to make machine learning models.
 - `modelFunction`: The model (function) that the AI will call on.
