@@ -29,12 +29,16 @@ async def response(websocket, path):
         @param path: Path of the request
     """
     while True:
-        message = await websocket.recv()
-        json_dict = json.loads(message)
-        status = targetProcessId(json_dict)
-        for_client = message_sent_back(json_dict, status)
-        await websocket.send(for_client)
-    #websocket.close()
+        try: 
+            message = await websocket.recv()
+            json_dict = json.loads(message)
+            status = targetProcessId(json_dict)
+            for_client = message_sent_back(json_dict, status)
+            await websocket.send(for_client)
+        except Exception:
+            print("Successfully closed!")
+            await websocket.close()
+            break 
 
 def targetProcessId(json_dictionary):
     """
