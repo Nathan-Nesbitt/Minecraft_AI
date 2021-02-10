@@ -14,7 +14,8 @@ async def send_message():
     async with websockets.connect("ws://localhost:5678") as socket:
         message = {
 	                    "header": {
-		                    "targetProcess": "MinecraftLearns",
+		                    "UUID": "<XXXX....>",
+							"targetProcess": "MinecraftLearns",
 		                    "fileName": "MyData",
 							"modelFunction": "Linear Regression"
 	                    },
