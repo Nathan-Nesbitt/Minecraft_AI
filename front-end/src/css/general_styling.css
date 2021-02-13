@@ -7,12 +7,14 @@
     src:url(../includes/Minecrafter.Reg.ttf)
 }
 body{
-    background-color: #477A1E;
-    color: #8FCA5C;
+    background-color: #1c1c1c;
+/*    color: #8FCA5C;*/
+    color: #c6c6c6;
+    
     font-family: MineFont;
     font-size: large;
     max-width: 100%;
-    background-image: url(../includes/Cobblestone.jpg)
+/*    background-image: url(../includes/Cobblestone.jpg)*/
 }
 .minefont{
     font-family: MineFont;
@@ -45,16 +47,42 @@ body{
     font-size: 280%;
     text-align: center;
     -webkit-text-stroke: 1px black;
-    color: #70B237;
+    color: #4dd728;
     font-family: 'titlefont'
 }
+    
+/*
 .border1{
-    border-style: solid;
-    border-color: #2F5214 ;
+    border-left-style: dashed;
+    border-color: #c6c6c6;
+    height: 80vh;
+    }   
+*/
+
+@media (max-width:800px) {
+    .border1{
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top:2px dashed !important;
+    height: 80vh;
+    }
+}
+@media (min-width:992px) {
+    .border1{
+    border-left:2px dashed !important;
+    height: 80vh;
+    }
+}
+
+#lessonsize{
     height: 80vh;
 }
+
+
 .maincont{
-    background-color: #544f49; 
+    background-color: #4c4c4c;  
+/*    background-color: #544f49; */
+
 }
 #Models{
     height: 40vh;
@@ -63,15 +91,25 @@ body{
     position: relative;
 }
 .button{
-    background-color: #8FCA5C;
-    color: #252526;
+    background-color: #c6c6c6;
+    color: #4c4c4c;
     width: 180px;
     height: 50px;
     text-align: center;
     font-weight: bold;
     font-size: 150%;
     margin-top: 0.3%;    
+
 }
+.button:hover{
+    background-color: #4dd728;
+    color: #252526;
+    height: 55px;
+    width: 185px;
+    font-size: 160%;
+}
+
+
 #buttonM{
     margin-top: 40%;
     height: 60px;
@@ -87,7 +125,7 @@ body{
     width: 70%;
 }
 #backbutton{
-    background-color: #8FCA5C;
+    background-color: #c6c6c6;
     color: #252526;
     width: 180px;
     height: 50px;
@@ -97,27 +135,69 @@ body{
     margin-top: 0.3%;
 
 }
+#backbutton:hover{
+    background-color: #4dd728;
+    color: #252526;
+    height: 55px;
+    width: 185px;
+    font-size: 160%;
+}
+
+
 .model{
-    text-align: center;
+    text-align: center; 
+    height: 82vh;
+/*
+    border-left-style:dashed;
+    border-color: #c6c6c6;
+*/
     
 }
-.modelborder{
-    border-style: solid;
-    border-color: #2F5214 ;
-    height: 80vh;
+
+@media (max-width:800px) {
+    .modelborder{
+    margin-top: 10px;
+    border-top:2px dashed !important;
+    height: 82vh;
+    }
 }
+@media (min-width:992px) {
+    .modelborder{
+    border-left:2px dashed !important;
+    height: 82vh;
+    }
+}
+
+/*
+.modelborder{
+    border-left-style: dashed;
+    border-color: #2F5214 ;
+    border-color: #c6c6c6;
+    height: 82vh;
+}
+*/
 .subtitle{
-    font-size: 210%;
-    color: #70B237;
+    font-size: 200%;
+/*    color: #4dd728;*/
+    color: #c6c6c6;
+    padding-top: 10px;
 }
 .modelsimg{
     width: 300px;
     border: solid;
-    border-color: #252526 
+    border-color: #252526;
+    
+}
+.modelsimg:hover{
+    border: solid;
+    border-color: #4dd728;
+    width: 315px;
+    
 }
 .descborder{
     border: solid;
-    border-color: #2F5214 ;
+/*    border-color: #2F5214 ;*/
+    border-color: #c6c6c6;
     height: 13vh;
     margin-top: 5px; 
 }
@@ -129,11 +209,19 @@ body{
 }
 #codeborder{
     border-style: solid;
-    border-color: #2F5214 ;
+/*    border-color: #2F5214 ;*/
+    border-color: #4c4c4c;
     height: 50vh;
 }
 #consoleborder{
     border-style: solid;
-    border-color: #2F5214 ;
+/*    border-color: #2F5214 ;*/
+    border-color: #4c4c4c;
     height: 20vh;
 }
+/*
+.parentbutt{
+    background-color:#c6c6c6;
+    color: red;
+}
+*/
