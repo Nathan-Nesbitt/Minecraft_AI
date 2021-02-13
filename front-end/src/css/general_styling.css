@@ -81,6 +81,11 @@ body{
     margin-top: 20%;
     height: 60px;
 }
+#buttonCode{
+    margin-top: 40%;
+    height: 60px;
+    width: 70%;
+}
 #backbutton{
     background-color: #8FCA5C;
     color: #252526;
@@ -113,7 +118,7 @@ body{
 .descborder{
     border: solid;
     border-color: #2F5214 ;
-    height: 27vh;
+    height: 13vh;
     margin-top: 5px; 
 }
 #beginButton{
