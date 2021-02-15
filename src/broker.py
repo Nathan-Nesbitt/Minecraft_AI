@@ -1,7 +1,7 @@
 import json
 import asyncio
 import websockets
-#from Minecraft_Store import Minecraft_Store
+import minecraft_stores
 """
     This is the broker file which handles communication between the client and the backend.
     It manages json objects send from the client side and redirects them to the appropriate libraries.
@@ -77,12 +77,13 @@ def store(json_dictionary):
     """
     try:
         file_name = json_dictionary['header']['fileName']
-        #storage = Minecraft_Store()
-        #file_location = storage.store_filesystem(json_dictionary, file_name)
+        storage = minecraft_stores.Minecraft_Store()
+        file_location = storage.store_filesystem(json_dictionary, "forKat")
         print("Sent to storage")
         return True
-    except Exception:
+    except Exception as e:
         print("Failed to store")
+        print(str(e))
         return False
 
 def minecraft_learns(json_dictionary):
@@ -94,8 +95,9 @@ def minecraft_learns(json_dictionary):
     try:
         print("Sent to Minecraft Learns")
         return True
-    except Exception:
+    except Exception as e:
         print("Failed to send to Minecraft_Learns")
+        print(str(e))
         return False
 
 # Starts the connection and the command handling commences
