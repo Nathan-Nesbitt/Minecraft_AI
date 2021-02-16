@@ -98,6 +98,10 @@ class Broker:
             @param json_dictionary: The json object that was converted into a dictionary
         """
         try:
+            file_name = json_dictionary['header']['fileName']
+            model_type = json_dictionary['header']['model_type']
+            response_variable = json_dictionary['header']['response_variable']
+            function = json_dictionary['header']['function']
             print("Sent to Minecraft Learns")
             return True
         except Exception as e:
