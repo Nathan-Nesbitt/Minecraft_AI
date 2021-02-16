@@ -20,10 +20,25 @@ body{
     font-family: MineFont;
     font-size: medium;
 }
-.code{
-    background-color: #252526;
-    color: #c6c6c6;
+.codec{
+    height: 79vh;
+    width: 173vh;
+    /* close to 300% */
 }
+.codecimp{
+    height: 79vh;
+    width: 143vh;
+    /* close to 300% */
+}
+.codeconsole{
+    height: 20vh;
+    width: 173vh;
+}
+.hiegthforcode{
+    height: 82vh;
+}
+
+
 #console{
     height: 25vh;
     width: 95wh;
@@ -146,7 +161,8 @@ body{
 
 .model{
     text-align: center; 
-    height: 82vh;
+    height: 80vh;
+
 /*
     border-left-style:dashed;
     border-color: #c6c6c6;
@@ -158,13 +174,13 @@ body{
     .modelborder{
     margin-top: 10px;
     border-top:2px dashed !important;
-    height: 82vh;
+    height: 80vh;
     }
 }
 @media (min-width:992px) {
     .modelborder{
     border-left:2px dashed !important;
-    height: 82vh;
+    height: 80vh;
     }
 }
 
@@ -183,15 +199,16 @@ body{
     padding-top: 10px;
 }
 .modelsimg{
-    width: 300px;
+    width: 400px;
     border: solid;
     border-color: #252526;
+
     
 }
 .modelsimg:hover{
     border: solid;
     border-color: #4dd728;
-    width: 315px;
+    width: 415px;
     
 }
 .descborder{
@@ -207,12 +224,15 @@ body{
     float: right;
     margin-bottom: 0.3%;
 }
-#codeborder{
-    border-style: solid;
-/*    border-color: #2F5214 ;*/
-    border-color: #4c4c4c;
-    height: 50vh;
+#run{
+    min-width: 15.4%;
+    position: relative;
+    float: right;
+    margin-bottom: 1%;
+    margin-top: 1%;
+
 }
+
 #consoleborder{
     border-style: solid;
 /*    border-color: #2F5214 ;*/

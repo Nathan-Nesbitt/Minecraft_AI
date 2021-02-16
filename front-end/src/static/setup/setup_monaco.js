@@ -18,7 +18,7 @@ importScripts('https://unpkg.com/monaco-editor@latest/min/vs/base/worker/workerM
 var editor;
 
 require(['vs/editor/editor.main'], function () {
-    editor = monaco.editor.create(document.getElementById('container'), {
+    editor = monaco.editor.create(document.getElementById('containerMona'), {
         value: 
 `const api = new MinecraftAPIClient();
 
