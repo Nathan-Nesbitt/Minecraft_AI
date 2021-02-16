@@ -20,16 +20,44 @@ var editor;
 require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(document.getElementById('containerMona'), {
         value: 
-`const api = new MinecraftAPIClient();
+`// Create a minecraftAPI connection
+var minecraft_api = new MinecraftAPIClient();
 
-var block_broken_command = function(response) {
-    console.log(response)
+// Create a new command to the game
+new Command(minecraft_api, "Say", ["Hello", "Friend"]);
+
+// Creates 2 separate datastore connections for saving backend data //
+var datastore = new DataStore(minecraft_api, "foo.csv")
+var datastore_2 = new DataStore(minecraft_api, "foo_2.csv")
+
+// Callback function that handles game data and saves it to the first file //
+var callback_function = function(game_data) {
+    datastore.store_value(game_data)
+        .then((result) => {
+            console.log("Successful insertion into back end", result)
+        }).catch(err => {
+            console.log("Error submitting data to back end.", err);
+        });
 }
 
-var event = new EventHandler("BlockBroken", block_broken_command) 
-api.add_message(event);
+// Callback function that handles game data and saves it to the second file //
+var callback_function_2 = function(game_data) {
+    datastore_2.store_value(game_data)
+        .then((result) => {
+            console.log("Successful insertion into back end", result)
+        }).catch(err => {
+            console.log("Error submitting data to back end.", err);
+        });
+}
 
-api.start()
+// Creates two new event handlers for blocks being broken and placed //
+new EventHandler(minecraft_api, "BlockBroken", callback_function)
+new EventHandler(minecraft_api, "BlockPlaced", callback_function_2)
+
+// Opens a connection to the back end //
+minecraft_api.open_backend_connection();
+// Opens the connection to the game //
+minecraft_api.start()
         `,
         language: 'javascript',
         theme: 'vs-dark'
@@ -41,24 +69,20 @@ document.getElementById("run").addEventListener("click", (event) => {
     // obtain the script from the editor    
     var code =
         `
-        <script type='module'>
-        import {MinecraftAPIClient} from '../static/minecraft_api.js';
-        import {EventHandler} from '../static/event.js';
-        import {Command} from '../static/command.js';
-        `+
-        editor.getValue() +
-        "</script>"
+        EventHandler = window.EventHandler;
+        Command = window.Command;
+        MinecraftLearns = window.MinecraftLearns;
+        DataStore = window.DataStore;
+        MinecraftAPIClient = window.MinecraftAPIClient
 
+        console.log("Command");
+        `+
+        editor.getValue()
     // reset the output
     document.getElementById("output").innerHTML = "";
 
-    // We embed the code into an iframe to run it //
-    var iframe = document.createElement('iframe');
-    iframe.style.display = "none";
-    iframe.setAttribute("srcdoc", code);
-
-    // Attach the code 
-    document.body.appendChild(iframe);
+    // We evaluate the code //
+    new Function(code)();
 });
 
 // This function handles the iframe sending errors to the parent //

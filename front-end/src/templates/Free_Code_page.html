@@ -92,7 +92,14 @@
 </body>
     
 <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+<script type="module">
+    import {EventHandler, Command, MinecraftLearns, DataStore, MinecraftAPIClient} from 'https://nathan-nesbitt.github.io/Minecraft_API/src/minecraft_api.js';
+    window.EventHandler = EventHandler
+    window.Command = Command
+    window.MinecraftLearns = MinecraftLearns
+    window.DataStore = DataStore
+    window.MinecraftAPIClient = MinecraftAPIClient
+
+</script>
 <script src="/static/setup/setup_monaco.js"></script>
-<script src="/static/setup/setup_buttons.js"></script>
-    
 </html>
