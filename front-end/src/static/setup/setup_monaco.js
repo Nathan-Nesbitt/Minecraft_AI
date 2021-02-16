@@ -69,6 +69,7 @@ document.getElementById("run").addEventListener("click", (event) => {
     // obtain the script from the editor    
     var code =
         `
+        // This sets the local libraries //
         EventHandler = window.EventHandler;
         Command = window.Command;
         MinecraftLearns = window.MinecraftLearns;
@@ -81,15 +82,11 @@ document.getElementById("run").addEventListener("click", (event) => {
     // reset the output
     document.getElementById("output").innerHTML = "";
 
+    // Override the console.log() so it prints to the command line //
+    console.log = function(output) {
+        document.getElementById("console").innerHTML += ("<p> > " + output + "</p>");
+    }
+
     // We evaluate the code //
     new Function(code)();
-});
-
-// This function handles the iframe sending errors to the parent //
-window.addEventListener('attachEvent', () => {
-    // Since there are many messages we limit it to only the attachEvent ones //
-    window.addEventListener('message', (event) => {
-        const {output} = event;
-        document.getElementById("output").innerHTML += output;
-    })
 });
