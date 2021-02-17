@@ -20,20 +20,37 @@ body{
     font-family: MineFont;
     font-size: medium;
 }
+
+
+
 .codec{
+
     height: 79vh;
-    width: 173vh;
+    width: 100%;
     /* close to 300% */
 }
+
+
+
+
+
+
+
+
 .codecimp{
     height: 79vh;
-    width: 143vh;
+    width: 100%;
     /* close to 300% */
 }
 .codeconsole{
     height: 20vh;
     width: 173vh;
 }
+
+
+
+
+
 .hiegthforcode{
     height: 82vh;
 }
@@ -43,7 +60,17 @@ body{
     height: 25vh;
     width: 95wh;
     overflow-y: scroll;
+    font-family: monospace;
 }
+
+.outputborder{
+    border-style: solid;
+    border-color: azure;
+    padding-left: 5px;
+    width: 100%;
+    font-size: larger;
+}
+
 #overlay {
     display: none;
     width: 100wh;
@@ -91,6 +118,7 @@ body{
 
 #lessonsize{
     height: 80vh;
+    padding: 15px;
 }
 
 
@@ -128,28 +156,25 @@ body{
 #buttonM{
     margin-top: 40%;
     height: 60px;
+    color: #252526;
+
 }
 
 #buttonL{
     margin-top: 20%;
     height: 60px;
+    color: #252526;
+
 }
 #buttonCode{
     margin-top: 40%;
     height: 60px;
     width: 70%;
-}
-#backbutton{
-    background-color: #c6c6c6;
     color: #252526;
-    width: 180px;
-    height: 50px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 150%;
-    margin-top: 0.3%;
 
 }
+
+
 #backbutton:hover{
     background-color: #4dd728;
     color: #252526;
@@ -222,14 +247,26 @@ body{
     min-width: 15.4%;
     position: relative;
     float: right;
-    margin-bottom: 0.3%;
+    margin-top: 0.5%;
+    color: #252526;
 }
 #run{
     min-width: 15.4%;
     position: relative;
     float: right;
     margin-bottom: 1%;
-    margin-top: 1%;
+    margin-top: 0.5%;
+    color: #252526;
+
+}
+#backbutton{
+    color: #252526;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+    margin-top: 0.5%;
 
 }
 
@@ -237,7 +274,13 @@ body{
     border-style: solid;
 /*    border-color: #2F5214 ;*/
     border-color: #4c4c4c;
-    height: 20vh;
+    height: 30vh;
+}
+.outputborder{
+    border-style: solid;
+    border-color: azure;
+    padding-left: 5px;
+    width: 100%;
 }
 /*
 .parentbutt{

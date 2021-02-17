@@ -90,3 +90,21 @@ document.getElementById("run").addEventListener("click", (event) => {
     // We evaluate the code //
     new Function(code)();
 });
+
+window.onresize = function (){
+    editor.layout();
+};
+
+// function setSize(w, h) {
+//   container.style.width = w + 'px';
+//   container.style.height = h + 'px';
+
+//   // A. When the dimension is not specified explicitly, 
+//   // the editor will scan the container for the container's 
+//   // new size, causing a forced layout, which is possibly undersirable
+//   editor.layout();
+
+//   // B. The editor does not need to scan the container, 
+//   // avoiding a forced layout
+//   editor.layout({ width: w, height: h});
+// }
