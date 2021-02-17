@@ -13,7 +13,7 @@ from minecraft_store import Minecraft_Store
 class Broker:
     def __init__(self):
         # Starts the connection and the command handling commences
-        self.storage = Minecraft_Store("Data")
+        self.storage = Minecraft_Store()
         self.establish_connection()
 
     def establish_connection(self):
