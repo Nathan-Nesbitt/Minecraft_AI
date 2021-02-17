@@ -5,8 +5,8 @@
     Edit Date: 2021-02-14
 """
 
-from ...data import Data
-from ...errors import InvalidDataUse
+from ..data import Data
+from ..errors import InvalidDataUse
 
 from uuid import uuid4
 
@@ -38,13 +38,13 @@ class Lesson:
         """
         self.model = model
 
-    def set_X(self, X_columns):
+    def set_X(self, X):
         """
         Set the training X data
         ----
-        @param X_columns: list of column names for predictor variables
+        @param X: 
         """
-        self.X = self.data.df[X_columns]
+        self.X = X
 
     def set_y(self, y_column):
         """
