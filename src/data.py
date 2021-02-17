@@ -13,7 +13,7 @@ import os
 
 from datetime import datetime
 from json import loads
-from pandas import concat, DataFrame, Series
+from pandas import DataFrame
 
 
 INVALID_PROPS = [
@@ -24,7 +24,6 @@ INVALID_PROPS = [
     "UserId", "WorldSessionId", "isTrial", "locale", "vrMode", "Branch",
     "BuildTypeID", "Commit", "SchemaCommitHash"
 ]
-
 
 
 class Data:
@@ -49,7 +48,7 @@ class Data:
         """
         DataFrame(self.data).to_csv(self.location + self.filename, index=False)
         return self.absolute_path()
-    
+
     def save_observation(self, data_json):
         """
             save the new observation
@@ -60,9 +59,6 @@ class Data:
         self.save_data()
 
     def add_observation_list(self, data_list):
-        """
-            save a series of events to the dataframe
-        """
         self.data.extend(data_list)
 
     def add_observation(self, data_json):
@@ -102,7 +98,7 @@ class Data:
         if isinstance(data_json, str):
             data_json = loads(data_json)
         new_data = {}
-        
+
         # save the data values
         new_data["eventName"] = data_json["eventName"]
         new_data["triggerTime"] = datetime.now()
@@ -112,7 +108,7 @@ class Data:
 
         for dict_key in data_json["properties"].keys():
             # only save valid properties
-            if not dict_key in INVALID_PROPS:
+            if dict_key not in INVALID_PROPS:
                 new_data[dict_key] = data_json["properties"][dict_key]
 
         return new_data

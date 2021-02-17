@@ -63,7 +63,7 @@ class InvalidInputUse(ValueError):
 
     def __str__(self):
         return f'{self.entered_type} -> {self.message}'
-    
+
 
 class InvalidModelUse(InvalidInputUse):
     """
@@ -100,4 +100,3 @@ class IncorrectFlow(Exception):
 
     def __str__(self):
         return f'{self.method} -> {self.message}'
- 

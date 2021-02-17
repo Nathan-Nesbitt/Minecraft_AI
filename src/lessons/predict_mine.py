@@ -5,27 +5,26 @@ Written By: Kathryn Lecha
 Edit Date: 2021-02-14
 """
 
-from lesson import Lesson
+from .lesson import Lesson
 from ..errors import InvalidModelUse, IncorrectFlow
 
 from minecraft_learns.models import PLSRegressor
 from minecraft_learns.models import RandomForestRegressor
 from minecraft_learns.models import LinearRegression
 
-from pandas import read_csv, Series
-from numpy import array, power, sqrt
+from numpy import power, sqrt
 from numpy import sum as np_sum
 from sklearn.exceptions import NotFittedError
 
 
 MODELMAP = {
-    "pls": PLSRegressor(one_hot_encode=["Biome"]),
-    "lin_reg": LinearRegression(one_hot_encode=["Biome"]),
+    "PLS": PLSRegressor(one_hot_encode=["Biome"]),
+    "decision_tree": LinearRegression(one_hot_encode=["Biome"]),
     "forest_reg": RandomForestRegressor()
 }
 
 
-def euclidean_distance(a,b):
+def euclidean_distance(a, b):
     """
     find the euclidean distance between a and b
     ---
@@ -45,7 +44,6 @@ class PredictMineLesson(Lesson):
     def __init__(self, material="coal_ore"):
         super().__init__()
         self.material = material
-        self.state
 
     def automated_execute(self, loc_current, model_name="forest_reg"):
         """
@@ -64,25 +62,25 @@ class PredictMineLesson(Lesson):
         """
         set the model to the chosen name
         ---
-        @param model_name: string name 
+        @param model_name: string name
         """
         # check if the model can be used in this case
         self.validate_modelname(model_name)
 
         # set the model to the selected choice
         self.model = MODELMAP[model_name]
-    
+
     def validate_modelname(self, model_name):
         """
-        check if selected model can be used in this 
+        check if selected model can be used in this
         ---
-        @param model_name: string name 
+        @param model_name: string name
         """
         # check to see if model is implemented in Minecraft Learns
         super().validate_modelname(model_name)
 
         # Check to see if chosen model can be used in this lesson
-        if not model_name in MODELMAP.keys():
+        if model_name not in MODELMAP.keys():
             raise InvalidModelUse(model_name)
 
     def load_data(self):
@@ -91,18 +89,18 @@ class PredictMineLesson(Lesson):
         related to chosen material
         """
         # read in data
-        df = super().read_data("data/item_acquired.csv")
-        
+        df = super().read_data("data/block_broken.csv")
+
         # filter for material and return
         return df[df["Block"] == self.material]
-    
+
     def process_data(self):
         """
         Read in the data and save the X and y for prediction
         """
         if self.model is None:
             raise IncorrectFlow("process_data", "Model must be selected first")
-        
+
         # format X and y
         df = self.load_data()
         drop_cols = [
@@ -124,7 +122,7 @@ class PredictMineLesson(Lesson):
             self.model.train()
         except(NameError):
             raise IncorrectFlow("train_model", "data has not been processed")
-    
+
     def predict(self, X=None):
         """
         Predict a response on the input data and return response.
@@ -139,7 +137,7 @@ class PredictMineLesson(Lesson):
                 return super().predict(X)
         except(NotFittedError):
             raise IncorrectFlow("predict", "Model has not been trained")
-    
+
     def find_closest_point(self, loc_current, predictions):
         """
         get the closest location to the current location
@@ -148,8 +146,8 @@ class PredictMineLesson(Lesson):
         @param predictions: dataframe of predictions of [x, y, z] coordinates
         """
         distances = euclidean_distance(loc_current, predictions)
-        return predictions[distances == distances.min()]
-    
+        return predictions[distances == distances.min()][0]
+
     def get_error(self, y, predicted):
         """
         get error

@@ -5,7 +5,8 @@ Written By: Kathryn Lecha
 Edit Date: 2021-02-08
 """
 
-from lesson import Lesson
+from .lesson import Lesson
+
 
 class PredictFarm(Lesson):
     """
@@ -13,8 +14,8 @@ class PredictFarm(Lesson):
     """
     def __init__(self, resource):
         self.resource = resource
-        self.model=None
-    
+        self.model = None
+
     def set_model(self, model):
         """
         set the model the player will use

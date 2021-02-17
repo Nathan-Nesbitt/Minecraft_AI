@@ -9,16 +9,18 @@ import json
 from datetime import datetime
 from data import Data
 
+
 class Minecraft_Store:
-    def __init__(self, name): 
+    def __init__(self, name):
         time = str(self.timestamp_format())
         self.client_data = Data(filename=name + time)
 
     def store_filesystem(self, data):
         """
-            Method that takes the data from the client and then stores it into the local computer.
+            Method that takes the data from the client and then stores it into
+            the local computer.
 
-            @param data: The data being stored, will be in a json dictionary format
+            @param data: data being stored, will be in a json dictionaryformat
         """
         self.client_data.save_observation(data)
         return str(self.client_data.absolute_path())

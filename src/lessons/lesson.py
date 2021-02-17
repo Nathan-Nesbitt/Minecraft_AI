@@ -1,15 +1,18 @@
 """
     Defines a Lesson and its parts
-    
+
     Written By: Kathryn Lecha
     Edit Date: 2021-02-14
 """
 
-from ..data import Data
+from minecraft_learns import Data
 from ..errors import InvalidDataUse, ModelNotFound
 
 
-VALIDNAMES = ["pls", "lin_reg", "forest_reg", "forest_clas", "lda", ""]
+VALIDNAMES = [
+    "PLS", "decision_tree", "random_forest_regression",
+    "random_forest_classification", "lda", "kmeans", "knn", "linear_regression"
+    ]
 
 
 class Lesson:
@@ -32,10 +35,10 @@ class Lesson:
         ---
         @param model_name: string name of the model
         """
-        if not model_name in VALIDNAMES:
+        if model_name not in VALIDNAMES:
             raise ModelNotFound(model_name)
         return True
-    
+
     def set_model(self, model):
         """
         Set the model to the input model_name
@@ -43,7 +46,7 @@ class Lesson:
         @param model: model object to use for classification
         """
         self.model = model
-    
+
     def process_data(self, X, y):
         self.model.process_data(X, y)
 
@@ -56,11 +59,11 @@ class Lesson:
         ---
         @param X: a dataframe of n response variables and m response
         """
-        if X.columns != self.model.X.columns:
+        if (X.columns != self.model.X.columns).any():
             raise InvalidDataUse(X)
 
         return self.model.predict(X)
-    
+
     def game_response(self, prediction):
         """
         Trigger Some response in the game
