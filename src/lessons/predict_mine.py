@@ -58,6 +58,7 @@ class PredictMineLesson(Lesson):
         self.process_data()
         self.train_model()
         predictions = self.predict()
+        return game_response(loc_current, predictions)
 
     def pick_model(self, model_name="forest_reg"):
         """
@@ -166,7 +167,7 @@ class PredictMineLesson(Lesson):
         @param predictions: dataframe of predictions of [x, y, z] coordinates
         """
         closest_point = self.find_closest_point(loc_current, predictions)
-        error = get_error(y, predicted)
+        error = get_error(self.model.y, predicted)
 
         response = {
             "prediction": {
