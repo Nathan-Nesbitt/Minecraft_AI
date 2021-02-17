@@ -14,12 +14,13 @@ class Minecraft_Store:
         time = str(self.timestamp_format())
         self.client_data = Data(filename=name + time)
 
-    def store_filesystem(self, data):
+    def store_filesystem(self, data, name):
         """
             Method that takes the data from the client and then stores it into the local computer.
 
             @param data: The data being stored, will be in a json dictionary format
         """
+        self.client_data.rename_file(name)
         self.client_data.save_observation(data)
         return str(self.client_data.absolute_path())
 
