@@ -5,9 +5,9 @@ Written By: Kathryn Lecha
 Edit Date: 2021-02-08
 """
 
-from task import Task
+from lesson import Lesson
 
-class PredictFarm(Task):
+class PredictFarm(Lesson):
     """
     Predict what the best animal to farm is for a given type
     """
@@ -19,4 +19,4 @@ class PredictFarm(Task):
         """
         set the model the player will use
         """
-        
+        pass
