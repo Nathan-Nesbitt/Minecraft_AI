@@ -87,7 +87,6 @@ class Broker:
             return True
         except Exception as e:
             print("Failed to store")
-            print(json_dictionary)
             print(e)
             return False
 
