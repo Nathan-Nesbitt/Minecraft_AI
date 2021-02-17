@@ -118,4 +118,4 @@ class Data:
         return new_data
 
     def rename_file(self, name):
-        os.replace(self.location+self.filename, self.location+name+ ".csv")
+        os.replace(self.location+self.filename, self.location+name)
