@@ -6,22 +6,18 @@
 """
 
 from ..data import Data
-from ..errors import InvalidDataUse
+from ..errors import InvalidDataUse, ModelNotFound
 
-from uuid import uuid4
 
-states = ["no data", "no model", "no X/y", "untrained"]
+VALIDNAMES = ["pls", "lin_reg", "forest_reg", "forest_clas", "lda", ""]
 
 
 class Lesson:
     """
     Generic Abstract Lesson Class all lessons inherit from
     """
-    def __init__(self, uuid=str(uuid4())):
-        self.uuid = uuid
-        self.lessonName = "generic"
+    def __init__(self):
         self.model = None
-        self.state = "no model"
 
     def read_data(self, location):
         """
@@ -29,6 +25,16 @@ class Lesson:
         """
         self.data = Data(location)
         return self.data.df
+
+    def validate_modelname(self, model_name):
+        """
+        Check to see if the provided model name is valid
+        ---
+        @param model_name: string name of the model
+        """
+        if not model_name in VALIDNAMES:
+            raise ModelNotFound(model_name)
+        return True
     
     def set_model(self, model):
         """
@@ -37,35 +43,9 @@ class Lesson:
         @param model: model object to use for classification
         """
         self.model = model
-
-    def set_X(self, X):
-        """
-        Set the training X data
-        ----
-        @param X: 
-        """
-        self.X = X
-
-    def set_y(self, y_column):
-        """
-        Set the training y data
-        ----
-        @param y_column: string column name for response variable
-        """
-        self.y = self.data.df[y_column]
-
-    def set_X_y(self, X_columns, y_column):
-        """
-        Set the training X and y data
-        ----
-        @param X_columns: list of column names for predictor variables
-        @param y_column: string column name for response variable
-        """
-        self.set_X(X_columns)
-        self.set_y(y_column)
     
-    def process_data(self):
-        self.model.process_data(self.X, self.y)
+    def process_data(self, X, y):
+        self.model.process_data(X, y)
 
     def train_model(self):
         self.model.train()
@@ -76,7 +56,7 @@ class Lesson:
         ---
         @param X: a dataframe of n response variables and m response
         """
-        if X.columns != self.X.columns:
+        if X.columns != self.model.X.columns:
             raise InvalidDataUse(X)
 
         return self.model.predict(X)
@@ -87,19 +67,4 @@ class Lesson:
         ---
         returns a message for default event "Say Hello"
         """
-        message = {
-            "header": {
-                "UUID": self.uuid,
-                "targetProcess": "MinecraftAI",
-                "lessonName": self.lessonName
-            },
-            "body": {
-                "response": {
-                    "actor": "bot",
-                    "command": "Say",
-                    "arg": "\"Hello\""
-                }
-            }
-        }
-        return message
-    
+        return None
