@@ -116,3 +116,6 @@ class Data:
                 new_data[dict_key] = data_json["properties"][dict_key]
 
         return new_data
+
+    def rename_file(self, name):
+        os.replace(self.location+self.filename, self.location+name+ ".csv")
