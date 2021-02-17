@@ -93,46 +93,11 @@ class IncorrectFlow(Exception):
         For example if the user tries to predict without fitting, this error
         can be thrown
     """
-    def __init__(
-        self, entered_type,
-        message="The method cannot be executed yet"
-    ):
-        self.entered_type = entered_type
+    def __init__(self, method, message="The method cannot be executed yet"):
+        self.method = method
         self.message = message
         super().__init__(self.message)
 
     def __str__(self):
-        return f'{self.entered_type} -> {self.message}'
-
-
-class UnProcessedData(IncorrectFlow):
-    """
-        Exception which indicates that the data has not been processed
-    """
-    def __init__(self, entered_type):
-        super().__init__(
-            entered_type,
-            "The data has not been processed yet"
-        )
-
-
-class ModelNotFit(IncorrectFlow):
-    """
-        Exception which indicates that the model has not been fit yet
-    """
-    def __init__(self, entered_type):
-        super().__init__(
-            entered_type,
-            "The model has not been fit yet"
-        )
-
-
-class NoPrediction(IncorrectFlow):
-    """
-        Exception which indicates that there is no prediction to execute
-    """
-    def __init__(self, entered_type):
-        super().__init__(
-            entered_type,
-            "There is no prediction to execute"
-        )
+        return f'{self.method} -> {self.message}'
+ 
