@@ -38,7 +38,7 @@ class Data:
             @param filename: String filename that the user can access.
         """
         self.location = location
-        self.filename = filename + ".csv"
+        self.filename = filename
         self.data = []
 
     def save_data(self):
@@ -119,3 +119,6 @@ class Data:
 
     def rename_file(self, name):
         os.replace(self.location+self.filename, self.location+name)
+
+    def already_made(self, name):
+        return os.path.exists(self.location+name)
