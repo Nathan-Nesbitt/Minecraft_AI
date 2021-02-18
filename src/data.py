@@ -10,6 +10,8 @@
 
 import uuid
 import os
+import json
+import jsonlines
 
 from datetime import datetime
 from json import loads
@@ -29,7 +31,7 @@ INVALID_PROPS = [
 
 class Data:
 
-    def __init__(self, location="", filename=str(uuid.uuid4())):
+    def __init__(self, location="./", filename=str(uuid.uuid4())):
         """
             Initializes an object that is an open file that can be written to.
 
@@ -39,7 +41,18 @@ class Data:
         """
         self.location = location
         self.filename = filename
-        self.data = []
+        #self.data = []
+
+        if not os.path.exists(self.location):
+            try:
+                os.makedirs(os.path.dirname(self.location))
+            except OSError as e:
+                print(e)
+
+        if not os.path.exists(self.location + self.filename):
+            self.file = open(location + filename, "w+")
+            self.file.close()
+        self.file = open(location + filename, "a")
 
     def save_data(self):
         """
@@ -47,7 +60,8 @@ class Data:
             ---
             outputs the absolute path of the file
         """
-        DataFrame(self.data).to_csv(self.location + self.filename, index=False)
+        
+        #DataFrame(self.data).to_csv(self.location + self.filename, index=False)
         return self.absolute_path()
     
     def save_observation(self, data_json):
@@ -59,11 +73,11 @@ class Data:
         self.add_observation(data_json)
         self.save_data()
 
-    def add_observation_list(self, data_list):
-        """
-            save a series of events to the dataframe
-        """
-        self.data.extend(data_list)
+    # def add_observation_list(self, data_list):
+    #     """
+    #         save a series of events to the dataframe
+    #     """
+    #     self.data.extend(data_list)
 
     def add_observation(self, data_json):
         """
@@ -72,17 +86,25 @@ class Data:
             @param data_json: a json of a single event response
         """
         data_json = self._format_event_dict(data_json)
-        self.data.append(data_json)
+        data_json = json.dumps(data_json, default=str)
+        self.file.write(data_json+"\n")
+        # with open(self.location+self.filename, mode='a') as writer:
+        #     data_json = json.dumps(data_json, default=str)
+        #     writer.write(data_json)
+        #     writer.close()
 
-    def delete_data(self):
-        """ Deletes the data """
-        os.remove(self.location + self.filename)
-        try:
-            os.rmdir(self.location)
-        except PermissionError:
-            pass
-        except OSError:
-            pass
+
+        #self.data.append(data_json)
+
+    # def delete_data(self):
+    #     """ Deletes the data """
+    #     os.remove(self.location + self.filename)
+    #     try:
+    #         os.rmdir(self.location)
+    #     except PermissionError:
+    #         pass
+    #     except OSError:
+    #         pass
 
     def absolute_path(self):
         absolute_location = os.path.abspath(self.location+self.filename)
@@ -118,7 +140,11 @@ class Data:
         return new_data
 
     def rename_file(self, name):
+        self.close_file()
         os.replace(self.location+self.filename, self.location+name)
 
     def already_made(self, name):
         return os.path.exists(self.location+name)
+
+    def close_file(self):
+        self.file.close()
