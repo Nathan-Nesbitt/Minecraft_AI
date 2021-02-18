@@ -84,7 +84,7 @@ class Broker:
         body = json_dictionary["body"]["data"]["body"]
 
         # If the UUID hasn't been created, then we need to create a file
-        if not self.storage.files[UUID]:
+        if not UUID in self.storage.files:
             self.storage.add_file(file_name, UUID)
 
         # Adds the line to the file for this UUID
