@@ -25,21 +25,8 @@ class Minecraft_Store:
 
         @param file: Which file you are writing the data to, the UUID is normally this
         """
-        # if (self.client_data.already_made(name)==True):
-        #    self.client_data.add_observation(data)
-        # else:
         self.files[file].save_observation(data)
-        # self.client_data.rename_file(name)
         return str(self.files[file].absolute_path())
-
-    def timestamp_format(self):
-        """
-        Method that retrieves the time and date for our file naming
-        """
-        time_sent_back = ""
-        current = datetime.now().strftime("%Y-%m-%d")
-        time_sent_back = time_sent_back + current
-        return time_sent_back
 
     def add_file(self, filename, UUID):
         """
