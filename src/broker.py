@@ -80,15 +80,21 @@ class Broker:
 
             @param json_dictionary: The json object that was converted into a dictionary
         """
-        try:
-            file_name = json_dictionary['header']['fileName']
-            file_location = self.storage.store_filesystem(json_dictionary['body']['data']['body'], file_name)
-            print("Sent to storage")
-            return True
-        except Exception as e:
-            print("Failed to store")
-            print(e)
-            return False
+        file_name = json_dictionary['header']['fileName']
+        #file_location = self.storage.rename(file_name)
+        file_location = self.storage.store_filesystem(json_dictionary['body']['data']['body'], file_name)
+        print(file_location)
+        print("Sent to storage")
+        return True
+        # try:
+        #     file_name = json_dictionary['header']['fileName']
+        #     file_location = self.storage.store_filesystem(json_dictionary['body']['data']['body'], file_name)
+        #     print("Sent to storage")
+        #     return True
+        # except Exception as e:
+        #     print("Failed to store")
+        #     print(e)
+        #     return False
 
     def minecraft_learns(self, json_dictionary):
         """
