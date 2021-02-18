@@ -19,13 +19,16 @@ class Minecraft_Store:
 
             @param data: The data being stored, will be in a json dictionary format
         """
-        if (self.client_data.already_made(name)==True):
-            self.client_data.add_observation(data)
-        else:
-            self.client_data.save_observation(data)
-            self.client_data.rename_file(name)
+        #if (self.client_data.already_made(name)==True):
+        #    self.client_data.add_observation(data)
+        #else:
+        self.client_data.save_observation(data)
+        #self.client_data.rename_file(name)
         return str(self.client_data.absolute_path())
-
+    
+    def rename(self, name):
+        self.client_data.rename_file(name)
+    
     def timestamp_format(self):
         """
             Method that retrieves the time and date for our file naming
