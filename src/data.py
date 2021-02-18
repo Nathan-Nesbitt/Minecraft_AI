@@ -94,12 +94,6 @@ class Data:
         self.add_observation(data_json)
         self.save_data()
 
-    # def add_observation_list(self, data_list):
-    #     """
-    #         save a series of events to the dataframe
-    #     """
-    #     self.data.extend(data_list)
-
     def add_observation(self, data_json):
         """
         append an observation to the list
@@ -116,15 +110,15 @@ class Data:
 
         # self.data.append(data_json)
 
-    # def delete_data(self):
-    #     """ Deletes the data """
-    #     os.remove(self.location + self.filename)
-    #     try:
-    #         os.rmdir(self.location)
-    #     except PermissionError:
-    #         pass
-    #     except OSError:
-    #         pass
+    def delete_data(self):
+        """ Deletes the data file """
+        os.remove(self.location + self.filename)
+        try:
+            os.rmdir(self.location)
+        except PermissionError:
+            pass
+        except OSError:
+            pass
 
     def absolute_path(self):
         absolute_location = os.path.abspath(self.location + self.filename)
@@ -161,13 +155,7 @@ class Data:
 
     def rename_file(self, name):
         """
-        Renames
+        Renames the file
         """
         self.close_file()
         os.replace(self.location + self.filename, self.location + name)
-
-    def already_made(self, name):
-        return os.path.exists(self.location + name)
-
-    def close_file(self):
-        self.file.close()
