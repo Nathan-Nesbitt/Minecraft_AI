@@ -10,9 +10,8 @@ from datetime import datetime
 from data import Data
 
 class Minecraft_Store:
-    def __init__(self, name): 
-        time = str(self.timestamp_format())
-        self.client_data = Data(filename=name + time)
+    def __init__(self): 
+        self.client_data = Data()
 
     def store_filesystem(self, data, name):
         """
@@ -20,8 +19,11 @@ class Minecraft_Store:
 
             @param data: The data being stored, will be in a json dictionary format
         """
-        self.client_data.rename_file(name)
-        self.client_data.save_observation(data)
+        if (self.client_data.already_made(name)==True):
+            self.client_data.add_observation(data)
+        else:
+            self.client_data.save_observation(data)
+            self.client_data.rename_file(name)
         return str(self.client_data.absolute_path())
 
     def timestamp_format(self):
