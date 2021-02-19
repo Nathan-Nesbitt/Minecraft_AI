@@ -123,9 +123,8 @@ class Broker:
             add_model(model, UUID)
             # Handles the message being received by the front end
             if function == "process":
-                models[UUID].pick_model(model_type)
-                models[UUID].set_parameters(parameters)
-                models[UUID].process_data(file_name, response_variable, drop_cols)
+                models[UUID].pick_model(model_type, parameters)
+                models[UUID].process_data(file_name, response_variable, drop_cols, True)
             elif function == "train":
                 models[UUID].train_model()
             elif function == "predict":

@@ -1,7 +1,7 @@
 """
     Defines a Lesson and its parts
     Written By: Kathryn Lecha
-    Edit Date: 2021-02-18
+    Edit Date: 2021-02-19
 """
 
 from ..errors import ModelNotFound, IncorrectFlow
@@ -69,6 +69,11 @@ class Model:
         self.model = model
 
     def set_parameters(self, parameters):
+        """
+        set the parameters of the model
+        ---
+        @param params: dictionary of parameters to set
+        """
         self.model.set_parameters(parameters)
 
     def _read_data(self, location):
