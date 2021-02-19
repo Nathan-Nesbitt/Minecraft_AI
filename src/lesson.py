@@ -4,11 +4,9 @@
     Edit Date: 2021-02-18
 """
 
-from minecraft_learns import Data
-
-
 from ..errors import ModelNotFound, IncorrectFlow
 
+from minecraft_learns import Data
 from minecraft_learns.models import PLSRegressor, LinearRegression, LDA
 from minecraft_learns.models import RandomForestClassifier, KNN, KMeans
 from minecraft_learns.models import RandomForestRegressor
@@ -39,17 +37,18 @@ class Lesson:
     def __init__(self):
         self.model = None
 
-    def pick_model(self, model_name):
+    def pick_model(self, model_name, params):
         """
         set the model to the chosen name
         ---
         @param model_name: string name
+        @param params: dictionary of parameters to set
         """
         # check if the model can be used in this case
         self._validate_modelname(model_name)
 
         # set the model to the selected choice
-        self.model = MODELMAP[model_name]
+        self.model = MODELMAP[model_name].set_parameters(params)
 
     def _validate_modelname(self, model_name):
         """
@@ -76,10 +75,9 @@ class Lesson:
         """
         read in the data selected as a dataframe
         """
-        self.data = Data(location)
-        return self.data.df
+        return Data(location).get_data()
 
-    def process_data(self, location, y_cols, drop_cols):
+    def process_data(self, location, y_cols, feature_cols, drop=False):
         """
         Read in the data and save the X and y for prediction
         """
@@ -87,12 +85,23 @@ class Lesson:
             raise IncorrectFlow("process_data", "Model must be selected first")
 
         # format X and y
-        df = self.read_data(location)
-
-        X = df.drop(drop_cols, axis=1)
+        df = self._read_data(location)
         y = df[y_cols]
+        X = self._get_features(df, feature_cols, drop)
 
         self.model.process_data(X, y)
+
+    def _get_features(self, data, feature_cols, drop=False):
+        """
+        get the predictor/feature variables from the data
+        ---
+        @param data: a 2D data matrix of n observations and m predictors
+        @param interaction_cols: list of columns to interact
+        """
+        if drop:
+            return data.drop(feature_cols, axis=1)
+        else:
+            return data[feature_cols]
 
     def train_model(self):
         """

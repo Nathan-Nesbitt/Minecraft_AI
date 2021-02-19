@@ -4,6 +4,7 @@
 *.pyc
 
 # vscode
+.vscode
 .vscode/*
 !.vscode/tasks.json
 !.vscode/launch.json
