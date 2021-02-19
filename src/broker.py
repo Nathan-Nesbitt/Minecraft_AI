@@ -1,7 +1,9 @@
 import json
 import asyncio
 import websockets
+
 from minecraft_store import Minecraft_Store
+from model import Model
 
 """
     This is the broker file which handles communication between the client and the backend.
@@ -14,8 +16,10 @@ from minecraft_store import Minecraft_Store
 
 class Broker:
     def __init__(self):
-        # Starts the connection and the command handling commences
+        # Store of the models
+        self.models = {}
         self.storage = Minecraft_Store()
+        # Starts the connection and the command handling commences
         self.establish_connection()
 
     def establish_connection(self):
@@ -38,6 +42,7 @@ class Broker:
             try:
                 message = await websocket.recv()
                 json_dict = json.loads(message)
+                print(json_dict)
                 status = self.targetProcessId(json_dict)
                 for_client = self.message_sent_back(json_dict, status)
                 await websocket.send(for_client)
@@ -88,19 +93,15 @@ class Broker:
             self.storage.add_file(file_name, UUID)
 
         # Adds the line to the file for this UUID
-        file_location = self.storage.store_filesystem(body, file_name, UUID)
-        print(file_location)
-        print("Sent to storage")
-        return True
-        # try:
-        #     file_name = json_dictionary['header']['fileName']
-        #     file_location = self.storage.store_filesystem(json_dictionary['body']['data']['body'], file_name)
-        #     print("Sent to storage")
-        #     return True
-        # except Exception as e:
-        #     print("Failed to store")
-        #     print(e)
-        #     return False
+        try:
+            file_location = self.storage.store_filesystem(body, file_name, UUID)
+            print(file_location)
+            print("Sent to storage")
+            return True
+        except Exception as e:
+            print("Failed to store")
+            print(e)
+            return False
 
     def minecraft_learns(self, json_dictionary):
         """
@@ -110,9 +111,26 @@ class Broker:
         """
         try:
             file_name = json_dictionary["header"]["fileName"]
+            UUID = json_dictionary["header"]["UUID"]
             model_type = json_dictionary["header"]["model_type"]
-            response_variable = json_dictionary["header"]["response_variable"]
+            response_variables = json_dictionary["header"]["response_variables"]
+            drop_cols - json_dictionary["header"]["drop_cols"]
             function = json_dictionary["header"]["function"]
+            #parameters = json_dictionary["header"]["parameters"]
+
+        # Checks the UUID to see if the model exists, if not add it to the dictionary
+        if not UUID in self.models:
+            add_model(model, UUID)
+            # Handles the message being received by the front end
+            if function == "process":
+                models[UUID].pick_model(model_type)
+                models[UUID].set_parameters(parameters)
+                models[UUID].process_data(file_name, response_variable, drop_cols)
+            elif function == "train":
+                models[UUID].train_model()
+            elif function == "predict":
+                models[UUID].predict()
+
             print("Sent to Minecraft Learns")
             return True
         except Exception as e:
@@ -120,5 +138,14 @@ class Broker:
             print(str(e))
             return False
 
+    def add_model(self, model, UUID):
+        """
+        Adds a new model to the dictionary of models based on the UUID
+        sent from the user.
+
+        @param model: Model object that is being added to the list of models
+        @param UUID: Callback to the process that initialized the file.
+        """
+        self.models[UUID] = Model(model = model)
 
 Broker()

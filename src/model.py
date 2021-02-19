@@ -29,7 +29,7 @@ MODELMAP = {
 }
 
 
-class Lesson:
+class Model:
     """
     Generic Abstract Lesson Class all lessons inherit from
     """
@@ -133,8 +133,5 @@ class Lesson:
         ---
         returns a message for default event "Say Hello"
         """
-        response = {
-            "prediction": prediction,
-            "error": self.model.evaluate()
-        }
+        response = {"prediction": prediction, "error": self.model.evaluate()}
         return response
