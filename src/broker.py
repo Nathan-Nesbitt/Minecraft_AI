@@ -88,19 +88,15 @@ class Broker:
             self.storage.add_file(file_name, UUID)
 
         # Adds the line to the file for this UUID
-        file_location = self.storage.store_filesystem(body, file_name, UUID)
-        print(file_location)
-        print("Sent to storage")
-        return True
-        # try:
-        #     file_name = json_dictionary['header']['fileName']
-        #     file_location = self.storage.store_filesystem(json_dictionary['body']['data']['body'], file_name)
-        #     print("Sent to storage")
-        #     return True
-        # except Exception as e:
-        #     print("Failed to store")
-        #     print(e)
-        #     return False
+        try:
+            file_location = self.storage.store_filesystem(body, file_name, UUID)
+            print(file_location)
+            print("Sent to storage")
+            return True
+        except Exception as e:
+            print("Failed to store")
+            print(e)
+            return False
 
     def minecraft_learns(self, json_dictionary):
         """
@@ -113,6 +109,7 @@ class Broker:
             model_type = json_dictionary["header"]["model_type"]
             response_variable = json_dictionary["header"]["response_variable"]
             function = json_dictionary["header"]["function"]
+
             print("Sent to Minecraft Learns")
             return True
         except Exception as e:
