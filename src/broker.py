@@ -116,12 +116,12 @@ class Broker:
             response_variables = json_dictionary["header"]["response_variables"]
             drop_cols - json_dictionary["header"]["drop_cols"]
             function = json_dictionary["header"]["function"]
-            parameters = json_dictionary["header"]["parameters"]
+            #parameters = json_dictionary["header"]["parameters"]
 
-        # Checks  the UUID to see if the model exists, if not add it to the dictionary
+        # Checks the UUID to see if the model exists, if not add it to the dictionary
         if not UUID in self.models:
             add_model(model, UUID)
-
+            # Handles the message being received by the front end
             if function == "process":
                 models[UUID].pick_model(model_type)
                 models[UUID].set_parameters(parameters)
