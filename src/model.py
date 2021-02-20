@@ -4,7 +4,7 @@
     Edit Date: 2021-02-19
 """
 
-from ..errors import ModelNotFound, IncorrectFlow
+from minecraft_learns import IncorrectFlow
 
 from minecraft_learns import Data
 from minecraft_learns.models import PLSRegressor, LinearRegression, LDA
@@ -17,15 +17,15 @@ from sklearn.exceptions import NotFittedError
 
 
 MODELMAP = {
-    "knn": KNN(),
-    "lda": LDA(),
-    "kmeans": KMeans(),
-    "PLS": PLSRegressor(),
-    "decision_tree_regression": DecisionTreeRegression(),
-    "decision_tree_classification": DecisionTreeClassifier(),
-    "linear_regression": LinearRegression(),
-    "random_forest_regression": RandomForestRegressor(),
-    "random_forest_classification": RandomForestClassifier(),
+    "knn": KNN,
+    "lda": LDA,
+    "kmeans": KMeans,
+    "PLS": PLSRegressor,
+    "decision_tree_regression": DecisionTreeRegression,
+    "decision_tree_classification": DecisionTreeClassifier,
+    "linear_regression": LinearRegression,
+    "random_forest_regression": RandomForestRegressor,
+    "random_forest_classification": RandomForestClassifier,
 }
 
 
@@ -34,8 +34,8 @@ class Model:
     Generic Abstract Lesson Class all lessons inherit from
     """
 
-    def __init__(self):
-        self.model = None
+    def __init__(self, model):
+        self.model = model
 
     def pick_model(self, model_name, params):
         """
@@ -48,7 +48,8 @@ class Model:
         self._validate_modelname(model_name)
 
         # set the model to the selected choice
-        self.model = MODELMAP[model_name].set_parameters(params)
+        self.model = MODELMAP[model_name]()
+        self.model.set_parameters(params)
 
     def _validate_modelname(self, model_name):
         """
