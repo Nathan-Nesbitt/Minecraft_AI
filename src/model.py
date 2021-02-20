@@ -5,8 +5,9 @@
 """
 
 from minecraft_learns import IncorrectFlow
+from ..errors import ModelNotFound
 
-from minecraft_learns import Data
+from minecraft_learns import Data, IncorrectFlow
 from minecraft_learns.models import PLSRegressor, LinearRegression, LDA
 from minecraft_learns.models import RandomForestClassifier, KNN, KMeans
 from minecraft_learns.models import RandomForestRegressor
@@ -75,7 +76,8 @@ class Model:
         ---
         @param params: dictionary of parameters to set
         """
-        self.model.set_parameters(parameters)
+        if parameters is not None:
+            self.model.set_parameters(parameters)
 
     def _read_data(self, location):
         """
