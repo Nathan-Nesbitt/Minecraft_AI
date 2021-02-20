@@ -117,12 +117,13 @@ class Broker:
         response_variables = json_dictionary["header"].get("response_variables")
         drop_cols = json_dictionary["header"].get("fileName")
         function = json_dictionary["header"].get("function")
-        parameters = json_dictionary["header"].get("parameters")
+        params = json_dictionary["header"].get("params")
 
         # Checks the UUID to see if the model exists, if not add it to the dictionary
         if not UUID in self.models:
+            print(params)
             self.add_model(UUID, model_type)
-            self.models[UUID].pick_model(model_type, parameters)
+            self.models[UUID].pick_model(model_type, params)
 
         # Handles the message being received by the front end
         if function == "process":
