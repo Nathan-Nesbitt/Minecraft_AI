@@ -109,42 +109,43 @@ class Broker:
 
         @param json_dictionary: The json object that was converted into a dictionary
         """
-        try:
-            file_name = json_dictionary["header"]["fileName"]
-            UUID = json_dictionary["header"]["UUID"]
-            model_type = json_dictionary["header"]["model_type"]
-            response_variables = json_dictionary["header"]["response_variables"]
-            drop_cols - json_dictionary["header"]["drop_cols"]
-            function = json_dictionary["header"]["function"]
-            #parameters = json_dictionary["header"]["parameters"]
+
+        # Get all the data from the dictionary
+        file_name = json_dictionary["header"].get("fileName")
+        UUID = json_dictionary["header"].get("UUID")
+        model_type = json_dictionary["header"].get("model_type")
+        response_variables = json_dictionary["header"].get("response_variables")
+        drop_cols = json_dictionary["header"].get("fileName")
+        function = json_dictionary["header"].get("function")
+        parameters = json_dictionary["header"].get("parameters")
 
         # Checks the UUID to see if the model exists, if not add it to the dictionary
         if not UUID in self.models:
-            add_model(model, UUID)
-            # Handles the message being received by the front end
-            if function == "process":
-                models[UUID].pick_model(model_type, parameters)
-                models[UUID].process_data(file_name, response_variable, drop_cols, True)
-            elif function == "train":
-                models[UUID].train_model()
-            elif function == "predict":
-                models[UUID].predict()
+            self.add_model(UUID, model_type)
+            self.models[UUID].pick_model(model_type, parameters)
 
-            print("Sent to Minecraft Learns")
-            return True
-        except Exception as e:
-            print("Failed to send to Minecraft_Learns")
-            print(str(e))
-            return False
+        # Handles the message being received by the front end
+        if function == "process":
+            self.models[UUID].process_data(
+                file_name, response_variable, drop_cols, True
+            )
+        elif function == "train":
+            self.models[UUID].train_model()
+        elif function == "predict":
+            self.models[UUID].predict()
 
-    def add_model(self, model, UUID):
+        print("Sent to Minecraft Learns")
+        return True
+
+    def add_model(self, UUID, model=None):
         """
         Adds a new model to the dictionary of models based on the UUID
         sent from the user.
 
-        @param model: Model object that is being added to the list of models
         @param UUID: Callback to the process that initialized the file.
+        @param model: Model object that is being added to the list of models
         """
-        self.models[UUID] = Model(model = model)
+        self.models[UUID] = Model(model)
+
 
 Broker()
