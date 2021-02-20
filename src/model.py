@@ -5,7 +5,7 @@
 """
 
 from minecraft_learns import IncorrectFlow
-from ..errors import ModelNotFound
+from errors import ModelNotFound
 
 from minecraft_learns import Data, IncorrectFlow
 from minecraft_learns.models import PLSRegressor, LinearRegression, LDA
