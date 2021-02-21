@@ -4,17 +4,14 @@
     Edit Date: 2021-02-19
 """
 
-from minecraft_learns import IncorrectFlow
-from errors import ModelNotFound
+from .errors import ModelNotFound
 
-from minecraft_learns import Data, IncorrectFlow
+from minecraft_learns import Data, IncorrectFlow, label_encoding, encode_labels
 from minecraft_learns.models import PLSRegressor, LinearRegression, LDA
 from minecraft_learns.models import RandomForestClassifier, KNN, KMeans
 from minecraft_learns.models import RandomForestRegressor
 from minecraft_learns.models import DecisionTreeClassifier
 from minecraft_learns.models import DecisionTreeRegression
-
-from sklearn.exceptions import NotFittedError
 
 
 MODELMAP = {
@@ -35,10 +32,10 @@ class Model:
     Generic Abstract Lesson Class all lessons inherit from
     """
 
-    def __init__(self, model):
+    def __init__(self, model=None):
         self.model = model
 
-    def pick_model(self, model_name, params):
+    def pick_model(self, model_name, params={}):
         """
         set the model to the chosen name
         ---
@@ -92,10 +89,11 @@ class Model:
         if self.model is None:
             raise IncorrectFlow("process_data", "Model must be selected first")
 
-        # format X and y
         df = self._read_data(location)
+
+        # format X and y
         y = df[y_cols]
-        X = self._get_features(df, feature_cols, drop)
+        X = self._encode_labels(self._get_features(df, feature_cols, drop))
 
         self.model.process_data(X, y)
 
@@ -111,6 +109,16 @@ class Model:
         else:
             return data[feature_cols]
 
+    def _encode_labels(self, data):
+        """
+        encode the labels in the data and save the encoder
+        ---
+        @param data: a 2D data matrix of n observations and m predictors
+        """
+        if "object" in data.dtypes.values:
+            self.label_encoder, data = label_encoding(data)
+            return data
+
     def train_model(self):
         """
         Train the model for response
@@ -120,20 +128,19 @@ class Model:
         except (NameError):
             raise IncorrectFlow("train_model", "data has not been processed")
 
-    def predict(self, X=None):
+    def predict(self, test_X=None):
         """
         Predict a response on the input data and return response.
         If no data is input, predict on the training data
         ---
-        @param X: a numpy array with n predictor observations OR None
+        @param test_X: a numpy array with n predictor observations OR None
         """
-        try:
-            if X is None:
-                return self.model.predict(self.model.X)
-            else:
-                return self.model.predict(X)
-        except NotFittedError:
-            raise IncorrectFlow("predict", "Model has not been trained")
+        if test_X is None:
+            return self.model.predict(self.model.X)
+        else:
+            if hasattr(self, 'label_encoder'):
+                test_X = encode_labels(self.label_encoder, test_X)
+            return self.model.predict(test_X)
 
     def game_response(self, prediction):
         """

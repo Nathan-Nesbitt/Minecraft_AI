@@ -127,7 +127,7 @@ class Broker:
         # Handles the message being received by the front end
         if function == "process":
             self.models[UUID].process_data(
-                file_name, response_variable, drop_cols, True
+                file_name, response_variables, drop_cols, True
             )
         elif function == "train":
             self.models[UUID].train_model()
