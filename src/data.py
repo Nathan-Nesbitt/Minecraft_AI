@@ -4,7 +4,7 @@
     that the user doesn't have to optimize anything and can simply tell the
     computer to save the data.
 
-    Collaborators: Nathan Nesbitt, Carlos Rueda, Kathryn Lecha
+    Collaborators: Nathan Nesbitt, Carlos Rueda Carrasco, Kathryn Lecha
     Modified: 2021-01-31
 """
 
