@@ -101,7 +101,7 @@ body{
     }   
 */
 
-@media (max-width:800px) {
+@media (max-width:991px ) {
     .border1{
     margin-top: 10px;
     padding-top: 10px;
@@ -109,7 +109,7 @@ body{
     height: 80vh;
     }
 }
-@media (min-width:992px) {
+@media (min-width:993px) {
     .border1{
     border-left:2px dashed !important;
     height: 80vh;
@@ -195,14 +195,14 @@ body{
     
 }
 
-@media (max-width:800px) {
+@media (max-width:991px) {
     .modelborder{
     margin-top: 10px;
     border-top:2px dashed !important;
     height: 80vh;
     }
 }
-@media (min-width:992px) {
+@media (min-width:993px) {
     .modelborder{
     border-left:2px dashed !important;
     height: 80vh;
@@ -250,15 +250,35 @@ body{
     margin-top: 0.5%;
     color: #252526;
 }
-#run{
+#nextbutton{
     min-width: 15.4%;
     position: relative;
     float: right;
     margin-bottom: 1%;
     margin-top: 0.5%;
     color: #252526;
+    margin-right: 4px;
+}
+#run{
+    min-width: 15.4%;
+    position: relative;
+    float: right;
+    margin-bottom: 1%;
+    margin-top: 0.5%;
+    color: #4dd728;
+    background-color:grey;
 
 }
+
+#run:hover{
+    background-color: #4dd728;
+    color: #252526;
+    height: 55px;
+    width: 185px;
+    font-size: 160%;
+}
+
+
 #backbutton{
     color: #252526;
     width: 180px;
