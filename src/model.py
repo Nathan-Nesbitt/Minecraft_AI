@@ -4,7 +4,7 @@
     Edit Date: 2021-02-19
 """
 
-from .errors import ModelNotFound
+from errors import ModelNotFound
 
 from minecraft_learns import Data, IncorrectFlow, label_encoding, encode_labels
 from minecraft_learns.models import PLSRegressor, LinearRegression, LDA
@@ -118,6 +118,8 @@ class Model:
         if "object" in data.dtypes.values:
             self.label_encoder, data = label_encoding(data)
             return data
+        else:
+            return data
 
     def train_model(self):
         """
@@ -148,5 +150,5 @@ class Model:
         ---
         returns a message for default event "Say Hello"
         """
-        response = {"prediction": prediction, "error": self.model.evaluate()}
+        response = {"prediction": prediction.tolist(), "error": self.model.evaluate()}
         return response
