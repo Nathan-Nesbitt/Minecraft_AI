@@ -93,7 +93,8 @@ class Model:
             df = self._read_data(location)
 
             # format X and y
-            y = df[y_cols]
+            self.response_variables = y_cols
+            y = df[self.response_variables]
             X = self._encode_labels(self._get_features(df, feature_cols, drop))
 
             self.model.process_data(X, y)
@@ -153,5 +154,12 @@ class Model:
         ---
         returns a message for default event "Say Hello"
         """
-        response = {"prediction": prediction.tolist(), "error": self.model.evaluate()}
+        p = {}
+        prediction = prediction.tolist()
+        for i in len(self.response_variables):
+            p[self.response_variables[i]] = prediction[i]
+        response = {
+            "prediction": p,
+            "error": self.model.evaluate()
+        }
         return response
