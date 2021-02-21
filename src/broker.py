@@ -42,7 +42,6 @@ class Broker:
             try:
                 message = await websocket.recv()
                 json_dict = json.loads(message)
-                print(json_dict)
                 status = self.targetProcessId(json_dict)
                 for_client = self.message_sent_back(json_dict, status)
                 await websocket.send(for_client)
@@ -72,9 +71,22 @@ class Broker:
         @param json_dictionary: The json object that was converted into a dictionary
         @param status: True or False depending if the action failed
         """
-        message_for_client = {
-            "header": {"UUID": json_dictionary["header"]["UUID"], "status": str(status)}
-        }
+        if isinstance(status, (bool)):
+            message_for_client = {
+                "header": {
+                    "UUID": json_dictionary["header"]["UUID"],
+                    "status": str(status),
+                }
+            }
+        else:
+            message_for_client = {
+                "header": {
+                    "UUID": json_dictionary["header"]["UUID"],
+                    "status": str(status),
+                },
+                "body": status,
+            }
+        print(message_for_client)
         message_for_client = json.dumps(message_for_client)
         return message_for_client
 
@@ -126,6 +138,7 @@ class Broker:
         function = json_dictionary["header"].get("function")
         params = json_dictionary["header"].get("params")
         response_variables = json_dictionary["header"].get("response_variables")
+        value = json_dictionary["body"].get("value")
 
         # Checks the UUID to see if the model exists, if not add it to the dictionary
         if not UUID in self.models:
@@ -140,7 +153,8 @@ class Broker:
         elif function == "train":
             self.models[UUID].train_model()
         elif function == "predict":
-            self.models[UUID].predict()
+            print(value)
+            return self.models[UUID].game_response(self.models[UUID].predict(value))
 
         print("Sent to Minecraft Learns")
         return True
