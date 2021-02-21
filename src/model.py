@@ -138,7 +138,7 @@ class Model:
         if test_X is None:
             return self.model.predict(self.model.X)
         else:
-            if hasattr(self, 'label_encoder'):
+            if hasattr(self, "label_encoder"):
                 test_X = encode_labels(self.label_encoder, test_X)
             return self.model.predict(test_X)
 

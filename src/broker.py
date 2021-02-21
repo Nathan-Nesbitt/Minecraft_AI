@@ -114,10 +114,18 @@ class Broker:
         file_name = json_dictionary["header"].get("fileName")
         UUID = json_dictionary["header"].get("UUID")
         model_type = json_dictionary["header"].get("model_type")
-        response_variables = json_dictionary["header"].get("response_variables")
-        drop_cols = json_dictionary["header"].get("fileName")
+
+        # Either you are choosing or dropping features
+        features = json_dictionary["header"].get("features")
+        drop_features = False
+        if not features:
+            drop_features = True
+            features = json_dictionary["header"].get("features_drop")
+
+        cols = json_dictionary["header"].get("cols")
         function = json_dictionary["header"].get("function")
         params = json_dictionary["header"].get("params")
+        response_variables = json_dictionary["header"].get("response_variables")
 
         # Checks the UUID to see if the model exists, if not add it to the dictionary
         if not UUID in self.models:
@@ -127,7 +135,7 @@ class Broker:
         # Handles the message being received by the front end
         if function == "process":
             self.models[UUID].process_data(
-                file_name, response_variables, drop_cols, True
+                file_name, response_variables, features, drop_features
             )
         elif function == "train":
             self.models[UUID].train_model()
