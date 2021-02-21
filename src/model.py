@@ -89,13 +89,16 @@ class Model:
         if self.model is None:
             raise IncorrectFlow("process_data", "Model must be selected first")
 
-        df = self._read_data(location)
+        try:
+            df = self._read_data(location)
 
-        # format X and y
-        y = df[y_cols]
-        X = self._encode_labels(self._get_features(df, feature_cols, drop))
+            # format X and y
+            y = df[y_cols]
+            X = self._encode_labels(self._get_features(df, feature_cols, drop))
 
-        self.model.process_data(X, y)
+            self.model.process_data(X, y)
+        except FileNotFoundError:
+            print("File is empty, add data to file for data processing to commence")
 
     def _get_features(self, data, feature_cols, drop=False):
         """
