@@ -31,12 +31,6 @@ body{
 }
 
 
-
-
-
-
-
-
 .codecimp{
     height: 79vh;
     width: 100%;
@@ -46,9 +40,6 @@ body{
     height: 20vh;
     width: 173vh;
 }
-
-
-
 
 
 .hiegthforcode{
@@ -127,6 +118,10 @@ body{
 /*    background-color: #544f49; */
 
 }
+.height{
+    height: 80vh;
+}
+
 #Models{
     height: 40vh;
     text-align: center;
@@ -154,18 +149,19 @@ body{
 
 
 #buttonM{
-    margin-top: 40%;
+    margin-top: 10%;
     height: 60px;
     color: #252526;
-
 }
 
 #buttonL{
-    margin-top: 20%;
     height: 60px;
+    margin-top: 10%;
     color: #252526;
 
 }
+
+
 #buttonCode{
     margin-top: 40%;
     height: 60px;
@@ -192,7 +188,10 @@ body{
     border-left-style:dashed;
     border-color: #c6c6c6;
 */
-    
+}   
+.modelcar{
+    text-align: center; 
+    height: 80vh;
 }
 
 @media (max-width:991px) {
@@ -236,6 +235,41 @@ body{
     width: 415px;
     
 }
+
+#homebtn{
+    width: 50px;
+    margin:5px;
+    
+    position: absolute;
+    left: 10px;
+}
+@media (max-width:991px ) {
+    .height{
+        height: 70vh;
+    }
+    #buttonM{
+        margin-top: 15%;
+    }
+    #buttonL{
+        margin-top: 20%;
+    }
+    .modelsimg{
+        width: 360px;
+    }
+    .modelsimg:hover{
+        width: 380px;
+    }
+    .model{
+        text-align: center; 
+        height: 50vh;
+    }
+    .modelcar{
+        text-align: center; 
+        height: 80vh;
+    }
+
+}
+
 .descborder{
     border: solid;
 /*    border-color: #2F5214 ;*/
