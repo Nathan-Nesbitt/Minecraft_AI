@@ -3,6 +3,7 @@ import asyncio
 import websockets
 
 from minecraft_store import Minecraft_Store
+from minecraft_learns import UnProcessedData
 from model import Model
 
 """
@@ -147,11 +148,21 @@ class Broker:
 
         # Handles the message being received by the front end
         if function == "process":
-            self.models[UUID].process_data(
-                file_name, response_variables, features, drop_features
-            )
+            try:
+                self.models[UUID].process_data(
+                    file_name, response_variables, features, drop_features
+                )
+            except FileNotFoundError:
+                print(
+                    "File is empty, add data to file for data processing to commence!"
+                )
+                return False
         elif function == "train":
-            self.models[UUID].train_model()
+            try:
+                self.models[UUID].train_model()
+            except UnProcessedData:
+                print("Data needs to be properly processed before training!")
+                return False
         elif function == "predict":
             print(value)
             return self.models[UUID].game_response(self.models[UUID].predict(value))
