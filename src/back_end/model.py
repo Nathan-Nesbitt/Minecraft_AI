@@ -13,6 +13,10 @@ from minecraft_learns.models import RandomForestRegressor
 from minecraft_learns.models import DecisionTreeClassifier
 from minecraft_learns.models import DecisionTreeRegression
 
+from uuid import uuid4
+from sys import platform
+from os import path, makedirs
+
 
 MODELMAP = {
     "knn": KNN,
@@ -152,8 +156,48 @@ class Model:
         returns a message for default event "Say Hello"
         """
         p = {}
-        prediction = prediction.tolist()
-        for i in len(self.response_variables):
-            p[self.response_variables[i]] = prediction[i]
+
+        for i in range(0, len(self.response_variables)):
+            if len(prediction[:, i]) > 1:
+                p[self.response_variables[i]] = prediction[:, i]
+            else:
+                p[self.response_variables[i]] = prediction[0, i]
+
         response = {"prediction": p, "error": self.model.evaluate()}
         return response
+
+    def _get_default_location(self):
+        location = path.expanduser("~")
+        if platform == "linux" or platform == "linux2":
+            location += "/documents/minecraft_ai/"
+        elif platform == "darwin":
+            location += "/Documents/minecraft_ai/"
+        elif platform == "win32":
+            location += "\\Documents\\minecraft_ai\\"
+        return location
+
+    def plot(self, location=None):
+        """
+        plot and save the file
+        """
+        if location is None:
+            location = self._get_default_location()
+
+        if not path.exists(location):
+            makedirs(location)
+
+        filename = "" + location + str(uuid4()) + ".png"
+        print(filename)
+
+        self.model.plot(location=filename)
+
+    def load_model(self, filename):
+        self.model.load_model(self._get_default_location() + filename)
+
+    def save_model(self, location=None):
+        if location:
+            location = self._get_default_location() + location
+        else:
+            location = self._get_default_location() + str(uuid4()) + ".sav"
+
+        self.model.save_model(location)
