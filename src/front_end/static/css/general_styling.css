@@ -21,8 +21,6 @@ body{
     font-size: medium;
 }
 
-
-
 .codec{
 
     height: 79vh;
@@ -84,14 +82,6 @@ body{
     font-family: 'titlefont'
 }
     
-/*
-.border1{
-    border-left-style: dashed;
-    border-color: #c6c6c6;
-    height: 80vh;
-    }   
-*/
-
 @media (max-width:991px ) {
     .border1{
     margin-top: 10px;
@@ -208,14 +198,6 @@ body{
     }
 }
 
-/*
-.modelborder{
-    border-left-style: dashed;
-    border-color: #2F5214 ;
-    border-color: #c6c6c6;
-    height: 82vh;
-}
-*/
 .subtitle{
     font-size: 200%;
 /*    color: #4dd728;*/
@@ -237,9 +219,8 @@ body{
 }
 
 #homebtn{
-    width: 50px;
-    margin:5px;
-    
+    width: 40px;
+    margin-top:15px;
     position: absolute;
     left: 10px;
 }
@@ -336,9 +317,4 @@ body{
     padding-left: 5px;
     width: 100%;
 }
-/*
-.parentbutt{
-    background-color:#c6c6c6;
-    color: red;
-}
-*/
+
