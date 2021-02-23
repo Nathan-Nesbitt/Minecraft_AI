@@ -20,45 +20,42 @@ var editor;
 require(['vs/editor/editor.main'], function () {
     editor = monaco.editor.create(document.getElementById('containerMona'), {
         value: 
-`// Create a minecraftAPI connection
-var minecraft_api = new MinecraftAPIClient();
+`var minecraft_api = new MinecraftAPIClient();
 
-// Create a new command to the game
 new Command(minecraft_api, "Say", ["Hello", "Friend"]);
 
-// Creates 2 separate datastore connections for saving backend data //
-var datastore = new DataStore(minecraft_api, "foo.csv")
-var datastore_2 = new DataStore(minecraft_api, "foo_2.csv")
 
-// Callback function that handles game data and saves it to the first file //
-var callback_function = function(game_data) {
-    datastore.store_value(game_data)
-        .then((result) => {
-            console.log("Successful insertion into back end", result)
-        }).catch(err => {
-            console.log("Error submitting data to back end.", err);
-        });
+/* Minecraft Learns Example */
+
+// Load in minecraft model using foo.csv created before //
+var args = {
+    connection: minecraft_api, 
+    file_name: "block_broken.csv", 
+    model_type: "decision_tree_regression", 
+    response_variables: ["FeetPosY", "Biome"],
+    features: ["Block"]
+}
+var minecraft_learns = new MinecraftLearns(args);
+
+// Create a callback function that makes a prediction based on the game data //
+var callback_function_3 = function(data) {
+    minecraft_learns.predict(data, ["diamond_ore"])
+    .then(
+        // Then use the response to move in that direction //
+        result => {
+            console.log("DATA FROM GAME", result.body.prediction)
+            new Command(minecraft_api, "Say", ["to mine this resource go", result.body.prediction]);
+        }			
+    )
 }
 
-// Callback function that handles game data and saves it to the second file //
-var callback_function_2 = function(game_data) {
-    datastore_2.store_value(game_data)
-        .then((result) => {
-            console.log("Successful insertion into back end", result)
-        }).catch(err => {
-            console.log("Error submitting data to back end.", err);
-        });
-}
-
-// Creates two new event handlers for blocks being broken and placed //
-new EventHandler(minecraft_api, "BlockBroken", callback_function)
-new EventHandler(minecraft_api, "BlockPlaced", callback_function_2)
-
-// Opens a connection to the back end //
-minecraft_api.open_backend_connection();
-// Opens the connection to the game //
-minecraft_api.start()
-        `,
+// Function that cleans the data, then trains it on the previously defined params //
+minecraft_learns.process_data()
+    .then(minecraft_learns.train())
+    .then(
+        // Then we create an event handler for the game event //
+        new EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
+    )`,
         language: 'javascript',
         theme: 'vs-dark'
     });
