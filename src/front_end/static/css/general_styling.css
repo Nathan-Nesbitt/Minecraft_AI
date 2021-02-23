@@ -347,3 +347,7 @@ body {
 .highlight {
     background-color: #5d5d17
 }
+
+.no_highlight {
+    background-color: transparent;
+}
