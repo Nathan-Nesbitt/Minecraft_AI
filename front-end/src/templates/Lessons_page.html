@@ -15,46 +15,124 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!--Link to persona CSS -->
-    <link rel="stylesheet" href="../css/general_styling.css">
+    <link rel="stylesheet" href="/static/css/general_styling.css">
 </head>
 
 <body>
     <!-- use md for desktop grid system is 12-->
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12 title">
+                <a href="../"><img src="../static/includes/homebutton.png" id="homebtn"> </a>
                 Lessons
             </div>
         </div>
     </div>
     
-    <div class="container pad">
-        <div class="container maincont">
-            <div class="row"> 
-                <div class="col-md-6 modelborder model">
-                    <p class="subtitle"> Ore Finder Lesson</p>
-                    <a href="OreFinder_Lesson_Overview.html"> <img src="../includes/Mine_entrance.jfif", class="modelsimg"></a>
-                    <p class="descborder">description of lesson </p>
-                </div>
-                <div class="col-md-6 modelborder model">
-                    <p class="subtitle">Lesson 2 </p>
-                </div>
-            </div>
-        </div>
-        
-          <div class="container">
-            <div class="row">
-                <div class="text-left">
-                    <a href="Main_page.html" class="btn btn-primary" id="backbutton">Back</a>
+        <!-- <div class="container">
+            <div class="container maincont">
+                <div class="row"> 
+                    <div class="col-md-6 model">
+                        <div class="subtitle"> Ore Finder Lesson</div>
+                        <a href="/lesson/orefinder_overview"> <img src="/static/includes/Mine_entrance.jfif", class="modelsimg"></a>
+                        <p class="descborder"> description of lesson </p>
+                    </div>
+                    <div class="col-md-6 modelborder model">
+                        <div class="subtitle">Lesson 2 </div>
+                    </div>
                 </div>
             </div>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="text-left">
+                        <a href="/" class="btn btn-primary" id="backbutton">Back</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div> -->
+<div class="container">
+    <div class="container maincont">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+          
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              
+                <div class="item active">   
+                <div class="col-md-12 modelcar ">
+                    <div class="subtitle"> Ore Finder</div>
+                        <a href="/lesson/orefinder_overview"> 
+                        <img src="/static/includes/Mine_entrance.jfif", class="modelsimg">
+                    </a>
+                    <!-- <p class="descborder"> description of lesson </p> -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Predict the best location to mine for a material based on height</p>
+                    </div>
+                </div>
+              </div>
+          
+              <div class="item">
+                <div class="col-md-12 modelcar">
+                    <div class="subtitle">Lesson 2</div>
+                    <a href=""> <img src="", class="modelsimg"></a>
+                    <!-- <p class="descborder"> description of lesson </p> -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Description</p>
+                    </div>
+                </div>
+              </div>
+          
+              <div class="item">
+                <div class="col-md-12 modelcar">
+                    <div class="subtitle">Lesson 3</div>
+                    <a href=""> <img src="", class="modelsimg"></a>
+                    <!-- <p class="descborder"> description of lesson </p> -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Description</p>
+                    </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="col-md-12 modelcar">
+                    <div class="subtitle">Lesson 4</div>
+                    <a href=""> <img src="", class="modelsimg"></a>
+                    <!-- <p class="descborder"> description of lesson </p> -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Description</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
         </div>
-        
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div>
+                <a href="/"><button class="button" id="backbutton">Back</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
-    
-<script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
-<script src="../setup/setup_monaco.js"></script>
-<script src="../setup/setup_buttons.js"></script>
     
 </html>
