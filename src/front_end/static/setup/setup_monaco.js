@@ -18,6 +18,61 @@ importScripts('https://unpkg.com/monaco-editor@latest/min/vs/base/worker/workerM
 var editor;
 
 require(['vs/editor/editor.main'], function () {
+    monaco.languages.registerCompletionItemProvider('javascript', {
+        provideCompletionItems: () => {
+            return { 
+                suggestions: [
+                    {
+                        label: 'MinecraftLearns',
+                        kind: monaco.languages.CompletionItemKind.Class,
+                        documentation: "Creates a new machine learning algorithm.",
+                        insertText: 'new MinecraftLearns({\n\tconnection: minecraft_api,\n\tfile_name: "",\n\tmodel_type: "",\n\tresponse_variables: [],\n\tfeatures: []\n});',
+                        insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                    },
+                    {
+                        label: 'Command',
+                        kind: monaco.languages.CompletionItemKind.Class,
+                        documentation: "A command that can be sent to Minecraft Education.",
+                        insertText: 'new Command(minecraft_api, "Command", ["Parameters"]);',
+                        insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                    },
+                    {
+                        label: 'MinecraftAPIClient',
+                        kind: monaco.languages.CompletionItemKind.Class,
+                        documentation: "Creates a new connection to both minecraft education and the backend.",
+                        insertText: 'var minecraft_api = new MinecraftAPIClient();',
+                        insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                    },
+                    {
+                        label: 'EventHandler',
+                        kind: monaco.languages.CompletionItemKind.Class,
+                        documentation: "Handles an in game event and calls a function when triggered.",
+                        insertText: 'new EventHandler(minecraft_api, event, function);',
+                    },
+                    {
+                        label: 'DataStore',
+                        kind: monaco.languages.CompletionItemKind.Class,
+                        documentation: "Object for storing in game data on the back end.",
+                        insertText: 'new DataStore(minecraft_api, "filename.jsonl");',
+                    },
+                    {
+                        label: 'callback_function',
+                        kind: monaco.languages.CompletionItemKind.Function,
+                        documentation: "Callback function example",
+                        insertText: `var callback_function_3 = function(data) { \
+                            \n\tminecraft_learns.predict(data, ["diamond_ore"]) \
+                            \n\t.then( \
+                                \n\t\tresult => { \
+                                    \n\t\t\t// Then use the response to move in that direction // \
+                                    \n\t\t\tnew Command(minecraft_api, "Say", ["to mine this resource go", result.body.prediction]); \
+                                \n\t\t} \	
+                            \n\t) \
+                        \n}`
+                    },
+                ]
+            }
+        }
+    })
     editor = monaco.editor.create(document.getElementById('containerMona'), {
         value: 
 `var minecraft_api = new MinecraftAPIClient();
