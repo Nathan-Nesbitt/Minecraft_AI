@@ -91,10 +91,10 @@ class Model:
 
         df = self._read_data(location)
 
-            # format X and y
-            self.response_variables = y_cols
-            y = df[self.response_variables]
-            X = self._encode_labels(self._get_features(df, feature_cols, drop))
+        # format X and y
+        self.response_variables = y_cols
+        y = df[self.response_variables]
+        X = self._encode_labels(self._get_features(df, feature_cols, drop))
 
         self.model.process_data(X, y)
 
@@ -155,8 +155,5 @@ class Model:
         prediction = prediction.tolist()
         for i in len(self.response_variables):
             p[self.response_variables[i]] = prediction[i]
-        response = {
-            "prediction": p,
-            "error": self.model.evaluate()
-        }
+        response = {"prediction": p, "error": self.model.evaluate()}
         return response
