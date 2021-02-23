@@ -17,6 +17,7 @@ def create_broker():
 # We have to start the front end in a thread cause flask
 # can handle being run in a thread, WS cannot.
 front_end = Thread(target=import_front_end)
+front_end.daemon = True
 front_end.start()
 # Then we start the broker.
 create_broker()
