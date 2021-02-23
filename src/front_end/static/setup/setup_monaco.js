@@ -159,6 +159,11 @@ document.getElementById("run").addEventListener("click", (event) => {
     console.log = function(output) {
         document.getElementById("console").innerHTML += ("<p> > " + output + "</p>");
     }
+    // This routes the window errors to the same element but makes it red //
+    window.onerror = function(message, url, linenumber) {
+        document.getElementById("console").innerHTML += 
+            ("<p style='color: red'> > ERROR: " + message + "</p>");
+    }
 
     // We evaluate the code //
     new Function(code)();
