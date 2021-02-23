@@ -7,7 +7,7 @@
     <!--This sets width to device wotdh -->
     <meta name="viewport" content="width = device-width , initial-scale=1">
     
-	<title>Minecraft AI - Free Code</title>
+	<title>Minecraft AI - Code</title>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified CSS -->
@@ -15,7 +15,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!--Link to persona CSS -->
-    <link rel="stylesheet" href="/static/css/general_styling.css">
+    <link rel="stylesheet" href="./static/css/general_styling.css">
 </head>
 
 <body>
@@ -24,12 +24,27 @@
         <div class="row">
             <div class="col-md-12 title">
                 <a href="../"><img src="../static/includes/homebutton.png" id="homebtn"> </a>
-                Free Code
+                Code
             </div>
         </div>
     </div>
     
-    <div class="container pad"> 
+    <div class="container pad">
+        <!-- <div class="container maincont">
+            <div class="row"> 
+                <div class="col-md-2">
+
+                    <div class="row text-center">
+                        THIS BUTTON INSERTS INTO CODE CONSOLE(FILLS IN) 
+                        <button id="buttonCode" class="button">Code</button>
+                    </div>
+                </div>
+                <div class="col-md-10 hiegthforcode edit-text general" id="codeborder">  
+                    <p></p>
+                    <div id="containerMona" class="code codecimp"></div>
+                </div>
+            </div>
+        </div> -->
         <div class="container maincont">
             <div class="row"> 
                 <div class="col-md-12 hiegthforcode edit-text general" id="codeborder">  
@@ -38,55 +53,30 @@
                 </div>
             </div>
         </div>
-
     
          <div class="container">
             <div class="row">
-                <button id="run" class="button">RUN</button>
-                <!-- <a href="../"><button class="button" id="backbutton">Back</button></a> -->
+                <button class="button" id="run"> Run </button>
+                <button class="button" id="nextbutton">Next</button>
+                <!-- <a href="../lessons"><button class="button" id="backbutton">Back</button></a> -->
             </div>
         </div>
-
-        <!-- <div class="container maincont">
-            <div class="row"> 
-                <div class="col-md-12 hiegthforcode edit-text general" id="consoleborder">  
-                    <div id="output-div">
-                        <div id="console" class="code">
+        
+        <div class="container">
+            <div class="wide general">
+                 <div id="output-div">
+                     <h1>Output</h1>
+                     <div id="console" class="code outputborder">
                             <p id="output"></p>
                             <br>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p></p> -->
-
-        <!-- <div class="container maincont">
-            <div class="row"> 
-                <div class="col-md-12 hiegthforcode edit-text general" id="codeborder">  
-                    <p></p>
-                    <div id="containerMona" class="code codec"></div>
-                </div>
-            </div>
-        </div> -->
-
-
-
-
-        
-        <div class="container">
-             <div id="row">
-                    <h1>Output</h1>
-                        <div id="console" class="outputborder">
-                            <p id="output"></p>
-                        <br>
-                    </div>
+                  </div>
                 </div>
             </div>
         </div>
         <p></p>
-
-        <!-- BACK ON BOTTOM -->
+        
+        <!-- BACK ON THE BOTTOM -->
         <!-- <div class="container">
             <div class="row">
                 <div class="text-left">
@@ -96,19 +86,10 @@
         </div> -->
         
     </div>
-
-
 </body>
     
 <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
-<script type="module">
-    import {EventHandler, Command, MinecraftLearns, DataStore, MinecraftAPIClient} from 'https://nathan-nesbitt.github.io/Minecraft_API/src/minecraft_api.js';
-    window.EventHandler = EventHandler
-    window.Command = Command
-    window.MinecraftLearns = MinecraftLearns
-    window.DataStore = DataStore
-    window.MinecraftAPIClient = MinecraftAPIClient
-
-</script>
 <script src="/static/setup/setup_monaco.js"></script>
+<script src="/static/setup/setup_buttons.js"></script>
+    
 </html>

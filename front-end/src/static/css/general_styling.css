@@ -1,0 +1,344 @@
+@font-face{
+    font-family: 'MineFont';
+    src: url('../includes/Minecraft.ttf'); 
+}
+@font-face{
+    font-family:'titlefont';
+    src:url(../includes/Minecrafter.Reg.ttf)
+}
+body{
+    background-color: #1c1c1c;
+/*    color: #8FCA5C;*/
+    color: #c6c6c6;
+    
+    font-family: MineFont;
+    font-size: large;
+    max-width: 100%;
+/*    background-image: url(../includes/Cobblestone.jpg)*/
+}
+.minefont{
+    font-family: MineFont;
+    font-size: medium;
+}
+
+
+
+.codec{
+
+    height: 79vh;
+    width: 100%;
+    /* close to 300% */
+}
+
+
+.codecimp{
+    height: 79vh;
+    width: 100%;
+    /* close to 300% */
+}
+.codeconsole{
+    height: 20vh;
+    width: 173vh;
+}
+
+
+.hiegthforcode{
+    height: 82vh;
+}
+
+
+#console{
+    height: 25vh;
+    width: 95wh;
+    overflow-y: scroll;
+    font-family: monospace;
+}
+
+.outputborder{
+    border-style: solid;
+    border-color: azure;
+    padding-left: 5px;
+    width: 100%;
+    font-size: larger;
+}
+
+#overlay {
+    display: none;
+    width: 100wh;
+    height: 100vh;
+    background-color: #252526;
+    opacity: 0.75;
+    color: #c6c6c6;
+    text-align: center;
+    z-index: 2;
+    cursor: pointer;
+  }
+.button-group{
+    text-align: center;
+}
+.title{
+    font-size: 280%;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+    color: #4dd728;
+    font-family: 'titlefont'
+}
+    
+/*
+.border1{
+    border-left-style: dashed;
+    border-color: #c6c6c6;
+    height: 80vh;
+    }   
+*/
+
+@media (max-width:991px ) {
+    .border1{
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top:2px dashed !important;
+    height: 80vh;
+    }
+}
+@media (min-width:993px) {
+    .border1{
+    border-left:2px dashed !important;
+    height: 80vh;
+    }
+}
+
+#lessonsize{
+    height: 80vh;
+    padding: 15px;
+}
+
+
+.maincont{
+    background-color: #4c4c4c;  
+/*    background-color: #544f49; */
+
+}
+.height{
+    height: 80vh;
+}
+
+#Models{
+    height: 40vh;
+    text-align: center;
+    line-height: 1500%;
+    position: relative;
+}
+.button{
+    background-color: #c6c6c6;
+    color: #4c4c4c;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+    margin-top: 0.3%;    
+
+}
+.button:hover{
+    background-color: #4dd728;
+    color: #252526;
+    height: 55px;
+    width: 185px;
+    font-size: 160%;
+}
+
+
+#buttonM{
+    margin-top: 10%;
+    height: 60px;
+    color: #252526;
+}
+
+#buttonL{
+    height: 60px;
+    margin-top: 10%;
+    color: #252526;
+
+}
+
+
+#buttonCode{
+    margin-top: 40%;
+    height: 60px;
+    width: 70%;
+    color: #252526;
+
+}
+
+
+#backbutton:hover{
+    background-color: #4dd728;
+    color: #252526;
+    height: 55px;
+    width: 185px;
+    font-size: 160%;
+}
+
+
+.model{
+    text-align: center; 
+    height: 80vh;
+
+/*
+    border-left-style:dashed;
+    border-color: #c6c6c6;
+*/
+}   
+.modelcar{
+    text-align: center; 
+    height: 80vh;
+}
+
+@media (max-width:991px) {
+    .modelborder{
+    margin-top: 10px;
+    border-top:2px dashed !important;
+    height: 80vh;
+    }
+}
+@media (min-width:993px) {
+    .modelborder{
+    border-left:2px dashed !important;
+    height: 80vh;
+    }
+}
+
+/*
+.modelborder{
+    border-left-style: dashed;
+    border-color: #2F5214 ;
+    border-color: #c6c6c6;
+    height: 82vh;
+}
+*/
+.subtitle{
+    font-size: 200%;
+/*    color: #4dd728;*/
+    color: #c6c6c6;
+    padding-top: 10px;
+}
+.modelsimg{
+    width: 400px;
+    border: solid;
+    border-color: #252526;
+
+    
+}
+.modelsimg:hover{
+    border: solid;
+    border-color: #4dd728;
+    width: 415px;
+    
+}
+
+#homebtn{
+    width: 50px;
+    margin:5px;
+    
+    position: absolute;
+    left: 10px;
+}
+@media (max-width:991px ) {
+    .height{
+        height: 70vh;
+    }
+    #buttonM{
+        margin-top: 15%;
+    }
+    #buttonL{
+        margin-top: 20%;
+    }
+    .modelsimg{
+        width: 360px;
+    }
+    .modelsimg:hover{
+        width: 380px;
+    }
+    .model{
+        text-align: center; 
+        height: 50vh;
+    }
+    .modelcar{
+        text-align: center; 
+        height: 80vh;
+    }
+
+}
+
+.descborder{
+    border: solid;
+/*    border-color: #2F5214 ;*/
+    border-color: #c6c6c6;
+    height: 13vh;
+    margin-top: 5px; 
+}
+#beginButton{
+    min-width: 15.4%;
+    position: relative;
+    float: right;
+    margin-top: 0.5%;
+    color: #252526;
+}
+#nextbutton{
+    min-width: 15.4%;
+    position: relative;
+    float: right;
+    margin-bottom: 1%;
+    margin-top: 0.5%;
+    color: #252526;
+    margin-right: 4px;
+}
+#run{
+    min-width: 15.4%;
+    position: relative;
+    float: right;
+    margin-bottom: 1%;
+    margin-top: 0.5%;
+    color: #4dd728;
+    background-color:grey;
+
+}
+
+#run:hover{
+    background-color: #4dd728;
+    color: #252526;
+    height: 55px;
+    width: 185px;
+    font-size: 160%;
+}
+
+
+#backbutton{
+    color: #252526;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+    margin-top: 0.5%;
+
+}
+
+#consoleborder{
+    border-style: solid;
+/*    border-color: #2F5214 ;*/
+    border-color: #4c4c4c;
+    height: 30vh;
+}
+.outputborder{
+    border-style: solid;
+    border-color: azure;
+    padding-left: 5px;
+    width: 100%;
+}
+/*
+.parentbutt{
+    background-color:#c6c6c6;
+    color: red;
+}
+*/

@@ -15,14 +15,15 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!--Link to persona CSS -->
-    <link rel="stylesheet" href="../css/general_styling.css">
+    <link rel="stylesheet" href="/static/css/general_styling.css">
 </head>
 
 <body>
     <!-- use md for desktop grid system is 12-->
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12 title">
+                <a href="../"><img src="../static/includes/homebutton.png" id="homebtn"> </a>
                 Ore Finder 
             </div>
         </div>
@@ -31,18 +32,8 @@
     <div class="container pad">
         <div class="container maincont">
             <div class="row"> 
-<!--
-                <div class="col-md-4">
-                    <div class="row text-center" >
-                        <a href="Models_page.html"><button id="buttonM"class="button">Models</button></a>
-                    </div>
-                    <div class="row text-center">
-                        <a href="Lessons_page.html"><button id="buttonL" class="button">Lessons</button></a>
-                    </div>
-                </div>
--->
-                <div class="col-md-12 border1">
-                    <p>description of lesson</p>
+                <div class="col-md-12 "id = "lessonsize">
+                    <h3>Predict the best location to mine for a material based on height</h3>
                 </div>
             </div>
         </div>
@@ -50,8 +41,8 @@
         <div class="container">
             <div class="row">
                <div>
-                    <a href="Main_page.html"><button class="button" id="backbutton">Back</button></a>
-                   <button class="button" id="beginButton"> Begin </button>
+                    <a href="../lessons"><button class="button" id="backbutton">Back</button></a>
+                   <a href="/lesson/orefinder_explained"><button class="button" id="beginButton">Next</button></a>
                </div>
             </div>
         </div>
