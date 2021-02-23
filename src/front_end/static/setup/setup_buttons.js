@@ -1,9 +1,60 @@
+/**
+ * Written by Nathan Nesbitt 
+ */
 
-// editor.trigger('keyboard', 'type', {text: "test"});
+/**
+ * Handles the appending of new lessons
+ * @param {Array} lesson Lesson text
+ * @param {Array} code Lesson code
+ */
+var lesson_looper = function(lesson, code) {
 
-var command_button = document.getElementById("add-command");
-var event_button = document.getElementById("add-event");
+    var lesson_position = 0;
+    var next_button = document.getElementById("nextbutton");
+    var previous_button = document.getElementById("previousbutton");
+    var previous_code = window.editor.getModel().getValue();
 
+    next_button.addEventListener("click", (event) => {
+        // Handle if the user has pressed beyond the size of the input //
+        if(lesson_position >= lesson.length || lesson_position >= code.length)
+            return;
+        // Handles the appending to the editor //
+        previous_code = editor.getModel().getValue();
+        window.editor.getModel().setValue(previous_code + code[lesson_position]); 
+        
+        // Once the lesson area is implemented simply append to it //
+        lesson_position++;
+    })
+
+    previous_button.addEventListener("click", (event) => {
+        // Handle if the user has pressed beyond the size of the input //
+        if(lesson_position <= 0)
+            return;
+        // Handles the appending to the editor //
+        editor.getModel().setValue(previous_code); 
+        
+        // Once the lesson area is implemented simply append to it //
+
+        lesson_position--;
+    })
+}
+
+code = [
+    'var minecraft_api = new MinecraftAPIClient();\n',
+    'new Command(minecraft_api, "Say", ["Hello", "Friend"]);\n'
+]
+
+lesson = [
+    "First we create a connection to the game.",
+    "Then we can create a command to be sent to the game."
+]
+
+window.onload = () => {
+    lesson_looper(lesson, code);
+}
+
+
+/*
 command_button.addEventListener("click", (e)=> {
     var command_select = document.getElementById("command");
     var command_arg = document.getElementById("command-arguement");
@@ -52,3 +103,4 @@ help_button.addEventListener("click", (e) =>{
         overlay.style.display = "none";
     });
 });
+*/

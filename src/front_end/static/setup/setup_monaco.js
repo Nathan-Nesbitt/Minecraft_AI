@@ -15,8 +15,6 @@ importScripts('https://unpkg.com/monaco-editor@latest/min/vs/base/worker/workerM
     type: 'text/javascript'
 }));
 
-var editor;
-
 require(['vs/editor/editor.main'], function () {
     monaco.languages.registerCompletionItemProvider('javascript', {
         provideCompletionItems: () => {
@@ -94,7 +92,7 @@ require(['vs/editor/editor.main'], function () {
             }
         }
     })
-    editor = monaco.editor.create(document.getElementById('containerMona'), {
+    window.editor = monaco.editor.create(document.getElementById('containerMona'), {
         value: 
 `var minecraft_api = new MinecraftAPIClient();
 
@@ -151,7 +149,7 @@ document.getElementById("run").addEventListener("click", (event) => {
 
         console.log("Command");
         `+
-        editor.getValue()
+        window.editor.getValue()
     // reset the output
     document.getElementById("output").innerHTML = "";
 
@@ -170,7 +168,7 @@ document.getElementById("run").addEventListener("click", (event) => {
 });
 
 window.onresize = function (){
-    editor.layout();
+    window.editor.layout();
 };
 
 // function setSize(w, h) {
