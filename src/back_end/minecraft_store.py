@@ -7,7 +7,7 @@
 # Import all the necessary packages
 import json
 from datetime import datetime
-from data import Data
+from .data import Data
 
 
 class Minecraft_Store:

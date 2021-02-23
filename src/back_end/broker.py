@@ -2,9 +2,9 @@ import json
 import asyncio
 import websockets
 
-from minecraft_store import Minecraft_Store
+from .minecraft_store import Minecraft_Store
 from minecraft_learns import UnProcessedData
-from model import Model
+from .model import Model
 
 """
     This is the broker file which handles communication between the client and the backend.
@@ -182,6 +182,3 @@ class Broker:
         @param model: Model object that is being added to the list of models
         """
         self.models[UUID] = Model(model)
-
-
-Broker()

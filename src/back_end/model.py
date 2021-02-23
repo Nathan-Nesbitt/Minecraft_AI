@@ -4,7 +4,7 @@
     Edit Date: 2021-02-19
 """
 
-from errors import ModelNotFound
+from .errors import ModelNotFound
 
 from minecraft_learns import Data, IncorrectFlow, label_encoding, encode_labels
 from minecraft_learns.models import PLSRegressor, LinearRegression, LDA
