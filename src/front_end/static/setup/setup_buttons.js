@@ -18,10 +18,21 @@ var lesson_looper = function(lesson, code) {
         // Handle if the user has pressed beyond the size of the input //
         if(lesson_position >= lesson.length || lesson_position >= code.length)
             return;
+
+        // Gets the current start line
+        var start_line = window.editor.getModel().getLineCount();
         // Handles the appending to the editor //
         previous_code = editor.getModel().getValue();
-        window.editor.getModel().setValue(previous_code + code[lesson_position]); 
+        window.editor.getModel().setValue(previous_code + code[lesson_position]);
         
+        // Get the size of lines changed
+        var end_line = window.editor.getModel().getLineCount();
+
+        console.log(start_line, end_line)
+        
+        window.editor.deltaDecorations([], [
+            {range: new window.monaco.Range(start_line, 1, end_line, 200), options: { inlineClassName: 'highlight' }},
+        ])
         // Once the lesson area is implemented simply append to it //
         lesson_position++;
     })
@@ -40,13 +51,22 @@ var lesson_looper = function(lesson, code) {
 }
 
 code = [
-    'var minecraft_api = new MinecraftAPIClient();\n',
-    'new Command(minecraft_api, "Say", ["Hello", "Friend"]);\n'
+    '\nvar minecraft_api = new MinecraftAPIClient();\n',
+    'new Command(minecraft_api, "Say", ["Hello", "Friend"]);\n',
+    `var args = {
+        connection: minecraft_api, 
+        file_name: "block_broken.csv", 
+        model_type: "decision_tree_regression", 
+        response_variables: ["FeetPosY", "Biome"],
+        features: ["Block"]
+    }
+    var minecraft_learns = new MinecraftLearns(args);`
 ]
 
 lesson = [
     "First we create a connection to the game.",
-    "Then we can create a command to be sent to the game."
+    "Then we can create a command to be sent to the game.",
+    "Then we create a new MinecraftLearns model."
 ]
 
 window.onload = () => {

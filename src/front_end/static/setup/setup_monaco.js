@@ -16,6 +16,7 @@ importScripts('https://unpkg.com/monaco-editor@latest/min/vs/base/worker/workerM
 }));
 
 require(['vs/editor/editor.main'], function () {
+    window.monaco = monaco;
     monaco.languages.registerCompletionItemProvider('javascript', {
         provideCompletionItems: () => {
             return { 
