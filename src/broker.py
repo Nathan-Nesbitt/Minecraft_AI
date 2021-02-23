@@ -63,7 +63,7 @@ class Broker:
             return self.minecraft_learns(json_dictionary)
         else:
             print("Incorrect naming for targetProcess")
-            return False
+            return False, "Incorrect naming for targetProcess"
 
     def message_sent_back(self, json_dictionary, status):
         """
@@ -83,9 +83,9 @@ class Broker:
             message_for_client = {
                 "header": {
                     "UUID": json_dictionary["header"]["UUID"],
-                    "status": str(status),
+                    "status": str(status[0]),
                 },
-                "body": status,
+                "body": status[1],
             }
         print(message_for_client)
         message_for_client = json.dumps(message_for_client)
@@ -114,7 +114,7 @@ class Broker:
         except Exception as e:
             print("Failed to store")
             print(e)
-            return False
+            return False, "Failed to store"
 
     def minecraft_learns(self, json_dictionary):
         """
@@ -156,13 +156,16 @@ class Broker:
                 print(
                     "File is empty, add data to file for data processing to commence!"
                 )
-                return False
+                return (
+                    False,
+                    "File is empty, add data to file for data processing to commence!",
+                )
         elif function == "train":
             try:
                 self.models[UUID].train_model()
             except UnProcessedData:
                 print("Data needs to be properly processed before training!")
-                return False
+                return False, "Data needs to be properly processed before training!"
         elif function == "predict":
             print(value)
             return self.models[UUID].game_response(self.models[UUID].predict(value))
