@@ -47,7 +47,7 @@ require(['vs/editor/editor.main'], function () {
                         label: 'EventHandler',
                         kind: monaco.languages.CompletionItemKind.Class,
                         documentation: "Handles an in game event and calls a function when triggered.",
-                        insertText: 'new EventHandler(minecraft_api, event, function);',
+                        insertText: 'new EventHandler(minecraft_api, "event_name", callback_function);',
                     },
                     {
                         label: 'DataStore',
@@ -59,14 +59,35 @@ require(['vs/editor/editor.main'], function () {
                         label: 'callback_function',
                         kind: monaco.languages.CompletionItemKind.Function,
                         documentation: "Callback function example",
-                        insertText: `var callback_function_3 = function(data) { \
+                        insertText: `var callback_function = function(data) { \
+                            \n\t// Run some code based on the game event // \
+                        \n}`
+                    },
+                    {
+                        label: 'minecraft_learns_callback_function',
+                        kind: monaco.languages.CompletionItemKind.Function,
+                        documentation: "Callback function for minecraft learns example",
+                        insertText: `var callback_function = function(data) { \
                             \n\tminecraft_learns.predict(data, ["diamond_ore"]) \
                             \n\t.then( \
                                 \n\t\tresult => { \
-                                    \n\t\t\t// Then use the response to move in that direction // \
+                                    \n\t\t\t// Then do something with the prediction // \
                                     \n\t\t\tnew Command(minecraft_api, "Say", ["to mine this resource go", result.body.prediction]); \
-                                \n\t\t} \	
+                                \n\t\t} \
                             \n\t) \
+                        \n}`
+                    },
+                    {
+                        label: 'datastore_callback_function',
+                        kind: monaco.languages.CompletionItemKind.Function,
+                        documentation: "Callback function for data store example",
+                        insertText: `var callback_function = function(game_data) { \
+                            \n\tdatastore.store_value(game_data) \
+                            \n\t.then((result) => { \
+                                \n\t\tconsole.log("Successful insertion into back end", result); \
+                            \n\t}).catch(err => { \
+                                \n\t\tconsole.log("Error submitting data to back end.", err); \
+                            \n\t}); \
                         \n}`
                     },
                 ]
