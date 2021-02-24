@@ -91,13 +91,13 @@ class Model:
         Read in the data and save the X and y for prediction
         """
         if self.model is None:
-            raise IncorrectFlow("process_data", "Model must be selected first")
+            raise IncorrectFlow("Model must be selected before data process")
 
         df = self._read_data(location)
 
         # format X and y
         self.response_variables = y_cols
-        y = df[self.response_variables]
+        y = df[self.response_variables]µ
         X = self._encode_labels(self._get_features(df, feature_cols, drop))
 
         self.model.process_data(X, y)
@@ -133,7 +133,7 @@ class Model:
         try:
             self.model.train()
         except (NameError):
-            raise IncorrectFlow("train_model", "data has not been processed")
+            raise IncorrectFlow("data must be processed before training")
 
     def predict(self, test_X=None):
         """
