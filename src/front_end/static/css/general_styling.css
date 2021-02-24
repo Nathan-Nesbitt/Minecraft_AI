@@ -300,6 +300,15 @@ div.modeldesc p{
 
 }
 
+.lessoninstructions{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    text-align: center;
+    font-size: medium;
+    letter-spacing: 3px;
+    word-spacing: 10;
+
+}
+
 .descborder {
     border: solid;
     /*    border-color: #2F5214 ;*/

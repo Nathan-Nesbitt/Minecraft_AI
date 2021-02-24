@@ -17,10 +17,15 @@ var lesson_looper = function(lesson, code) {
     var previous_button = document.getElementById("previousbutton");
     var previous_code = window.editor.getModel().getValue();
 
+    var instructions = document.getElementById("instructions");
+
     next_button.addEventListener("click", (event) => {
         // Handle if the user has pressed beyond the size of the input //
         if(lesson_position >= lesson.length || lesson_position >= code.length)
             return;
+
+        // update the instructions
+        instructions.innerText = lesson[lesson_position];
 
         // Gets the current start line
         var start_line = window.editor.getModel().getLineCount();

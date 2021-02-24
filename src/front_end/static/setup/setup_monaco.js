@@ -94,43 +94,43 @@ require(['vs/editor/editor.main'], function () {
         }
     })
     window.editor = monaco.editor.create(document.getElementById('containerMona'), {
-        value: 
-`var minecraft_api = new MinecraftAPIClient();
+//         value: 
+// `var minecraft_api = new MinecraftAPIClient();
 
-new Command(minecraft_api, "Say", ["Hello", "Friend"]);
+// new Command(minecraft_api, "Say", ["Hello", "Friend"]);
 
 
-/* Minecraft Learns Example */
+// /* Minecraft Learns Example */
 
-// Load in minecraft model using foo.csv created before //
-var args = {
-    connection: minecraft_api, 
-    file_name: "block_broken.csv", 
-    model_type: "decision_tree_regression", 
-    response_variables: ["FeetPosY", "Biome"],
-    features: ["Block"]
-}
-var minecraft_learns = new MinecraftLearns(args);
+// // Load in minecraft model using foo.csv created before //
+// var args = {
+//     connection: minecraft_api, 
+//     file_name: "block_broken.csv", 
+//     model_type: "decision_tree_regression", 
+//     response_variables: ["FeetPosY", "Biome"],
+//     features: ["Block"]
+// }
+// var minecraft_learns = new MinecraftLearns(args);
 
-// Create a callback function that makes a prediction based on the game data //
-var callback_function_3 = function(data) {
-    minecraft_learns.predict(data, ["diamond_ore"])
-    .then(
-        // Then use the response to move in that direction //
-        result => {
-            console.log("DATA FROM GAME", result.body.prediction)
-            new Command(minecraft_api, "Say", ["to mine this resource go", result.body.prediction]);
-        }			
-    )
-}
+// // Create a callback function that makes a prediction based on the game data //
+// var callback_function_3 = function(data) {
+//     minecraft_learns.predict(data, ["diamond_ore"])
+//     .then(
+//         // Then use the response to move in that direction //
+//         result => {
+//             console.log("DATA FROM GAME", result.body.prediction)
+//             new Command(minecraft_api, "Say", ["to mine this resource go", result.body.prediction]);
+//         }			
+//     )
+// }
 
-// Function that cleans the data, then trains it on the previously defined params //
-minecraft_learns.process_data()
-    .then(minecraft_learns.train())
-    .then(
-        // Then we create an event handler for the game event //
-        new EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
-    )`,
+// // Function that cleans the data, then trains it on the previously defined params //
+// minecraft_learns.process_data()
+//     .then(minecraft_learns.train())
+//     .then(
+//         // Then we create an event handler for the game event //
+//         new EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
+//     )`,
         language: 'javascript',
         theme: 'vs-dark'
     });
