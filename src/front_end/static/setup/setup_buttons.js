@@ -15,28 +15,43 @@ var lesson_looper = function(lesson, code) {
     var lesson_position = 0;
     var next_button = document.getElementById("nextbutton");
     var previous_button = document.getElementById("previousbutton");
-    var previous_code = window.editor.getModel().getValue();
+    var previous_code = []
 
-    var instructions = document.getElementById("instructions");
+    var instructions = document.getElementById("questionmrk");
+
+    previous_button.disabled = true;
+    instructions.setAttribute("data-content", "Press next to continue the lesson.");
 
     next_button.addEventListener("click", (event) => {
-        // Handle if the user has pressed beyond the size of the input //
-        if(lesson_position >= lesson.length || lesson_position >= code.length)
-            return;
 
-        // update the instructions
-        instructions.innerText = lesson[lesson_position];
+        // Handle if the user has pressed beyond the size of the input //
+        if(lesson_position >= lesson.length || lesson_position >= code.length) {
+            return
+        }
+
+        next_button.disabled = false;
+        next_button.style.color = "#252526";
+        previous_button.disabled = false;
+        previous_button.style.color = "#252526";
+        
+        // Update the instructions
+        instructions.setAttribute("data-content", lesson[lesson_position]);
+
+        // Show the popover if it isn't already shown, or refreshes if open //
+        $('#questionmrk').popover('hide')
+        $('#questionmrk').popover('toggle');
 
         // Gets the current start line
         var start_line = window.editor.getModel().getLineCount();
         // Handles the appending to the editor //
-        previous_code = editor.getModel().getValue();
-        window.editor.getModel().setValue(previous_code + code[lesson_position]);
+        previous_code[lesson_position] = editor.getModel().getValue()
+        window.editor.getModel().setValue(previous_code[lesson_position] + code[lesson_position]);
         
+        // Move to the next lesson position //
+        lesson_position++;
+
         // Get the size of lines changed
         var end_line = window.editor.getModel().getLineCount();
-
-        console.log(start_line, end_line)
         
         window.editor.deltaDecorations([], [
             {range: new window.monaco.Range(start_line, 1, end_line, 200), options: { inlineClassName: 'highlight' }},
@@ -48,20 +63,37 @@ var lesson_looper = function(lesson, code) {
                 {range: new window.monaco.Range(start_line, 1, end_line, 200), options: { inlineClassName: 'no_highlight' }}
             ])
         });
-        // Once the lesson area is implemented simply append to it //
-        lesson_position++;
+        
+        // Disable forward button if you have reached the end of the lesson //
+        if(lesson_position >= lesson.length) {
+            next_button.disabled = true;
+            next_button.style.color = "#4c4c4c"
+        }
     })
 
     previous_button.addEventListener("click", (event) => {
-        // Handle if the user has pressed beyond the size of the input //
-        if(lesson_position <= 0)
-            return;
-        // Handles the appending to the editor //
-        editor.getModel().setValue(previous_code); 
-        
-        // Once the lesson area is implemented simply append to it //
 
         lesson_position--;
+        // Handle if the user has pressed beyond the size of the input //
+        if(lesson_position <= 0) {
+            previous_button.disabled = true;
+            previous_button.style.color = "#4c4c4c"
+            instructions.setAttribute("data-content", "Press next to continue the lesson.");
+            editor.getModel().setValue("")
+            $('#questionmrk').popover('hide')
+            $('#questionmrk').popover('toggle');
+            return;
+        }
+        // Remove block on forward button //
+        next_button.disabled = false;
+        next_button.style.color = "#252526";
+        // Handles the appending to the editor //
+        editor.getModel().setValue(previous_code[lesson_position]); 
+
+        instructions.setAttribute("data-content", lesson[lesson_position - 1]);
+        // Show the popover if it isn't already shown, or refreshes if open //
+        $('#questionmrk').popover('hide')
+        $('#questionmrk').popover('toggle');
     })
 }
 
@@ -105,55 +137,3 @@ lesson = [
 window.onload = () => {
     lesson_looper(lesson, code);
 }
-
-
-/*
-command_button.addEventListener("click", (e)=> {
-    var command_select = document.getElementById("command");
-    var command_arg = document.getElementById("command-arguement");
-
-    // verify that the arguement is filled
-    if(command_arg.value == ""){
-        window.alert("Error - Please input an argument");
-        return;
-    }
-    
-    // create text to inject
-    text = "api.add_message(new Command(\""+command_select.value+"\", \""+command_arg.value+"\"));\n";
-
-    // inject text at current cursor position
-    editor.trigger('keyboard', 'type', {text: text});
-    console.log(text);
-
-});
-
-event_button.addEventListener("click", (e)=> {
-    var event_select = document.getElementById("event-name");
-    var event_arg = document.getElementById("event-arguement");
-
-    // verify that the arguement is filled
-    if(event_arg.value == ""){
-        window.alert("Error - Please input an argument");
-        return;
-    }
-    
-    // create text to inject
-    text = "api.add_message(new EventHandler(\""+event_select.value+"\", "+event_arg.value+"));\n";
-            
-    // inject text at current cursor position
-    editor.trigger('keyboard', 'type', {text: text});
-    console.log(text);
-
-});
-
-var help_button = document.getElementById("help");
-help_button.addEventListener("click", (e) =>{
-    console.log("help wanted");
-
-    var overlay = document.getElementById("overlay");
-    overlay.style.display = "block";
-    overlay.addEventListener("click", (e)=>{
-        overlay.style.display = "none";
-    });
-});
-*/
