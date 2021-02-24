@@ -169,6 +169,12 @@ class Broker:
         elif function == "predict":
             print(value)
             return self.models[UUID].game_response(self.models[UUID].predict(value))
+        elif function == "plot":
+            try:
+                self.models[UUID].plot(location=file_name)
+            except Exception as e:
+                print(str(e))
+                return False
 
         print("Sent to Minecraft Learns")
         return True

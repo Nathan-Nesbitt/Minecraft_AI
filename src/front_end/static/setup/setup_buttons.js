@@ -1,7 +1,10 @@
 /**
  * Written by Nathan Nesbitt 
  */
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
 
+});
 /**
  * Handles the appending of new lessons
  * @param {Array} lesson Lesson text
@@ -33,6 +36,13 @@ var lesson_looper = function(lesson, code) {
         window.editor.deltaDecorations([], [
             {range: new window.monaco.Range(start_line, 1, end_line, 200), options: { inlineClassName: 'highlight' }},
         ])
+
+        // Remove the highlighting once you click on the editor
+        window.editor.onMouseDown(() => {
+            window.editor.deltaDecorations([], [
+                {range: new window.monaco.Range(start_line, 1, end_line, 200), options: { inlineClassName: 'no_highlight' }}
+            ])
+        });
         // Once the lesson area is implemented simply append to it //
         lesson_position++;
     })
