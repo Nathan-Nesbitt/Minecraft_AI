@@ -97,7 +97,7 @@ class Model:
 
         # format X and y
         self.response_variables = y_cols
-        y = df[self.response_variables]µ
+        y = df[self.response_variables]
         X = self._encode_labels(self._get_features(df, feature_cols, drop))
 
         self.model.process_data(X, y)
