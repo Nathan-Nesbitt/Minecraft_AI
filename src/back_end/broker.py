@@ -168,7 +168,9 @@ class Broker:
                 return False, "Data needs to be properly processed before training!"
         elif function == "predict":
             print(value)
-            return self.models[UUID].game_response(self.models[UUID].predict(value))
+            return True, self.models[UUID].game_response(
+                self.models[UUID].predict(value)
+            )
         elif function == "plot":
             try:
                 self.models[UUID].plot(location=file_name)
