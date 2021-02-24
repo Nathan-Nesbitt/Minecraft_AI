@@ -106,7 +106,6 @@ body {
 
 #lessonsize {
     height: 80vh;
-    padding: 15px;
 }
 
 
@@ -223,7 +222,6 @@ body {
     letter-spacing: 3px;
     line-height: 1.5;
     word-spacing: 10;
-
     margin: 2%;
 }
 
@@ -301,7 +299,7 @@ div.modeldesc p{
 
     .model {
         text-align: center;
-        height: 50vh;
+        height: 70vh;
     }
 
     .modelcar {

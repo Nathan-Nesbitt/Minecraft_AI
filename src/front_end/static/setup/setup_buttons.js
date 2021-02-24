@@ -66,40 +66,43 @@ var lesson_looper = function(lesson, code) {
 }
 
 code = [
-`var minecraft_api = new MinecraftAPIClient();\n`,
-`var args = {
-    connection: minecraft_api, 
-    file_name: "data/block_broken.csv", 
-    model_type: "decision_tree_regression", 
-    response_variables: ["FeetPosY", "Biome"],
-    features: ["Block"]
-}
-var minecraft_learns = new MinecraftLearns(args);\n`,
-`// Create a callback function that makes a prediction based on the game data //
-var callback_function_3 = function(data) {
-    minecraft_learns.predict(data, ["diamond_ore"])
-    .then(
-        result => {
-            // Then use the response to tell the user where to do in the game //
-            new Command(minecraft_api, "Say", ["to mine this resource go", result.body.prediction]);
-        }            
-    )
-}\n`,
-`// Function that cleans the data, then trains it on the previously defined params //
-minecraft_learns.process_data()
-    .then(minecraft_learns.train())
-    .then(() => {
-
-        // Then we create an event handler for the game event //
-        new EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
-    })\n`
+    `// start the connection // \n
+    \nvar minecraft_api = new MinecraftAPIClient();\n`,
+    `\n// create the model //
+    var args = {
+        connection: minecraft_api, 
+        file_name: "block_broken.csv", 
+        model_type: "decision_tree_regression", 
+        response_variables: ["FeetPosY", "Biome"],
+        features: ["Block"]
+    }
+    var minecraft_learns = new MinecraftLearns(args);\n`,
+    `// Create a callback function that makes a prediction based on the game data //
+    var callback_function_3 = function(data) {
+        minecraft_learns.predict(data, ["diamond_ore"])
+        .then(
+            result => {
+                // Then use the response to tell the user where to do in the game //
+                new Command(minecraft_api, "Say", ["to mine this resource go", result.body.prediction]);
+            }            
+        )
+    }\n`,
+    `// Function that cleans the data, then trains it on the previously defined params //
+    minecraft_learns.process_data()
+        .then(minecraft_learns.train())
+        .then({
+            // Saves the model so you can use it later //
+            minecraft_learns.save();
+            // Then we create an event handler for the game event //
+            new EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
+        })\n`
 ]
 
 lesson = [
-    "First we create a connection to the game. Click \"NEXT\" to continue",
-    "Then we create a new model. Click \"NEXT\" to continue",
-    "We determine what we want to predict and what to do when we have the prediction. Click \"NEXT\" to continue",
-    "We need to process the data and train the model before we predict. Click \"RUN\" to execute the model"
+    "First we create a connection to the game.\nClick NEXT to see the next step",
+    "Then we create a new model.\nClick NEXT to see the next step",
+    "We determine what we want to predict and what to do when we have the prediction.\nClick NEXT to see the next step",
+    "We need to process the data and train the model before we predict.\nClick \"RUN\" to execute the model"
 ]
 
 window.onload = () => {
