@@ -17,10 +17,15 @@ var lesson_looper = function(lesson, code) {
     var previous_button = document.getElementById("previousbutton");
     var previous_code = window.editor.getModel().getValue();
 
+    var instructions = document.getElementById("instructions");
+
     next_button.addEventListener("click", (event) => {
         // Handle if the user has pressed beyond the size of the input //
         if(lesson_position >= lesson.length || lesson_position >= code.length)
             return;
+
+        // update the instructions
+        instructions.innerText = lesson[lesson_position];
 
         // Gets the current start line
         var start_line = window.editor.getModel().getLineCount();
@@ -61,8 +66,7 @@ var lesson_looper = function(lesson, code) {
 }
 
 code = [
-`// click next to start coding\n
-\nvar minecraft_api = new MinecraftAPIClient();\n`,
+`var minecraft_api = new MinecraftAPIClient();\n`,
 `var args = {
     connection: minecraft_api, 
     file_name: "data/block_broken.csv", 
@@ -92,10 +96,10 @@ minecraft_learns.process_data()
 ]
 
 lesson = [
-    "First we create a connection to the game.\nClick NEXT to see the next step",
-    "Then we create a new model.\nClick NEXT to see the next step",
-    "We determine what we want to predict and what to do when we have the prediction.\nClick NEXT to see the next step",
-    "We need to process the data and train the model before we predict.\nClick \"RUN\" to execute the model"
+    "First we create a connection to the game. Click \"NEXT\" to continue",
+    "Then we create a new model. Click \"NEXT\" to continue",
+    "We determine what we want to predict and what to do when we have the prediction. Click \"NEXT\" to continue",
+    "We need to process the data and train the model before we predict. Click \"RUN\" to execute the model"
 ]
 
 window.onload = () => {

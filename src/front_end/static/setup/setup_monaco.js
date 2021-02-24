@@ -94,7 +94,7 @@ require(['vs/editor/editor.main'], function () {
         }
     })
     window.editor = monaco.editor.create(document.getElementById('containerMona'), {
-//         value: 
+        value: '',
 // `var minecraft_api = new MinecraftAPIClient();
 
 // new Command(minecraft_api, "Say", ["Hello", "Friend"]);

@@ -45,7 +45,7 @@ body {
 
 
 .hiegthforcode {
-    height: 82vh;
+    height: 80vh;
 }
 
 
@@ -225,6 +225,15 @@ body {
     word-spacing: 10;
 
     margin: 2%;
+}
+
+.lessoninstructions{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    text-align: center;
+    font-size: medium;
+    letter-spacing: 3px;
+    word-spacing: 10;
+
 }
 
 div.modeldesc p{
