@@ -66,35 +66,33 @@ var lesson_looper = function(lesson, code) {
 }
 
 code = [
-    `// click next to start coding\n
-    \nvar minecraft_api = new MinecraftAPIClient();\n`,
+    `// Create connection to game and back end //
+var minecraft_api = new MinecraftAPIClient();\n`,
     `var args = {
-        connection: minecraft_api, 
-        file_name: "block_broken.csv", 
-        model_type: "decision_tree_regression", 
-        response_variables: ["FeetPosY", "Biome"],
-        features: ["Block"]
-    }
-    var minecraft_learns = new MinecraftLearns(args);\n`,
+    connection: minecraft_api, 
+    file_name: "block_broken.csv", 
+    model_type: "decision_tree_regression", 
+    response_variables: ["FeetPosY", "Biome"],
+    features: ["Block"]
+}\n
+var minecraft_learns = new MinecraftLearns(args);\n`,
     `// Create a callback function that makes a prediction based on the game data //
-    var callback_function_3 = function(data) {
-        minecraft_learns.predict(data, ["diamond_ore"])
-        .then(
-            result => {
-                // Then use the response to tell the user where to do in the game //
-                new Command(minecraft_api, "Say", ["to mine this resource go", result.body.prediction]);
-            }            
-        )
-    }\n`,
+var callback_function_3 = function(data) {
+    minecraft_learns.predict(data, ["diamond_ore"])
+    .then(
+        result => {
+            // Then use the response to tell the user where to do in the game //
+            new Command(minecraft_api, "Say", ["to mine this resource go to Y:", result.body.prediction.FeetPosY]);
+        }            
+    )
+}\n`,
     `// Function that cleans the data, then trains it on the previously defined params //
-    minecraft_learns.process_data()
-        .then(minecraft_learns.train())
-        .then({
-            // Saves the model so you can use it later //
-            minecraft_learns.save();
-            // Then we create an event handler for the game event //
-            new EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
-        })\n`
+minecraft_learns.process_data()
+\t.then(minecraft_learns.train())
+\t.then(() => {
+    \t// Then we create an event handler for the game event //
+    \tnew EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
+\t})\n`
 ]
 
 lesson = [
