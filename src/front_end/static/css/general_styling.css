@@ -217,6 +217,24 @@ body {
     padding-top: 10px;
 }
 
+.modeldesc{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-size: larger;
+    letter-spacing: 3px;
+    line-height: 1.5;
+    word-spacing: 10;
+
+    margin: 2%;
+}
+
+div.modeldesc p{
+    margin-bottom: 3%;
+}
+
+.modelgraph{
+    width: 90%;
+}
+
 .modelsimg {
     width: 400px;
     border: solid;
