@@ -3,7 +3,7 @@ import asyncio
 import websockets
 
 from .minecraft_store import Minecraft_Store
-from minecraft_learns import UnProcessedData
+from minecraft_learns import UnProcessedData, ModelNotFit
 from .model import Model
 
 """
@@ -43,8 +43,8 @@ class Broker:
             try:
                 message = await websocket.recv()
                 json_dict = json.loads(message)
-                status = self.targetProcessId(json_dict)
-                for_client = self.message_sent_back(json_dict, status)
+                message = self.targetProcessId(json_dict)
+                for_client = self.message_sent_back(json_dict, message)
                 await websocket.send(for_client)
             except websockets.exceptions.ConnectionClosedOK:
                 print("Successfully closed!")
@@ -65,27 +65,28 @@ class Broker:
             print("Incorrect naming for targetProcess")
             return False, "Incorrect naming for targetProcess"
 
-    def message_sent_back(self, json_dictionary, status):
+    def message_sent_back(self, json_dictionary, message):
         """
         Handles the message that is being sent back to the front end so it knows if it was successfully handled or not.
 
         @param json_dictionary: The json object that was converted into a dictionary
         @param status: True or False depending if the action failed
         """
-        if isinstance(status, (bool)):
+        if isinstance(message, Exception):
             message_for_client = {
                 "header": {
                     "UUID": json_dictionary["header"]["UUID"],
-                    "status": str(status),
-                }
+                    "status": False,
+                },
+                "body": message,
             }
         else:
             message_for_client = {
                 "header": {
                     "UUID": json_dictionary["header"]["UUID"],
-                    "status": str(status[0]),
+                    "status": True,
                 },
-                "body": status[1],
+                "body": message,
             }
         print(message_for_client)
         message_for_client = json.dumps(message_for_client)
@@ -114,7 +115,7 @@ class Broker:
         except Exception as e:
             print("Failed to store")
             print(e)
-            return False, "Failed to store"
+            return Exception("Failed to store.")
 
     def minecraft_learns(self, json_dictionary):
         """
@@ -156,27 +157,27 @@ class Broker:
                 print(
                     "File is empty, add data to file for data processing to commence!"
                 )
-                return (
-                    False,
-                    "File is empty, add data to file for data processing to commence!",
+                return FileNotFoundError(
+                    "File is empty, add data to file for data processing to commence!"
                 )
         elif function == "train":
             try:
                 self.models[UUID].train_model()
-            except UnProcessedData:
-                print("Data needs to be properly processed before training!")
-                return False, "Data needs to be properly processed before training!"
+            except UnProcessedData as e:
+                return e
         elif function == "predict":
             print(value)
-            return True, self.models[UUID].game_response(
-                self.models[UUID].predict(value)
-            )
+            try:
+                return self.models[UUID].game_response(self.models[UUID].predict(value))
+            except ModelNotFit as e:
+                return e
         elif function == "plot":
             try:
                 self.models[UUID].plot(location=file_name)
+                return True
             except Exception as e:
                 print(str(e))
-                return False
+                return Exception("Error creating graph")
 
         print("Sent to Minecraft Learns")
         return True
