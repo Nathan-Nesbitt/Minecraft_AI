@@ -22,7 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 title">
-                <a href="../"><img src="../static/includes/homebutton.png" id="homebtn"> </a>
+                <a href="../"><img src="../static/includes/homebutton.png" alt="home" id="homebtn"> </a>
                 Ore Finder
             </div>
         </div>
@@ -33,14 +33,28 @@
             <div class="row"> 
                 <div class="col-md-6 model">
                     <p class="subtitle"> Model Description</p>
-                    <p> decision tree regression will be used 
-
-                    </p>
+                    <div class="modeldesc">
+                        <p>Decision Tree Regression</p>
+                        <p>
+                            In this lesson we will use a Decision Tree to determine the location of a material. In order to find
+                            the location, we will search each node to look for the value that we want.
+                        </p>
+                        <p>
+                            Follow the splits in the tree for the material you want. The depth is listed below.
+                        </p>
+                    </div>
                 </div>
                 <div class="col-md-6">
                 </div>
                 <div class="col-md-6 modelborder model">
-                    <p class="subtitle">Graph  </p>
+                    <p class="subtitle">Graph
+                        <figure>
+                            <img src="../static/includes/decision_tree.png" alt="Decision Tree for Regression" class="modelsimg modelgraph">
+                            <figcaption class="modeldesc">
+                                In order to find the desired value, follow the split to the node you want.
+                            </figcaption>
+                        </figure>
+                    </p>
                 </div>
                 
             </div>
@@ -50,7 +64,7 @@
             <div class="row">
                <div>
                     <a href="/lesson/orefinder_overview"><button class="button" id="backbutton">Back</button></a>
-                    <a href="/code_page">  <button class="button" id="beginButton"> Begin </button> </a>
+                    <a href="/code_page"><button class="button" id="beginButton"> Begin </button> </a>
                </div>
             </div>
         </div>
