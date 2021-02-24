@@ -233,10 +233,22 @@ body {
 }
 
 #homebtn {
-    width: 40px;
-    margin-top: 15px;
+    width: 30px;
+    margin-top: 22px;
     position: absolute;
-    left: 10px;
+    left: 13px;
+}
+#questionmrk{
+    width: 25px;
+    margin-top: 22px;
+    position: absolute;
+    right: 13px;
+    
+}
+.popover{
+    width: 100vh; 
+    height: 40vh;
+    background-color: gainsboro;
 }
 
 @media (max-width:991px) {
