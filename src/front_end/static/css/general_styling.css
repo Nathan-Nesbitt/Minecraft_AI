@@ -137,6 +137,11 @@ body {
     margin-top: 0.3%;
 
 }
+#uploadbutton{
+    color: #252526;
+    width: 250px;
+    padding-top: 1%;
+}
 
 .button:hover {
     background-color: #4dd728;
@@ -394,9 +399,4 @@ div.modeldesc p{
     width: 90%;
  
 }
-#FileUploader:hover{
-    height: 35px;
-    width: 155px;
-    font-size: 130%;
 
-}

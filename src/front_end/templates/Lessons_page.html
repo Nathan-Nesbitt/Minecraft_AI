@@ -15,6 +15,7 @@
     <script type="text/JavaScript" src="../static/css/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <!-- Link to persona CSS -->
     <link rel="stylesheet" href="./static/css/general_styling.css">
+
 </head>
 
 <body>
@@ -81,15 +82,18 @@
                     <div class="subtitle">Upload a Lesson</div>
                     <div class="text-center">
                         <p>Choose the file containing the lesson</p>
-                        <form>
+                        <!-- <form>
                             <div class="form-group" >
                               <input type="file" class="form-control-file formedit" 
                               id="FileUploader"> 
                             </div>
-                        </form>
+                        </form> -->
+                        <div>
+                            <label for="files" class="button" id="uploadbutton">Select Lesson</label>
+                            <input id="files" style="visibility:hidden;" type="file">
+                        </div>
                     </div>
                     <div class="carousel-caption d-none d-md-block">
-                        <p>Description</p>
                     </div>
                 </div>
               </div>
