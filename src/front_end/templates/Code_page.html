@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-12 title">
                 <a href="../"><img src="../static/includes/homebutton.png" id="homebtn" alt="Home"> </a>
-                Code
+                <h1 id="lesson_title">Code </h1>
                 <input type="image" src="../static/includes/Question_mark.png"  id="questionmrk" data-toggle="popover" title="Lesson Help" data-placement="bottom" data-content="Press next to continue the lesson." />
             </div>
         </div>
@@ -98,7 +98,55 @@
     window.MinecraftAPIClient = MinecraftAPIClient
 
 </script>
+<script>
+    window.lesson = {
+        "Step 1": {
+            code: `// Create connection to game and back end //
+var minecraft_api = new MinecraftAPIClient();\n`,
+            text: "First we create a connection to the game.\nClick NEXT to see the next step"
+        },
+        "Step 2": {
+            code: `var args = {
+    connection: minecraft_api, 
+    file_name: "block_broken.csv", 
+    model_type: "decision_tree_regression", 
+    response_variables: ["FeetPosY", "Biome"],
+    features: ["Block"]
+}\n
+var minecraft_learns = new MinecraftLearns(args);\n`,
+            text: "Then we create a new model.\nClick NEXT to see the next step"
+        },
+        "Step 3": {
+            code: `// Create a callback function that makes a prediction based on the game data //
+var callback_function_3 = function(data) {
+    minecraft_learns.predict(data, ["diamond_ore"])
+    .then(
+        result => {
+            // Then use the response to tell the user where to do in the game //
+            new Command(minecraft_api, "Say", ["to mine this resource go to Y:", result.body.prediction.FeetPosY]);
+        }            
+    )
+}\n`,
+            text: "We determine what we want to predict and what to do when we have the prediction.\nClick NEXT to see the next step"
+        },
+        "Step 4": {
+            code: `// Function that cleans the data, then trains it on the previously defined params //
+minecraft_learns.process_data()
+\t.then(minecraft_learns.train())
+\t.then(() => {
+    \t// Then we create an event handler for the game event //
+    \tnew EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
+\t})\n`,
+            text: "We need to process the data and train the model before we predict.\nClick \"RUN\" to execute the model"
+        },
+    }
+    // This sets all of the values for the lesson if it is defined
+    if(localStorage["lesson"]) {
+        var lesson = JSON.parse(localStorage["lesson"])
+        document.getElementById("lesson_title").innerHTML += "- " + lesson.title;
+        window.lesson = lesson.steps
+    }
+</script>
 <script src="/static/setup/setup_monaco.js"></script>
 <script src="/static/setup/setup_buttons.js"></script>
-    
 </html>

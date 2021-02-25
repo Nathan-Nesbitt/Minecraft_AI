@@ -97,43 +97,17 @@ var lesson_looper = function(lesson, code) {
     })
 }
 
-code = [
-    `// Create connection to game and back end //
-var minecraft_api = new MinecraftAPIClient();\n`,
-    `var args = {
-    connection: minecraft_api, 
-    file_name: "block_broken.csv", 
-    model_type: "decision_tree_regression", 
-    response_variables: ["FeetPosY", "Biome"],
-    features: ["Block"]
-}\n
-var minecraft_learns = new MinecraftLearns(args);\n`,
-    `// Create a callback function that makes a prediction based on the game data //
-var callback_function_3 = function(data) {
-    minecraft_learns.predict(data, ["diamond_ore"])
-    .then(
-        result => {
-            // Then use the response to tell the user where to do in the game //
-            new Command(minecraft_api, "Say", ["to mine this resource go to Y:", result.body.prediction.FeetPosY]);
-        }            
-    )
-}\n`,
-    `// Function that cleans the data, then trains it on the previously defined params //
-minecraft_learns.process_data()
-\t.then(minecraft_learns.train())
-\t.then(() => {
-    \t// Then we create an event handler for the game event //
-    \tnew EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
-\t})\n`
-]
 
-lesson = [
-    "First we create a connection to the game.\nClick NEXT to see the next step",
-    "Then we create a new model.\nClick NEXT to see the next step",
-    "We determine what we want to predict and what to do when we have the prediction.\nClick NEXT to see the next step",
-    "We need to process the data and train the model before we predict.\nClick \"RUN\" to execute the model"
-]
 
 window.onload = () => {
+    var lesson = []
+    var code = []
+    var lessons = window.lesson
+    for(var key in lessons){
+        lesson.push(lessons[key]["text"])
+        code.push(lessons[key]["code"])
+    }
+
+    $('#questionmrk').popover('show');
     lesson_looper(lesson, code);
 }
