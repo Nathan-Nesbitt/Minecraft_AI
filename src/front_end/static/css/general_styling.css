@@ -1,29 +1,30 @@
-@font-face{
+@font-face {
     font-family: 'MineFont';
-    src: url('../includes/Minecraft.ttf'); 
+    src: url('../includes/Minecraft.ttf');
 }
-@font-face{
-    font-family:'titlefont';
-    src:url(../includes/Minecrafter.Reg.ttf)
+
+@font-face {
+    font-family: 'titlefont';
+    src: url(../includes/Minecrafter.Reg.ttf)
 }
-body{
+
+body {
     background-color: #1c1c1c;
-/*    color: #8FCA5C;*/
+    /*    color: #8FCA5C;*/
     color: #c6c6c6;
-    
+
     font-family: MineFont;
     font-size: large;
     max-width: 100%;
-/*    background-image: url(../includes/Cobblestone.jpg)*/
+    /*    background-image: url(../includes/Cobblestone.jpg)*/
 }
-.minefont{
+
+.minefont {
     font-family: MineFont;
     font-size: medium;
 }
 
-
-
-.codec{
+.codec {
 
     height: 79vh;
     width: 100%;
@@ -31,30 +32,31 @@ body{
 }
 
 
-.codecimp{
+.codecimp {
     height: 79vh;
     width: 100%;
     /* close to 300% */
 }
-.codeconsole{
+
+.codeconsole {
     height: 20vh;
     width: 173vh;
 }
 
 
-.hiegthforcode{
+.hiegthforcode {
     height: 82vh;
 }
 
 
-#console{
+#console {
     height: 25vh;
     width: 95wh;
     overflow-y: scroll;
     font-family: monospace;
 }
 
-.outputborder{
+.outputborder {
     border-style: solid;
     border-color: azure;
     padding-left: 5px;
@@ -72,63 +74,59 @@ body{
     text-align: center;
     z-index: 2;
     cursor: pointer;
-  }
-.button-group{
+}
+
+.button-group {
     text-align: center;
 }
-.title{
+
+.title {
     font-size: 280%;
     text-align: center;
     -webkit-text-stroke: 1px black;
     color: #4dd728;
     font-family: 'titlefont'
 }
-    
-/*
-.border1{
-    border-left-style: dashed;
-    border-color: #c6c6c6;
-    height: 80vh;
-    }   
-*/
 
-@media (max-width:991px ) {
-    .border1{
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top:2px dashed !important;
-    height: 80vh;
+@media (max-width:991px) {
+    .border1 {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 2px dashed !important;
+        height: 80vh;
     }
 }
+
 @media (min-width:993px) {
-    .border1{
-    border-left:2px dashed !important;
-    height: 80vh;
+    .border1 {
+        border-left: 2px dashed !important;
+        height: 80vh;
     }
 }
 
-#lessonsize{
-    height: 80vh;
-    padding: 15px;
-}
-
-
-.maincont{
-    background-color: #4c4c4c;  
-/*    background-color: #544f49; */
-
-}
-.height{
+#lessonsize {
     height: 80vh;
 }
 
-#Models{
+
+.maincont {
+    background-color: #4c4c4c;
+    /*    background-color: #544f49; */
+
+}
+
+.height {
+    height: 80vh;
+}
+
+#Models {
     height: 40vh;
     text-align: center;
     line-height: 1500%;
     position: relative;
 }
-.button{
+
+.button {
     background-color: #c6c6c6;
     color: #4c4c4c;
     width: 180px;
@@ -136,10 +134,11 @@ body{
     text-align: center;
     font-weight: bold;
     font-size: 150%;
-    margin-top: 0.3%;    
+    margin-top: 0.3%;
 
 }
-.button:hover{
+
+.button:hover {
     background-color: #4dd728;
     color: #252526;
     height: 55px;
@@ -148,13 +147,13 @@ body{
 }
 
 
-#buttonM{
+#buttonM {
     margin-top: 10%;
     height: 60px;
     color: #252526;
 }
 
-#buttonL{
+#buttonL {
     height: 60px;
     margin-top: 10%;
     color: #252526;
@@ -162,7 +161,7 @@ body{
 }
 
 
-#buttonCode{
+#buttonCode {
     margin-top: 40%;
     height: 60px;
     width: 70%;
@@ -171,7 +170,7 @@ body{
 }
 
 
-#backbutton:hover{
+#backbutton:hover {
     background-color: #4dd728;
     color: #252526;
     height: 55px;
@@ -180,111 +179,153 @@ body{
 }
 
 
-.model{
-    text-align: center; 
+.model {
+    text-align: center;
     height: 80vh;
 
-/*
+    /*
     border-left-style:dashed;
     border-color: #c6c6c6;
 */
-}   
-.modelcar{
-    text-align: center; 
+}
+
+.modelcar {
+    text-align: center;
     height: 80vh;
 }
 
 @media (max-width:991px) {
-    .modelborder{
-    margin-top: 10px;
-    border-top:2px dashed !important;
-    height: 80vh;
-    }
-}
-@media (min-width:993px) {
-    .modelborder{
-    border-left:2px dashed !important;
-    height: 80vh;
+    .modelborder {
+        margin-top: 10px;
+        border-top: 2px dashed !important;
+        height: 80vh;
     }
 }
 
-/*
-.modelborder{
-    border-left-style: dashed;
-    border-color: #2F5214 ;
-    border-color: #c6c6c6;
-    height: 82vh;
+@media (min-width:993px) {
+    .modelborder {
+        border-left: 2px dashed !important;
+        height: 80vh;
+    }
 }
-*/
-.subtitle{
+
+.subtitle {
     font-size: 200%;
-/*    color: #4dd728;*/
+    /*    color: #4dd728;*/
     color: #c6c6c6;
     padding-top: 10px;
 }
-.modelsimg{
+
+.modeldesc{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-size: larger;
+    letter-spacing: 3px;
+    line-height: 1.5;
+    word-spacing: 10;
+    margin: 2%;
+}
+
+div.modeldesc p{
+    margin-bottom: 3%;
+}
+
+.modelgraph{
+    width: 90%;
+}
+
+.modelsimg {
     width: 400px;
     border: solid;
     border-color: #252526;
 
-    
+
 }
-.modelsimg:hover{
+
+.modelsimg:hover {
     border: solid;
     border-color: #4dd728;
     width: 415px;
-    
+
 }
 
-#homebtn{
-    width: 50px;
-    margin:5px;
-    
+#homebtn {
+    width: 30px;
+    margin-top: 22px;
     position: absolute;
-    left: 10px;
+    left: 13px;
 }
-@media (max-width:991px ) {
-    .height{
+#questionmrk{
+    width: 25px;
+    margin-top: 22px;
+    position: absolute;
+    right: 13px;
+    
+}
+.popover{
+    width: 100vh; 
+    height: 40vh;
+    background-color: gainsboro;
+}
+
+@media (max-width:991px) {
+    .height {
         height: 70vh;
     }
-    #buttonM{
+
+    #buttonM {
         margin-top: 15%;
     }
-    #buttonL{
+
+    #buttonL {
         margin-top: 20%;
     }
-    .modelsimg{
+
+    .modelsimg {
         width: 360px;
     }
-    .modelsimg:hover{
+
+    .modelsimg:hover {
         width: 380px;
     }
-    .model{
-        text-align: center; 
-        height: 50vh;
+
+    .model {
+        text-align: center;
+        height: 70vh;
     }
-    .modelcar{
-        text-align: center; 
+
+    .modelcar {
+        text-align: center;
         height: 80vh;
     }
 
 }
 
-.descborder{
+.lessoninstructions{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    text-align: center;
+    font-size: medium;
+    letter-spacing: 3px;
+    word-spacing: 10;
+
+}
+
+.descborder {
     border: solid;
-/*    border-color: #2F5214 ;*/
+    /*    border-color: #2F5214 ;*/
     border-color: #c6c6c6;
     height: 13vh;
-    margin-top: 5px; 
+    margin-top: 5px;
 }
-#beginButton{
+
+#beginButton {
     min-width: 15.4%;
     position: relative;
     float: right;
     margin-top: 0.5%;
     color: #252526;
 }
-#nextbutton{
+
+#nextbutton {
     min-width: 15.4%;
     position: relative;
     float: right;
@@ -293,18 +334,19 @@ body{
     color: #252526;
     margin-right: 4px;
 }
-#run{
+
+#run {
     min-width: 15.4%;
     position: relative;
     float: right;
     margin-bottom: 1%;
     margin-top: 0.5%;
     color: #4dd728;
-    background-color:grey;
+    background-color: grey;
 
 }
 
-#run:hover{
+#run:hover {
     background-color: #4dd728;
     color: #252526;
     height: 55px;
@@ -313,7 +355,7 @@ body{
 }
 
 
-#backbutton{
+#backbutton {
     color: #252526;
     width: 180px;
     height: 50px;
@@ -324,21 +366,25 @@ body{
 
 }
 
-#consoleborder{
+#consoleborder {
     border-style: solid;
-/*    border-color: #2F5214 ;*/
+    /*    border-color: #2F5214 ;*/
     border-color: #4c4c4c;
     height: 30vh;
 }
-.outputborder{
+
+.outputborder {
     border-style: solid;
     border-color: azure;
     padding-left: 5px;
     width: 100%;
 }
-/*
-.parentbutt{
-    background-color:#c6c6c6;
-    color: red;
+
+/* Highlighting for new line in editor */
+.highlight {
+    background-color: #5d5d17
 }
-*/
+
+.no_highlight {
+    background-color: transparent;
+}
