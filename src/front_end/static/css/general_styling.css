@@ -388,3 +388,15 @@ div.modeldesc p{
 .no_highlight {
     background-color: transparent;
 }
+.formedit{
+    margin: 0;
+    margin-left: 180px;
+    width: 90%;
+ 
+}
+#FileUploader:hover{
+    height: 35px;
+    width: 155px;
+    font-size: 130%;
+
+}
