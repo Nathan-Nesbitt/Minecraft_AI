@@ -137,7 +137,8 @@ body {
     margin-top: 0.3%;
 
 }
-#uploadbutton{
+
+#uploadbutton {
     color: #252526;
     width: 250px;
     padding-top: 1%;
@@ -221,7 +222,7 @@ body {
     padding-top: 10px;
 }
 
-.modeldesc{
+.modeldesc {
     /* font-family: Arial, Helvetica, sans-serif; */
     font-size: larger;
     letter-spacing: 3px;
@@ -230,11 +231,11 @@ body {
     margin: 2%;
 }
 
-div.modeldesc p{
+div.modeldesc p {
     margin-bottom: 3%;
 }
 
-.modelgraph{
+.modelgraph {
     width: 90%;
 }
 
@@ -259,17 +260,21 @@ div.modeldesc p{
     position: absolute;
     left: 13px;
 }
-#questionmrk{
+
+#questionmrk {
     width: 25px;
     margin-top: 22px;
     position: absolute;
     right: 15px;
-    
+
 }
-.popover{
-    width: 100vh; 
+
+.popover {
+    width: 100vh;
     height: 40vh;
     background-color: gainsboro;
+    font-size: large;
+    color: #1c1c1c;
 }
 
 @media (max-width:991px) {
@@ -305,7 +310,7 @@ div.modeldesc p{
 
 }
 
-.lessoninstructions{
+.lessoninstructions {
     /* font-family: Arial, Helvetica, sans-serif; */
     text-align: center;
     font-size: medium;
@@ -393,10 +398,10 @@ div.modeldesc p{
 .no_highlight {
     background-color: transparent;
 }
-.formedit{
+
+.formedit {
     margin: 0;
     margin-left: 180px;
     width: 90%;
- 
-}
 
+}

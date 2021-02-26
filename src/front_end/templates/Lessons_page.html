@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-12 title">
                 <a href="../"><img src="../static/includes/homebutton.png" id="homebtn" alt="Home"> </a>
-                <div>Lessons</div>
+                <div id="lesson_title">Lessons</div>
             </div>
         </div>
     </div>
@@ -46,9 +46,7 @@
                 <div class="item active">   
                 <div class="col-md-12 modelcar ">
                     <div class="subtitle"> Ore Finder</div>
-                        <a href="../lesson/orefinder_overview"> 
-                            <img src="/static/includes/Mine_entrance.jfif", class="modelsimg" alt="Mine Entrace for Decoration">
-                        </a>
+                    <img id="orefinder" src="/static/includes/Mine_entrance.jfif", class="modelsimg" alt="Mine Entrace for Decoration">
                     <!-- <p class="descborder"> description of lesson </p> -->
                     <div class="carousel-caption d-none d-md-block">
                         <p>Predict the best location to mine for a material based on height</p>
@@ -126,6 +124,7 @@
     import {MinecraftParse} from "https://nathan-nesbitt.github.io/Minecraft_Parse/minecraft_parse.js";
 
     var input = document.getElementById("files");
+    var orefinder = document.getElementById("orefinder");
 
     console.log(input)
         
@@ -135,11 +134,27 @@
         
         file_reader.onload = () => {
             window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
-            window.location.href = "/lesson_explained"
+            window.location.href = "/lesson_overview"
         }
 
         file_reader.readAsText(input.files[0])
     })
+
+    orefinder.addEventListener("click", (event) => {
+        fetch('./lesson/orefinder')
+            .then(res => res.blob())
+            .then(blob => {
+                var file_reader = new FileReader();
+
+                file_reader.onload = () => {
+                    window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
+                    window.location.href = "/lesson_overview"
+                }
+
+                file_reader.readAsText(blob)
+            })
+    })
+
 </script>
     
 </html>

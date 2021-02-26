@@ -17,21 +17,19 @@ the location, we will search each node to look for the value that we want.
 
 Follow the splits in the tree for the material you want. The depth is listed below.
 
-In order to find the desired value, follow the split to the node you want.
-
 ## Graph 
-![Graph of Decision Tree Regression](../static/includes/decision_tree.png)
+![In order to find the desired value, follow the split to the node you want.](../static/includes/decision_tree.png)
 
 ## Lesson
 ### Instruction 1
-First we create a connection to the game.\nClick NEXT to see the next step
+First we create a connection to the game. Click NEXT to see the next step
 ```
 // Create connection to game and back end //
 var minecraft_api = new MinecraftAPIClient();
 ```
 
 ### Instruction 2
-Then we create a new model.\nClick NEXT to see the next step
+Then we create a new model. Click NEXT to see the next step
 
 ```
 var args = {
@@ -54,13 +52,18 @@ Click NEXT to see the next step
 ```
 // Create a callback function that makes a prediction based on the game data //
 var callback_function_3 = function(data) {
-    minecraft_learns.predict(data, ["diamond_ore"])
+    var resource = "diamond_ore"
+    minecraft_learns.predict(data, [resource])
     .then(
         result => {
             // Then use the response to tell the user where to do in the game //
-            new Command(minecraft_api, "Say", ["to mine this resource go to Y:", result.body.prediction.FeetPosY]);
+            if(data.body.properties.FeetPosY == result.body.prediction.FeetPosY)
+                new Command(minecraft_api, "Say", ["Mine here to find: ", resource]);
+            else
+                new Command(minecraft_api, "Say", ["to mine this resource go to Y:", result.body.prediction.FeetPosY]);
         }            
     )
+}
 ```
 
 ### Instruction 4

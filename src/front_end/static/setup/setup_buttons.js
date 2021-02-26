@@ -1,10 +1,6 @@
 /**
  * Written by Nathan Nesbitt 
  */
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-
-});
 /**
  * Handles the appending of new lessons
  * @param {Array} lesson Lesson text
@@ -100,6 +96,9 @@ var lesson_looper = function(lesson, code) {
 
 
 window.onload = () => {
+    $('[data-toggle="popover"]').popover();
+
+    
     var lesson = []
     var code = []
     var lessons = window.lesson
