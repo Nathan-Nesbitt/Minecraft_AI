@@ -152,7 +152,7 @@ document.getElementById("run").addEventListener("click", (event) => {
         `+
         window.editor.getValue()
     // reset the output
-    document.getElementById("output").innerHTML = "";
+    document.getElementById("console").innerHTML = "";
 
     // Override the console.log() so it prints to the command line //
     console.log = function(output) {

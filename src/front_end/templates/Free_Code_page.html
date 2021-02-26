@@ -50,13 +50,9 @@
             </div>
         </div>   
         <div class="container">
-             <div id="row">
-                    <h1>Output</h1>
-                        <div id="console" class="outputborder">
-                            <p id="output"></p>
-                        <br>
-                    </div>
-                </div>
+             <div class="row" id="console-container">
+                <h1>Output</h1>
+                    <div id="console" class="outputborder"></div>
             </div>
         </div>
         <p></p>
@@ -100,7 +96,7 @@
     document.getElementById("questionmrk").setAttribute("data-content", help);
 
     // set console display to hidden by default //
-    var console = document.getElementById("console");
+    var console = document.getElementById("console-container");
     console.style.display = "none";
 
     document.getElementById("console-toggle").addEventListener("click", (event) => {

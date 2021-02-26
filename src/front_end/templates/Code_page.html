@@ -68,18 +68,11 @@
         </div>
         
         <div class="container">
-            <div class="wide general">
-                 <div id="output-div">
-                     <h1>Output</h1>
-                     <div id="console" class="code outputborder">
-                            <p id="output"></p>
-                            <br>
-                        </div>
-                  </div>
-                </div>
-            </div>
-        </div>
-        <p></p>
+            <div class="row" id="console-container">
+               <h1>Output</h1>
+                <div id="console" class="outputborder"></div>
+           </div>
+       </div>
         
     </div>
 </body>
@@ -102,7 +95,7 @@
     }
 
     // set console display to hidden by default //
-    var console = document.getElementById("console");
+    var console = document.getElementById("console-container");
     console.style.display = "none";
 
     document.getElementById("console-toggle").addEventListener("click", (event) => {
