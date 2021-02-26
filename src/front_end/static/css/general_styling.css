@@ -231,12 +231,21 @@ body {
     margin: 2%;
 }
 
+figure{
+    max-height: 70%;
+}
+
+figcaption.modeldesc {
+    margin-top: 2%;
+}
+
 div.modeldesc p {
     margin-bottom: 3%;
 }
 
 .modelgraph {
     width: 90%;
+    max-height: 60%;
 }
 
 .modelsimg {
@@ -295,8 +304,13 @@ div.modeldesc p {
         width: 360px;
     }
 
+    figure{
+        overflow: auto;
+    }
+
     .modelgraph{
-        width: 400px;
+        max-height: 300px;
+        max-width: 400px;
     }
 
     .modelsimg:hover {
