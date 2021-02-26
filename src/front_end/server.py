@@ -34,5 +34,10 @@ def lesson_overview():
     return render_template("lesson_overview.html")
 
 
+@app.route("/lesson/<id>")
+def lesson_markdown(id):
+    return render_template("/lessons/" + id + ".md")
+
+
 # Starts the flask server
 app.run(debug=False, host="0.0.0.0", port=3000)
