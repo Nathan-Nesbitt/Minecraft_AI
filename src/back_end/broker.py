@@ -86,7 +86,7 @@ class Broker:
                     "UUID": json_dictionary["header"]["UUID"],
                     "status": True,
                 },
-                "body": str(message),
+                "body": message,
             }
         print(message_for_client)
         message_for_client = json.dumps(message_for_client)

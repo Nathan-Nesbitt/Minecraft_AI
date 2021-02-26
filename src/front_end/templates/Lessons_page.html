@@ -15,6 +15,7 @@
     <script type="text/JavaScript" src="../static/css/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <!-- Link to persona CSS -->
     <link rel="stylesheet" href="./static/css/general_styling.css">
+
 </head>
 
 <body>
@@ -23,34 +24,11 @@
         <div class="row">
             <div class="col-md-12 title">
                 <a href="../"><img src="../static/includes/homebutton.png" id="homebtn" alt="Home"> </a>
-                Lessons
+                <div id="lesson_title">Lessons</div>
             </div>
         </div>
     </div>
-    
-        <!-- <div class="container">
-            <div class="container maincont">
-                <div class="row"> 
-                    <div class="col-md-6 model">
-                        <div class="subtitle"> Ore Finder Lesson</div>
-                        <a href="/lesson/orefinder_overview"> <img src="/static/includes/Mine_entrance.jfif", class="modelsimg"></a>
-                        <p class="descborder"> description of lesson </p>
-                    </div>
-                    <div class="col-md-6 modelborder model">
-                        <div class="subtitle">Lesson 2 </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="container">
-                <div class="row">
-                    <div class="text-left">
-                        <a href="/" class="btn btn-primary" id="backbutton">Back</a>
-                    </div>
-                </div>
-            </div>
-            
-        </div> -->
+
 <div class="container">
     <div class="container maincont">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -68,9 +46,7 @@
                 <div class="item active">   
                 <div class="col-md-12 modelcar ">
                     <div class="subtitle"> Ore Finder</div>
-                        <a href="../lesson/orefinder_overview"> 
-                            <img src="/static/includes/Mine_entrance.jfif", class="modelsimg" alt="Mine Entrace for Decoration">
-                        </a>
+                    <img id="orefinder" src="/static/includes/Mine_entrance.jfif", class="modelsimg" alt="Mine Entrace for Decoration">
                     <!-- <p class="descborder"> description of lesson </p> -->
                     <div class="carousel-caption d-none d-md-block">
                         <p>Predict the best location to mine for a material based on height</p>
@@ -101,11 +77,21 @@
               </div>
               <div class="item">
                 <div class="col-md-12 modelcar">
-                    <div class="subtitle">Lesson 4</div>
-                    <a href=""> <img src="", class="modelsimg" alt="image 4"></a>
-                    <!-- <p class="descborder"> description of lesson </p> -->
+                    <div class="subtitle">Upload a Lesson</div>
+                    <div class="text-center">
+                        <p>Choose the file containing the lesson</p>
+                        <!-- <form>
+                            <div class="form-group" >
+                              <input type="file" class="form-control-file formedit" 
+                              id="FileUploader"> 
+                            </div>
+                        </form> -->
+                        <div>
+                            <label for="files" class="button" id="uploadbutton">Select Lesson</label>
+                            <input id="files" style="visibility:hidden;" type="file" accept=".md">
+                        </div>
+                    </div>
                     <div class="carousel-caption d-none d-md-block">
-                        <p>Description</p>
                     </div>
                 </div>
               </div>
@@ -133,5 +119,42 @@
 </div>
 
 </body>
+<script type="module">
+    // Import the library //
+    import {MinecraftParse} from "https://nathan-nesbitt.github.io/Minecraft_Parse/minecraft_parse.js";
+
+    var input = document.getElementById("files");
+    var orefinder = document.getElementById("orefinder");
+
+    console.log(input)
+        
+    input.addEventListener("change", () => {
+        
+        var file_reader = new FileReader();
+        
+        file_reader.onload = () => {
+            window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
+            window.location.href = "/lesson_overview"
+        }
+
+        file_reader.readAsText(input.files[0])
+    })
+
+    orefinder.addEventListener("click", (event) => {
+        fetch('./lesson/orefinder')
+            .then(res => res.blob())
+            .then(blob => {
+                var file_reader = new FileReader();
+
+                file_reader.onload = () => {
+                    window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
+                    window.location.href = "/lesson_overview"
+                }
+
+                file_reader.readAsText(blob)
+            })
+    })
+
+</script>
     
 </html>
