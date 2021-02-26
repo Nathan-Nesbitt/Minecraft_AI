@@ -275,6 +275,7 @@ div.modeldesc p {
     background-color: gainsboro;
     font-size: large;
     color: #1c1c1c;
+    overflow:auto;
 }
 
 @media (max-width:991px) {
