@@ -63,6 +63,7 @@
                 <button class="button" id="run"> Run </button>
                 <button class="button" id="nextbutton">Next</button>
                 <button class="button" id="previousbutton">Previous</button>
+                <button id="console-toggle" class="button">CONSOLE</button>
             </div>
         </div>
         
@@ -99,6 +100,17 @@
         document.getElementById("lesson_title").innerHTML += "- " + lesson.title;
         window.lesson = lesson.steps
     }
+
+    // set console display to hidden by default //
+    var console = document.getElementById("console");
+    console.style.display = "none";
+
+    document.getElementById("console-toggle").addEventListener("click", (event) => {
+        if(console.style.display == "block")
+            console.style.display = "none";
+        else
+            console.style.display = "block";
+    });
 </script>
 <script src="/static/setup/setup_monaco.js"></script>
 <script src="/static/setup/setup_buttons.js"></script>

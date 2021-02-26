@@ -45,6 +45,7 @@
     
          <div class="container">
             <div class="row">
+                <button id="console-toggle" class="button">CONSOLE</button>
                 <button id="run" class="button">RUN</button>
             </div>
         </div>   
@@ -97,6 +98,17 @@
     `
 
     document.getElementById("questionmrk").setAttribute("data-content", help);
+
+    // set console display to hidden by default //
+    var console = document.getElementById("console");
+    console.style.display = "none";
+
+    document.getElementById("console-toggle").addEventListener("click", (event) => {
+        if(console.style.display == "block")
+            console.style.display = "none";
+        else
+            console.style.display = "block";
+    });
 
 </script>
 <script src="/static/setup/setup_monaco.js"></script>
