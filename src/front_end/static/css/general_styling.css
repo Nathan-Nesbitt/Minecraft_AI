@@ -295,6 +295,10 @@ div.modeldesc p {
         width: 360px;
     }
 
+    .modelgraph{
+        width: 400px;
+    }
+
     .modelsimg:hover {
         width: 380px;
     }
