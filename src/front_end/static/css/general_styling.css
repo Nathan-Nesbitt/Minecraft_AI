@@ -344,6 +344,9 @@ div.modeldesc p {
     color: #252526;
     margin-right: 4px;
 }
+#previousbutton {
+    margin-top: 0.5%;
+}
 
 #run {
     min-width: 15.4%;
