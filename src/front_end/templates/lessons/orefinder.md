@@ -7,9 +7,6 @@ We are looking for a depth. This can be any value on the number line.
 Since we are looking for a value on the number line and not a group, 
 this is a REGRESSION problem.
 
-This model will make the bot mine at the predicted depth and biome.
-
-
 ## Model Description
 
 In this lesson we will use a Decision Tree to determine the location of a material. In order to find
