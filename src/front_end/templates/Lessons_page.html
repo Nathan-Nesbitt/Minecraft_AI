@@ -135,7 +135,7 @@
         
         file_reader.onload = () => {
             window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
-            window.location.href = "lesson/orefinder_explained"
+            window.location.href = "/lesson_explained"
         }
 
         file_reader.readAsText(input.files[0])

@@ -24,9 +24,14 @@ def lessons():
     return render_template("lessons_page.html")
 
 
-@app.route("/lesson/<id>")
-def lesson(id):
-    return render_template("lessons/" + id + ".html")
+@app.route("/lesson_explained")
+def lesson_explained():
+    return render_template("lesson_explained.html")
+
+
+@app.route("/lesson_overview")
+def lesson_overview():
+    return render_template("lesson_overview.html")
 
 
 # Starts the flask server
