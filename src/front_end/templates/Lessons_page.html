@@ -31,7 +31,8 @@
 
 <div class="container">
     <div class="container maincont">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- data-interval: The amount of time to delay between automatically cycling an item-->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval= false>
             <!-- Indicators -->
             <ol class="carousel-indicators">
               <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -80,16 +81,30 @@
                     <div class="subtitle">Upload a Lesson</div>
                     <div class="text-center">
                         <p>Choose the file containing the lesson</p>
-                        <!-- <form>
-                            <div class="form-group" >
-                              <input type="file" class="form-control-file formedit" 
-                              id="FileUploader"> 
-                            </div>
-                        </form> -->
                         <div>
                             <label for="files" class="button" id="uploadbutton">Select Lesson</label>
                             <input id="files" style="visibility:hidden;" type="file" accept=".md">
                         </div>
+                        <p></p>
+                        <!-- <div class="subtitle">Insert a URL</div>
+                        <p>Insert a URL containing the lesson</p>
+                        <input type="url" id="URLforlesson" name="URLforlesson" placeholder="Insert URL here ">
+                        <p></p>
+                        <div>
+                            <label class="button" id="getURLbutton">Start lesson</label>
+                            <input id="files" style="visibility:hidden;" type="url" accept=".md">
+                        </div> -->
+                        <form>
+                            <div>
+                              <label class="subtitle" for="myURL">Insert a URL</label>
+                              <p>Insert a URL containing the lesson</p>
+                              <input id="myURL" name="myURL" type="url" placeholder="Insert URL here ">
+                            </div>
+                            <p></p>
+                            <div>
+                              <button class="button" id="getURLbutton">Start lesson</button>
+                            </div>
+                        </form>
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                     </div>

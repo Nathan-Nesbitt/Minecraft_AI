@@ -141,7 +141,12 @@ body {
 #uploadbutton {
     color: #252526;
     width: 250px;
-    padding-top: 1%;
+    padding-top: 0.5%;
+}
+#getURLbutton {
+    color: #252526;
+    width: 250px;
+    padding-top: 0.5%;
 }
 
 .button:hover {
@@ -407,4 +412,7 @@ div.modeldesc p {
     margin-left: 180px;
     width: 90%;
 
+}
+#myURL{
+    color: black;
 }
