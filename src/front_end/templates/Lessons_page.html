@@ -101,7 +101,7 @@
                         
                         
                         <div>
-                            <input id="myURL" type="url" >
+                            <input id="myURL" type="url">
                             <label for="myURL" class="button" id="getURLbutton">Start Lesson</label>
                         </div>
 
@@ -139,24 +139,25 @@
     import {MinecraftParse} from "https://nathan-nesbitt.github.io/Minecraft_Parse/minecraft_parse.js";
 
     var input = document.getElementById("files");
-    var URLinput = document.getElementById("myURL").value
     var orefinder = document.getElementById("orefinder");
     var getURLbutton = document.getElementById("getURLbutton")
 
-    
-
-    console.log(input)
-    console.log(URLinput)
 
     getURLbutton.addEventListener("click", () => {
+        var URLinput = document.getElementById("myURL").value
         fetch(URLinput)
             .then(res => res.blob())
             .then(blob => {
                 var file_reader = new FileReader();
 
                 file_reader.onload = () => {
-                    window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
-                    window.location.href = "/lesson_overview"
+                    try {
+                        window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
+                        window.location.href = "/lesson_overview"
+                    }
+                    catch(err) {
+                        // PRINT SOMETHING ON THE SCREEN TO PRINT ERROR //
+                    }
                 }
                 file_reader.readAsText(blob)
             })
@@ -173,6 +174,7 @@
 
         file_reader.readAsText(input.files[0])
     })
+
 
     orefinder.addEventListener("click", (event) => {
         fetch('./lesson/orefinder')
