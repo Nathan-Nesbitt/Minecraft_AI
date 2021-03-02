@@ -86,15 +86,8 @@
                             <input id="files" style="visibility:hidden;" type="file" accept=".md">
                         </div>
                         <p></p>
-                        <!-- <div class="subtitle">Insert a URL</div>
-                        <p>Insert a URL containing the lesson</p>
-                        <input type="url" id="URLforlesson" name="URLforlesson" placeholder="Insert URL here ">
-                        <p></p>
-                        <div>
-                            <label class="button" id="getURLbutton">Start lesson</label>
-                            <input id="files" style="visibility:hidden;" type="url" accept=".md">
-                        </div> -->
-                        <form>
+
+                        <!-- <form id="URLForm" onsubmit="return false">
                             <div>
                               <label class="subtitle" for="myURL">Insert a URL</label>
                               <p>Insert a URL containing the lesson</p>
@@ -102,9 +95,16 @@
                             </div>
                             <p></p>
                             <div>
-                              <button class="button" id="getURLbutton">Start lesson</button>
+                              <input type="submit" class="button" id="getURLbutton">Start lesson</input>
                             </div>
-                        </form>
+                        </form> -->
+                        
+                        
+                        <div>
+                            <input id="myURL" type="url" >
+                            <label for="myURL" class="button" id="getURLbutton">Start Lesson</label>
+                        </div>
+
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                     </div>
@@ -139,10 +139,29 @@
     import {MinecraftParse} from "https://nathan-nesbitt.github.io/Minecraft_Parse/minecraft_parse.js";
 
     var input = document.getElementById("files");
+    var URLinput = document.getElementById("myURL").value
     var orefinder = document.getElementById("orefinder");
+    var getURLbutton = document.getElementById("getURLbutton")
+
+    
 
     console.log(input)
-        
+    console.log(URLinput)
+
+    getURLbutton.addEventListener("click", () => {
+        fetch(URLinput)
+            .then(res => res.blob())
+            .then(blob => {
+                var file_reader = new FileReader();
+
+                file_reader.onload = () => {
+                    window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
+                    window.location.href = "/lesson_overview"
+                }
+                file_reader.readAsText(blob)
+            })
+    })
+
     input.addEventListener("change", () => {
         
         var file_reader = new FileReader();
