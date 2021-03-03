@@ -435,3 +435,7 @@ div.modeldesc p {
 #myURL{
     color: black;
 }
+.error{
+    color: red;
+    font-size: larger;
+}

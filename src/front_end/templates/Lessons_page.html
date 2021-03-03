@@ -78,30 +78,20 @@
               </div>
               <div class="item">
                 <div class="col-md-12 modelcar">
-                    <div class="subtitle">Upload a Lesson</div>
                     <div class="text-center">
+                        <div class="subtitle">Upload a Lesson</div>
                         <p>Choose the file containing the lesson</p>
                         <div>
                             <label for="files" class="button" id="uploadbutton">Select Lesson</label>
                             <input id="files" style="visibility:hidden;" type="file" accept=".md">
                         </div>
+                        <p id="error" class="error"></p>
                         <p></p>
-
-                        <!-- <form id="URLForm" onsubmit="return false">
-                            <div>
-                              <label class="subtitle" for="myURL">Insert a URL</label>
-                              <p>Insert a URL containing the lesson</p>
-                              <input id="myURL" name="myURL" type="url" placeholder="Insert URL here ">
-                            </div>
-                            <p></p>
-                            <div>
-                              <input type="submit" class="button" id="getURLbutton">Start lesson</input>
-                            </div>
-                        </form> -->
-                        
-                        
+                        <div class="subtitle">Insert a URL</div>
+                        <p>Insert a URL containing the lesson </p>
                         <div>
-                            <input id="myURL" type="url">
+                            <input id="myURL" type="url" placeholder="insert URL here">
+                            <p></p>
                             <label for="myURL" class="button" id="getURLbutton">Start Lesson</label>
                         </div>
 
@@ -132,7 +122,6 @@
         </div>
     </div>
 </div>
-
 </body>
 <script type="module">
     // Import the library //
@@ -141,8 +130,8 @@
     var input = document.getElementById("files");
     var orefinder = document.getElementById("orefinder");
     var getURLbutton = document.getElementById("getURLbutton")
-
-
+    var errorout = document.getElementById("error")
+    
     getURLbutton.addEventListener("click", () => {
         var URLinput = document.getElementById("myURL").value
         fetch(URLinput)
@@ -156,7 +145,7 @@
                         window.location.href = "/lesson_overview"
                     }
                     catch(err) {
-                        // PRINT SOMETHING ON THE SCREEN TO PRINT ERROR //
+                        errorout.innerHTML = err
                     }
                 }
                 file_reader.readAsText(blob)
@@ -164,14 +153,18 @@
     })
 
     input.addEventListener("change", () => {
-        
+
         var file_reader = new FileReader();
         
         file_reader.onload = () => {
-            window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
-            window.location.href = "/lesson_overview"
+            try{
+                window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
+                window.location.href = "/lesson_overview"
+            }
+            catch(err) {
+                errorout.innerHTML = err
+            }
         }
-
         file_reader.readAsText(input.files[0])
     })
 
@@ -186,7 +179,6 @@
                     window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
                     window.location.href = "/lesson_overview"
                 }
-
                 file_reader.readAsText(blob)
             })
     })
