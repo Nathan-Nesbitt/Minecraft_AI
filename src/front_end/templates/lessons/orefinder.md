@@ -19,14 +19,18 @@ Follow the splits in the tree for the material you want. The depth is listed bel
 
 ## Lesson
 ### Instruction 1
-First we create a connection to the game. Click NEXT to see the next step
+We need to create a connection to the game in order for code to run.
+
+Click NEXT to see the next step
 ```
 // Create connection to game and back end //
 var minecraft_api = new MinecraftAPIClient();
 ```
 
 ### Instruction 2
-Then we create a new model. Click NEXT to see the next step
+We transform the problem into a machine learning model with predictors and responses.
+
+Click NEXT to see the next step
 
 ```
 var args = {
@@ -42,7 +46,7 @@ var minecraft_learns = new MinecraftLearns(args);
 ```
 
 ### Instruction 3
-We determine what we want to predict and what to do when we have the prediction.
+We determine what we want to do with the model.
 
 Click NEXT to see the next step
 
@@ -64,9 +68,9 @@ var callback_function_3 = function(data) {
 ```
 
 ### Instruction 4
-We need to process the data and train the model before we predict.
+We process the data for training. After training, we can make predictions.
 
-Click "RUN" to execute the model
+Click "RUN" to execute the model and see the effect in game!
 ```
 // Function that cleans the data, then trains it on the previously defined params //
 minecraft_learns.process_data()
