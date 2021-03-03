@@ -21,7 +21,8 @@ Follow the splits in the tree for the material you want. The depth is listed bel
 ### Instruction 1
 We need to create a connection to the game in order for code to run.
 
-Click NEXT to see the next step
+Click NEXT to see the next step.
+
 ```
 // Create connection to game and back end //
 var minecraft_api = new MinecraftAPIClient();
@@ -30,7 +31,7 @@ var minecraft_api = new MinecraftAPIClient();
 ### Instruction 2
 We transform the problem into a machine learning model with predictors and responses.
 
-Click NEXT to see the next step
+Click NEXT to see the next step.
 
 ```
 var args = {
@@ -48,12 +49,14 @@ var minecraft_learns = new MinecraftLearns(args);
 ### Instruction 3
 We determine what we want to do with the model.
 
-Click NEXT to see the next step
+Click NEXT to see the next step.
 
 ```
 // Create a callback function that makes a prediction based on the game data //
 var callback_function_3 = function(data) {
+    // determine the resource to mine
     var resource = "diamond_ore"
+    // then predict
     minecraft_learns.predict(data, [resource])
     .then(
         result => {
@@ -71,12 +74,14 @@ var callback_function_3 = function(data) {
 We process the data for training. After training, we can make predictions.
 
 Click "RUN" to execute the model and see the effect in game!
+
 ```
-// Function that cleans the data, then trains it on the previously defined params //
+// Clean the data, then train //
 minecraft_learns.process_data()
     .then(minecraft_learns.train())
     .then(() => {
-        // Then we create an event handler for the game event //
+        // then we set up prediction and in game event defined above //
         new EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
     })
+
 ```
