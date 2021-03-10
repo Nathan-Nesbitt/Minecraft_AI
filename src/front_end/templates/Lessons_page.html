@@ -31,7 +31,8 @@
 
 <div class="container">
     <div class="container maincont">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- data-interval: The amount of time to delay between automatically cycling an item-->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval= false>
             <!-- Indicators -->
             <ol class="carousel-indicators">
               <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -49,7 +50,7 @@
                     <img id="orefinder" src="/static/includes/Mine_entrance.jfif", class="modelsimg" alt="Mine Entrace for Decoration">
                     <!-- <p class="descborder"> description of lesson </p> -->
                     <div class="carousel-caption d-none d-md-block">
-                        <p>Predict the best location to mine for a material based on height</p>
+                        <p>Predict the best depth to mine for a material</p>
                     </div>
                 </div>
               </div>
@@ -75,19 +76,23 @@
               </div>
               <div class="item">
                 <div class="col-md-12 modelcar">
-                    <div class="subtitle">Upload a Lesson</div>
                     <div class="text-center">
+                        <div class="subtitle">Upload a Lesson</div>
                         <p>Choose the file containing the lesson</p>
-                        <!-- <form>
-                            <div class="form-group" >
-                              <input type="file" class="form-control-file formedit" 
-                              id="FileUploader"> 
-                            </div>
-                        </form> -->
                         <div>
                             <label for="files" class="button" id="uploadbutton">Select Lesson</label>
                             <input id="files" style="visibility:hidden;" type="file" accept=".md">
                         </div>
+                        <p id="error" class="error"></p>
+                        <p></p>
+                        <div class="subtitle">Insert a URL</div>
+                        <p>Insert a URL containing the lesson </p>
+                        <div>
+                            <input id="myURL" type="url" placeholder="insert URL here">
+                            <p></p>
+                            <label for="myURL" class="button" id="getURLbutton">Start Lesson</label>
+                        </div>
+
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                     </div>
@@ -115,7 +120,6 @@
         </div>
     </div>
 </div>
-
 </body>
 <script type="module">
     // Import the library //
@@ -123,20 +127,45 @@
 
     var input = document.getElementById("files");
     var orefinder = document.getElementById("orefinder");
+    var getURLbutton = document.getElementById("getURLbutton")
+    var errorout = document.getElementById("error")
+    
+    getURLbutton.addEventListener("click", () => {
+        var URLinput = document.getElementById("myURL").value
+        fetch(URLinput)
+            .then(res => res.blob())
+            .then(blob => {
+                var file_reader = new FileReader();
 
-    console.log(input)
-        
+                file_reader.onload = () => {
+                    try {
+                        window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
+                        window.location.href = "/lesson_overview"
+                    }
+                    catch(err) {
+                        errorout.innerHTML = err
+                    }
+                }
+                file_reader.readAsText(blob)
+            })
+    })
+
     input.addEventListener("change", () => {
-        
+
         var file_reader = new FileReader();
         
         file_reader.onload = () => {
-            window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
-            window.location.href = "/lesson_overview"
+            try{
+                window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
+                window.location.href = "/lesson_overview"
+            }
+            catch(err) {
+                errorout.innerHTML = err
+            }
         }
-
         file_reader.readAsText(input.files[0])
     })
+
 
     orefinder.addEventListener("click", (event) => {
         fetch('./lesson/orefinder')
@@ -148,7 +177,6 @@
                     window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
                     window.location.href = "/lesson_overview"
                 }
-
                 file_reader.readAsText(blob)
             })
     })

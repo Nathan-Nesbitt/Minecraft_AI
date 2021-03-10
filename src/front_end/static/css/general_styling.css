@@ -141,7 +141,12 @@ body {
 #uploadbutton {
     color: #252526;
     width: 250px;
-    padding-top: 1%;
+    padding-top: 0.5%;
+}
+#getURLbutton {
+    color: #252526;
+    width: 250px;
+    padding-top: 0.5%;
 }
 
 .button:hover {
@@ -231,12 +236,21 @@ body {
     margin: 2%;
 }
 
+figure{
+    max-height: 70%;
+}
+
+figcaption.modeldesc {
+    margin-top: 2%;
+}
+
 div.modeldesc p {
     margin-bottom: 3%;
 }
 
 .modelgraph {
     width: 90%;
+    max-height: 60%;
 }
 
 .modelsimg {
@@ -275,6 +289,7 @@ div.modeldesc p {
     background-color: gainsboro;
     font-size: large;
     color: #1c1c1c;
+    overflow:auto;
 }
 
 @media (max-width:991px) {
@@ -292,6 +307,15 @@ div.modeldesc p {
 
     .modelsimg {
         width: 360px;
+    }
+
+    figure{
+        overflow: auto;
+    }
+
+    .modelgraph{
+        max-height: 300px;
+        max-width: 400px;
     }
 
     .modelsimg:hover {
@@ -336,13 +360,16 @@ div.modeldesc p {
 }
 
 #nextbutton {
-    min-width: 15.4%;
+    width: 40%;
     position: relative;
     float: right;
     margin-bottom: 1%;
     margin-top: 0.5%;
     color: #252526;
     margin-right: 4px;
+}
+#previousbutton {
+    margin-top: 0.5%;
 }
 
 #run {
@@ -404,4 +431,11 @@ div.modeldesc p {
     margin-left: 180px;
     width: 90%;
 
+}
+#myURL{
+    color: black;
+}
+.error{
+    color: red;
+    font-size: larger;
 }
