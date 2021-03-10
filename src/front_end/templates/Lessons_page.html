@@ -45,7 +45,7 @@
               
                 <div class="item active">   
                 <div class="col-md-12 modelcar ">
-                    <div class="subtitle"> Ore Finder</div>
+                    <div class="subtitle">Ore Finder</div>
                     <img id="orefinder" src="/static/includes/Mine_entrance.jfif", class="modelsimg" alt="Mine Entrace for Decoration">
                     <!-- <p class="descborder"> description of lesson </p> -->
                     <div class="carousel-caption d-none d-md-block">
@@ -56,11 +56,10 @@
           
               <div class="item">
                 <div class="col-md-12 modelcar">
-                    <div class="subtitle">Lesson 2</div>
-                    <a href=""> <img src="", class="modelsimg" alt="image 2"></a>
-                    <!-- <p class="descborder"> description of lesson </p> -->
+                    <div class="subtitle">Data Collection</div>
+                    <img id="datacollection" src="/static/includes/grass_block.png", class="modelsimg" alt="image 2">
                     <div class="carousel-caption d-none d-md-block">
-                        <p>Description</p>
+                        <p>Collect and save data about when a block is broken</p>
                     </div>
                 </div>
               </div>
@@ -68,8 +67,7 @@
               <div class="item">
                 <div class="col-md-12 modelcar">
                     <div class="subtitle">Lesson 3</div>
-                    <a href=""> <img src="", class="modelsimg" alt="image 3"></a>
-                    <!-- <p class="descborder"> description of lesson </p> -->
+                    <img id="blank" src="", class="modelsimg" alt="image 3">
                     <div class="carousel-caption d-none d-md-block">
                         <p>Description</p>
                     </div>
@@ -154,6 +152,21 @@
                 file_reader.readAsText(blob)
             })
     })
+
+    document.getElementById("datacollection").addEventListener("click", (event) => {
+        fetch('./lesson/data_collection')
+            .then(res => res.blob())
+            .then(blob => {
+                var file_reader = new FileReader();
+
+                file_reader.onload = () => {
+                    window.localStorage["lesson"] = JSON.stringify(new MinecraftParse(file_reader.result));
+                    window.location.href = "/lesson_overview"
+                }
+
+                file_reader.readAsText(blob)
+            })
+    });
 
 </script>
     
