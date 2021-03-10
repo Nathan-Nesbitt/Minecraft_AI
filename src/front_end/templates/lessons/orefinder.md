@@ -21,14 +21,14 @@ Follow the splits in the tree for the material you want. The depth is listed bel
 ![In order to find the desired value, follow the split to the node you want.](../static/includes/decision_tree.png)
 
 ## Lesson
-### Instruction 1
+### Create Connection
 First we create a connection to the game. Click NEXT to see the next step
 ```
 // Create connection to game and back end //
 var minecraft_api = new MinecraftAPIClient();
 ```
 
-### Instruction 2
+### Create Model
 Then we create a new model. Click NEXT to see the next step
 
 ```
@@ -44,15 +44,15 @@ var minecraft_learns = new MinecraftLearns(args);
 
 ```
 
-### Instruction 3
+### Determine Prediction
 We determine what we want to predict and what to do when we have the prediction.
 
-Click NEXT to see the next step
+Add the resource you want to predict, then click NEXT to see the next step
 
 ```
 // Create a callback function that makes a prediction based on the game data //
 var callback_function_3 = function(data) {
-    var resource = "diamond_ore"
+    var resource = ""
     minecraft_learns.predict(data, [resource])
     .then(
         result => {
@@ -66,7 +66,7 @@ var callback_function_3 = function(data) {
 }
 ```
 
-### Instruction 4
+### Process Data and Train Model
 We need to process the data and train the model before we predict.
 
 Click "RUN" to execute the model
