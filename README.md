@@ -4,8 +4,12 @@ An in game AI implementation for Minecraft Education
 ## Design
 
 ### Broker
-Has the following methods:
+Has the following attributes:
+- `models`: A dictionary of model type objects. This will allow for processes to run dynamically between the front and backend by keeping track of them using a UUID.  
 
+- `storage`: A Minecraft_Store object. 
+
+Has the following methods:
 - `establish_connection`: Start the connection with the client side and listen in for incoming commands that are being sent over.
 
 - `response`: Handles the commands sent from the client by converting the json object into a dictionary.
@@ -18,15 +22,42 @@ Has the following methods:
 
 - `minecraft_learns`: Calls on the Minecraft_Learns class to manipulate the data in the command to produce machine learning models.
 
-### Store
-Has the following methods:
+- `add_model`: Based on the UUID sent from the user this method adds a model type object to the `models` dictionary.
 
--``
+### Minecraft_Store
+Has the following attributes:
+- `files`:
+
+Has the following methods:
+- `store_filesystem`:
+- `add_file`:
 
 ### Data
-Has the following methods:
+Has the following attributes:
+- `location`:
+- `filename`:
 
-- ``
+Has the following methods:
+- `save_data`:
+- `save_observation`:
+- `add_observation`:
+- `delete_data`:
+- `absolute_path`:
+- `rename_file`:
+
+### Model
+Has the following attributes:
+- `model`:
+
+Has the following methods:
+- `pick_model`:
+- `set_parameters`:
+- `process_data`:
+- `train_model`:
+- `predict`:
+- `game_response`:
+- `plot`:
+- `load_model`:
 
 ### Message Command
 
