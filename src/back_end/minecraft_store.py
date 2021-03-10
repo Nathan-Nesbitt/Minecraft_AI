@@ -21,7 +21,7 @@ class Minecraft_Store:
 
         @param data: The data being stored, will be in a json dictionary format
 
-        @param name:
+        @param name: The name of the file being used
 
         @param file: Which file you are writing the data to, the UUID is normally this
         """
