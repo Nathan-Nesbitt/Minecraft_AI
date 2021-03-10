@@ -34,21 +34,6 @@
     </div>
     
     <div class="container pad">
-        <!-- <div class="container maincont">
-            <div class="row"> 
-                <div class="col-md-2">
-
-                    <div class="row text-center">
-                        THIS BUTTON INSERTS INTO CODE CONSOLE(FILLS IN) 
-                        <button id="buttonCode" class="button">Code</button>
-                    </div>
-                </div>
-                <div class="col-md-10 hiegthforcode edit-text general" id="codeborder">  
-                    <p></p>
-                    <div id="containerMona" class="code codecimp"></div>
-                </div>
-            </div>
-        </div> -->
         <div class="container maincont">
             <div class="row"> 
                 <div class="col-md-12 hiegthforcode edit-text general" id="codeborder">  
@@ -61,7 +46,8 @@
          <div class="container">
             <div class="row">
                 <button class="button" id="run"> Run </button>
-                <button class="button" id="nextbutton">Next</button>
+                <button class="button" id="nextbutton" onclick="increment()">Next</button>
+                <div style="background-color: blanchedalmond;" id="nxtbttn"></div>
                 <button class="button" id="previousbutton">Previous</button>
                 <button id="console-toggle" class="button">Console</button>
             </div>
@@ -88,10 +74,27 @@
 </script>
 <script>
     // This sets all of the values for the lesson if it is defined
+    var instructionnum = 0;
     if(localStorage["lesson"]) {
         var lesson = JSON.parse(localStorage["lesson"])
         document.getElementById("lesson_title").innerHTML += "- " + lesson.title;
+        var nxtbttn = document.getElementById("nextbutton")
+        
+        var instr = new Array();
+        for (x in lesson.steps) {
+            instr.push(JSON.stringify(x));
+
+        }
+        
+        
+        document.getElementById("nextbutton").innerHTML = instr[instructionnum].slice(1,-1);
+        function increment(){
+            instructionnum =instructionnum + 1
+            document.getElementById("nextbutton").innerHTML = instr[instructionnum].slice(1,-1);
+            
+        }
         window.lesson = lesson.steps
+        
     }
 
     // set console display to hidden by default //

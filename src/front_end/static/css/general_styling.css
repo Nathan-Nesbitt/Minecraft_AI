@@ -360,7 +360,7 @@ div.modeldesc p {
 }
 
 #nextbutton {
-    min-width: 15.4%;
+    width: 40%;
     position: relative;
     float: right;
     margin-bottom: 1%;
