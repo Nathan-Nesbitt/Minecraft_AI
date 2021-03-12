@@ -178,6 +178,19 @@ class Broker:
             except Exception as e:
                 print(str(e))
                 return Exception("Error creating graph")
+        elif function == "save":
+            try:
+                return self.models[UUID].save_model()
+            except Exception as e:
+                print(str(e))
+                return Exception("Error saving model")
+        elif function == "load":
+            try:
+                self.models[UUID].load_model(location=file_name)
+                return True
+            except Exception as e:
+                print(str(e))
+                return Exception("Error saving model")
 
         print("Sent to Minecraft Learns")
         return True

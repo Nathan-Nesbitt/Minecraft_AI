@@ -194,10 +194,15 @@ class Model:
     def load_model(self, filename):
         self.model.load_model(self._get_default_location() + filename)
 
-    def save_model(self, location=None):
-        if location:
-            location = self._get_default_location() + location
+    def save_model(self, filepath=None):
+        """
+        save the model and return the filename
+        ---
+        @param filepath: location to save file
+        """
+        if filepath:
+            filepath += + str(uuid4()) + ".sav"
         else:
-            location = self._get_default_location() + str(uuid4()) + ".sav"
+            filepath = self._get_default_location() + str(uuid4()) + ".sav"
 
-        self.model.save_model(location)
+        return self.model.save_model(filepath)
