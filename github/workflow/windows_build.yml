@@ -4,6 +4,9 @@ name: Windows Build
 on:
   push:
     branches: [ testing-build ]
+  pull_request:
+    branches: [ testing-build ]
+
 
 jobs:
   release:
