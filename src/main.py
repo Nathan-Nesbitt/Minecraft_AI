@@ -1,4 +1,4 @@
-# Import threading since we are running 2 servers
+# Import threading since we are running 2 servers.
 from threading import Thread
 
 # Local Imports
