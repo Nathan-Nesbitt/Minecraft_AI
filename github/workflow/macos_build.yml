@@ -7,4 +7,12 @@ on:
 
 jobs:
   release:
-    runs-on: macos-latest
+    runs-on: windows-latests
+
+    steps: 
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          python-version: '3.7'
+      - name: Install dependencies
+        run: pip install -r requirements.txt 
