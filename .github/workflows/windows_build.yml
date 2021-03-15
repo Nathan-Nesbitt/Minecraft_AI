@@ -9,6 +9,10 @@ on:
     branches: 
       - testing-build
 
+page_build:
+release:
+  types: [published, created, edited]
+
 jobs:
   build:
     runs-on: windows-latest
