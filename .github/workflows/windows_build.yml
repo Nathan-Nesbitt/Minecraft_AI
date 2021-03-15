@@ -9,16 +9,15 @@ on:
     branches: 
       - testing-build
 
-page_build:
-release:
-  types: [published, created, edited]
 
 jobs:
-  build:
+  release:
     runs-on: windows-latest
 
-    steps:
+    steps: 
       - uses: actions/checkout@v2
-
-      - name: Install Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
+        with:
+          python-version: '3.7'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
