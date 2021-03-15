@@ -1,11 +1,13 @@
 
-name: Macos Build
+name: Windows Build
 
 on:
   push:
-    branches: [ testing-build ]
+    branches: 
+      - testing-build
   pull_request:
-    branches: [ testing-build ]
+    branches: 
+      - testing-build
 
 
 jobs:
