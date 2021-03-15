@@ -9,9 +9,8 @@ on:
     branches: 
       - testing-build
 
-
 jobs:
-  release:
+  build:
     runs-on: macos-latest
 
     steps:
