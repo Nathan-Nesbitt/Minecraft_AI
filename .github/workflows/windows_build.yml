@@ -1,21 +1,21 @@
 
-#name: Windows Build
+name: Windows Build
 
-#on:
-#  push:
-#    branches: 
-#      - testing-build
-#  pull_request:
-#    branches: 
-#      - testing-build
+on:
+  push:
+    branches: 
+      - testing-build
+  pull_request:
+    branches: 
+      - testing-build
 
-#jobs:
-#  build:
-#    runs-on: windows-latest
+jobs:
+  build:
+    runs-on: windows-latest
 
-#    steps:
-#      - name: Checkout Git Repository
-#        uses: actions/checkout@v2
+    steps:
+      - name: Checkout Git Repository
+        uses: actions/checkout@v2
 
-#      - name: Install Node.js
-#        uses: actions/setup-node@v1
+      - name: Install Node.js
+        uses: actions/setup-node@v1
