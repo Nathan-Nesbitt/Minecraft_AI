@@ -1,5 +1,5 @@
 # Minecraft_AI
-An in game AI implementation for Minecraft Education
+An in game AI implementation for Minecraft Education. TESTING TESTING
 
 ## Frontend Design
 
