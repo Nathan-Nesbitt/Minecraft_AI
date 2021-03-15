@@ -14,8 +14,9 @@ jobs:
   release:
     runs-on: windows-latest
 
-    steps: 
+    steps:
+      - name: Checkout Git Repository
         uses: actions/checkout@v2
+
+      - name: Install Node.js
         uses: actions/setup-node@v1
-      - name: Install dependencies
-        run: pip install -r requirements.txt 
