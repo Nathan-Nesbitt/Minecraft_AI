@@ -60,7 +60,7 @@ var callback_function_3 = function(data) {
             if(data.body.properties.FeetPosY == result.body.prediction.FeetPosY)
                 new Command(minecraft_api, "Say", ["Mine here to find: ", resource]);
             else
-                new Command(minecraft_api, "Say", ["to mine this resource go to Y:", result.body.prediction.FeetPosY]);
+                new Command(minecraft_api, "Say", ["You are at Y:"+ data.body.properties.FeetPosY + " to mine this resource go to Y:", result.body.prediction.FeetPosY]);
         }            
     )
 }
