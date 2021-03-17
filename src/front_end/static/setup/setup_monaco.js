@@ -32,7 +32,7 @@ require(['vs/editor/editor.main'], function () {
                         label: 'Command',
                         kind: monaco.languages.CompletionItemKind.Class,
                         documentation: "A command that can be sent to Minecraft Education.",
-                        insertText: 'new Command(minecraft_api, "Command", ["Parameters"]);',
+                        insertText: 'minecraft_api.Command("Command", ["Parameters"]);',
                         insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                     },
                     {
@@ -46,7 +46,7 @@ require(['vs/editor/editor.main'], function () {
                         label: 'EventHandler',
                         kind: monaco.languages.CompletionItemKind.Class,
                         documentation: "Handles an in game event and calls a function when triggered.",
-                        insertText: 'new EventHandler(minecraft_api, "event_name", callback_function);',
+                        insertText: 'minecraft_api.EventHandler("event_name", callback_function);',
                     },
                     {
                         label: 'DataStore',
@@ -106,12 +106,9 @@ document.getElementById("run").addEventListener("click", (event) => {
         `
         // This sets the local libraries //
         EventHandler = window.EventHandler;
-        Command = window.Command;
         MinecraftLearns = window.MinecraftLearns;
-        DataStore = window.DataStore;
         MinecraftAPIClient = window.MinecraftAPIClient
 
-        console.log("Command");
         `+
         window.editor.getValue()
     // reset the output
