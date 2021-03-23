@@ -15,10 +15,16 @@ jobs:
 
     steps: 
       - uses: actions/checkout@v2
+      
       - name: PyInstaller Windows
         uses: JackMcKew/pyinstaller-action-windows@v0.1.2
         with:
           path: src
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: name-of-artifact
+          path: src/dist/windows
 
       - uses: actions/setup-node@v1
       - name: Install dependencies
