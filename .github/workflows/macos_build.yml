@@ -17,7 +17,5 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-        with:
-          python-version: '3.7.10'
       - name: Installing dependencies
         run: pip3 install -r requirements.txt
