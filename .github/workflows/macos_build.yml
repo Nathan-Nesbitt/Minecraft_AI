@@ -11,7 +11,7 @@ on:
 
 
 jobs:
-  release:
+  build:
     runs-on: macos-latest
 
     steps: 
