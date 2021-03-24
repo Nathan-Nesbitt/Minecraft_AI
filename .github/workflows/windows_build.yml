@@ -23,7 +23,7 @@ jobs:
       
       - uses: actions/upload-artifact@v2
         with:
-          name: name-of-artifact
+          name: Minecraft-TeamB
           path: src/dist/windows
 
       - uses: actions/setup-node@v1
