@@ -3,7 +3,7 @@
 block_cipher = None
 
 added_files = [('back_end\*.py', 'back_end'), 
-    ('front_end*.py', 'front_end'), 
+    ('front_end\*.py', 'front_end'), 
     ('front_end\templates\*.html', 'front_end\templates'), 
     ('front_end\templates\lessons\*.md', 'front_end\templates\lessons'), 
     ('front_end\static\setup\*.js', 'front_end\static\setup'), 
