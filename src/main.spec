@@ -9,7 +9,7 @@ added_files = [('back_end\*.py', 'back_end'),
 ]
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\carlo\\Documents\\GitHub\\Minecraft_AI\\src'],
+             pathex=['C:\\Users\\carlo\\Documents\\GitHub\\Minecraft_AI\\src', 'C:\\Users\\carlo\\AppData\\Local\\Programs\\Python'],
              binaries=[],
              datas=added_files,
              hiddenimports=added_imports,
