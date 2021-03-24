@@ -2,6 +2,8 @@
 
 block_cipher = None
 
+added_imports = ['jsonlines', 'websockets', 'minecraft_learns', 'flask']
+
 added_files = [('back_end\*.py', 'back_end'), 
     ('front_end', 'front_end')
 ]
@@ -10,7 +12,7 @@ a = Analysis(['main.py'],
              pathex=['C:\\Users\\carlo\\Documents\\GitHub\\Minecraft_AI\\src'],
              binaries=[],
              datas=added_files,
-             hiddenimports=[],
+             hiddenimports=added_imports,
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
