@@ -173,8 +173,7 @@ class Broker:
                 return e
         elif function == "plot":
             try:
-                self.models[UUID].plot(location=file_name)
-                return True
+                return self.models[UUID].plot(location=file_name)
             except Exception as e:
                 print(str(e))
                 return Exception("Error creating graph")
