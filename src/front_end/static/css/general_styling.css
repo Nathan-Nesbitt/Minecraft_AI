@@ -360,24 +360,23 @@ div.modeldesc p {
 }
 
 #nextbutton {
-    width: 40%;
+    width: 35%;
     position: relative;
     float: right;
-    margin-bottom: 1%;
+    /* margin-bottom: 1%; */
     margin-top: 0.5%;
     color: #252526;
-    margin-right: 4px;
+    /* margin-right: 4px; */
 }
 #previousbutton {
     margin-top: 0.5%;
 }
 
 #run {
-    min-width: 15.4%;
+    min-width: 35%;
     position: relative;
     float: right;
     margin-bottom: 1%;
-    margin-top: 0.5%;
     color: #4dd728;
     background-color: grey;
 

@@ -45,10 +45,14 @@
     
          <div class="container">
             <div class="row">
-                <button class="button" id="run"> Run </button>
                 <button class="button" id="nextbutton" onclick="increment()">Next</button>
                 <div style="background-color: blanchedalmond;" id="nxtbttn"></div>
-                <button class="button" id="previousbutton">Previous</button>
+                
+                <button class="button" id="previousbutton" onclick="decrement()">Previous</button>
+                
+            </div>
+            <div class="row">
+                <button class="button" id="run"> Run </button>
                 <button id="console-toggle" class="button">Console</button>
             </div>
         </div>
@@ -90,11 +94,20 @@
         }
         
         
-        document.getElementById("nextbutton").innerHTML = instr[instructionnum].slice(1,-1);
+        document.getElementById("nextbutton").innerHTML = "Next";
         function increment(){
             instructionnum =instructionnum + 1
             document.getElementById("nextbutton").innerHTML = instr[instructionnum].slice(1,-1);
             
+        }
+        
+        function decrement(){
+            instructionnum =instructionnum - 1
+            if (instructionnum == 0){
+                document.getElementById("nextbutton").innerHTML = "Next";
+            }else{
+                document.getElementById("nextbutton").innerHTML = instr[instructionnum].slice(1,-1);
+            }
         }
         window.lesson = lesson.steps
         
