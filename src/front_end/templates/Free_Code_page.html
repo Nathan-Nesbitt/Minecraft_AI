@@ -60,12 +60,15 @@
 </body>
 <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
 <script type="module">
-    // import {EventHandler, Command, MinecraftLearns, DataStore, MinecraftAPIClient} from 'https://nathan-nesbitt.github.io/Minecraft_API/src/minecraft_api.js';
-    // window.EventHandler = EventHandler
-    // window.Command = Command
-    // window.MinecraftLearns = MinecraftLearns
-    // window.DataStore = DataStore
-    // window.MinecraftAPIClient = MinecraftAPIClient
+    import MinecraftAPIClient from 'https://nathan-nesbitt.github.io/Minecraft_API/src/minecraft_api.js';
+
+    import MinecraftLearns from 'https://nathan-nesbitt.github.io/Minecraft_API/src/minecraft_learns.js';
+
+    import DataStore from 'https://nathan-nesbitt.github.io/Minecraft_API/src/minecraft_store.js';
+    
+    window.MinecraftLearns = MinecraftLearns
+    window.DataStore = DataStore
+    window.MinecraftAPIClient = MinecraftAPIClient
 
     $('[data-toggle="popover"]').popover({
         html: true
@@ -74,9 +77,9 @@
     var help = `
     <p><b>MinecraftAPIClient()</b> - Creates connection to minecraft</p>
 
-    <p><b>EventHandler()</b> - Handles an in game event.</p>
+    <p><b>MinecraftAPIClient.EventHandler()</b> - Handles an in game event.</p>
 
-    <p><b>Command()</b> - Sends a command to the game</p>
+    <p><b>MinecraftAPIClient.Command()</b> - Sends a command to the game</p>
 
     <p><b>DataStore()</b> - Stores information on the computer.</p>
 

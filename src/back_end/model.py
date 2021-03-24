@@ -187,9 +187,10 @@ class Model:
             makedirs(location)
 
         filename = "" + location + str(uuid4()) + ".png"
-        print(filename)
 
+        # save the plot and return the location
         self.model.plot(location=filename)
+        return filename
 
     def load_model(self, filename):
         self.model.load_model(self._get_default_location() + filename)
