@@ -11,11 +11,21 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Git Repository
-        uses: actions/checkout@v2
+    steps: 
+      - uses: actions/checkout@v2
+      
+      - name: PyInstaller Windows
+        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
+        with:
+          path: src
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Minecraft-TeamB
+          path: src/dist/windows
 
-      - name: Install Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
+      - name: Install dependencies
+        run: pip install -r requirements.txt

@@ -9,13 +9,13 @@ on:
     branches: 
       - testing-build
 
+
 jobs:
   build:
     runs-on: macos-latest
 
-    steps:
-      - name: Checkout Git Repository
-        uses: actions/checkout@v2
-
-      - name: Install Node.js
-        uses: actions/setup-node@v1
+    steps: 
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Installing dependencies
+        run: pip3 install -r requirements.txt
