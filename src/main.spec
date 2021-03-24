@@ -2,23 +2,23 @@
 
 block_cipher = None
 
-added_files = [('src\back_end\*.py', 'back_end'), ('\front_end*.py', 'front_end'), 
-    ('src\front_end\templates\*.html', 'front_end\templates'), 
-    ('src\front_end\templates\lessons\*.md', 'front_end\templates\lessons'), 
-    ('src\front_end\static\setup\*.js', 'front_end\static\setup'), 
-    ('src\front_end\static\includes\*.jpg', 'front_end\static\includes'), 
-    ('src\front_end\static\includes\*.png', 'front_end\static\includes'), 
-    ('src\front_end\static\includes\*.jfif', 'front_end\static\includes'), 
-    ('src\front_end\static\includes\*.ttf', 'front_end\static\includes'), 
-    ('src\front_end\static\css\*.css', 'front_end\static\css'), 
-    ('src\front_end\static\css\bootstrap-3.3.7-dist\js\*.js', 'front_end\static\css\bootstrap-3.3.7-dist\js'), 
-    ('src\front_end\static\css\bootstrap-3.3.7-dist\fonts\*.eot', 'front_end\static\css\bootstrap-3.3.7-dist\fonts'), 
-    ('src\front_end\static\css\bootstrap-3.3.7-dist\fonts\*.svg', 'front_end\static\css\bootstrap-3.3.7-dist\fonts'), 
-    ('src\front_end\static\css\bootstrap-3.3.7-dist\fonts\*.ttf', 'front_end\static\css\bootstrap-3.3.7-dist\fonts'), 
-    ('src\front_end\static\css\bootstrap-3.3.7-dist\fonts\*.woff', 'front_end\static\css\bootstrap-3.3.7-dist\fonts'), 
-    ('src\front_end\static\css\bootstrap-3.3.7-dist\fonts\*.woff2', 'front_end\static\css\bootstrap-3.3.7-dist\fonts'), 
-    ('src\front_end\static\css\bootstrap-3.3.7-dist\css\*.css', 'front_end\static\css\bootstrap-3.3.7-dist\css'), 
-    ('src\front_end\static\css\bootstrap-3.3.7-dist\css\*.map', 'front_end\static\css\bootstrap-3.3.7-dist\css')
+added_files = [('back_end\*.py', 'back_end'), ('\front_end*.py', 'front_end'), 
+    ('front_end\templates\*.html', 'front_end\templates'), 
+    ('front_end\templates\lessons\*.md', 'front_end\templates\lessons'), 
+    ('front_end\static\setup\*.js', 'front_end\static\setup'), 
+    ('front_end\static\includes\*.jpg', 'front_end\static\includes'), 
+    ('front_end\static\includes\*.png', 'front_end\static\includes'), 
+    ('front_end\static\includes\*.jfif', 'front_end\static\includes'), 
+    ('front_end\static\includes\*.ttf', 'front_end\static\includes'), 
+    ('front_end\static\css\*.css', 'front_end\static\css'), 
+    ('front_end\static\css\bootstrap-3.3.7-dist\js\*.js', 'front_end\static\css\bootstrap-3.3.7-dist\js'), 
+    ('front_end\static\css\bootstrap-3.3.7-dist\fonts\*.eot', 'front_end\static\css\bootstrap-3.3.7-dist\fonts'), 
+    ('front_end\static\css\bootstrap-3.3.7-dist\fonts\*.svg', 'front_end\static\css\bootstrap-3.3.7-dist\fonts'), 
+    ('front_end\static\css\bootstrap-3.3.7-dist\fonts\*.ttf', 'front_end\static\css\bootstrap-3.3.7-dist\fonts'), 
+    ('front_end\static\css\bootstrap-3.3.7-dist\fonts\*.woff', 'front_end\static\css\bootstrap-3.3.7-dist\fonts'), 
+    ('front_end\static\css\bootstrap-3.3.7-dist\fonts\*.woff2', 'front_end\static\css\bootstrap-3.3.7-dist\fonts'), 
+    ('front_end\static\css\bootstrap-3.3.7-dist\css\*.css', 'front_end\static\css\bootstrap-3.3.7-dist\css'), 
+    ('front_end\static\css\bootstrap-3.3.7-dist\css\*.map', 'front_end\static\css\bootstrap-3.3.7-dist\css')
 ]
 
 a = Analysis(['main.py'],
