@@ -6,13 +6,17 @@ from PyInstaller.utils.hooks import collect_submodules
 
 hidden_imports = collect_submodules('sklearn')
 
+added_files = [('back_end\*.py', 'back_end'), 
+    ('front_end', 'front_end')
+]
+
 block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\carlo\\Documents\\GitHub\\Minecraft_AI\\src'],
+             pathex=['C:\\Users\\carlo\\Desktop\\ve_MC\\Minecraft_AI\\src'],
              binaries=[],
-             datas=[],
+             datas=added_files,
              hiddenimports=hidden_imports,
              hookspath=[],
              runtime_hooks=[],
