@@ -1,4 +1,3 @@
-json
 jsonlines
 websockets
 minecraft_learns
