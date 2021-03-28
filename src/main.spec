@@ -6,7 +6,7 @@ from PyInstaller.utils.hooks import collect_submodules
 
 hidden_imports = collect_submodules('sklearn')
 
-added_files = [('back_end\*.py', 'back_end'), 
+added_files = [('back_end', 'back_end'), 
     ('front_end', 'front_end')
 ]
 
