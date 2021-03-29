@@ -17,7 +17,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\carlo\\Desktop\\ve_MC\\Minecraft_AI\\src'],
+             pathex=['C:\\Users\\carlo\\Desktop\\ve_MC\\Minecraft_AI\\src', 'C:\\Users\\carlo\\Desktop\\ve_MC\\Minecraft_AI\\venv\\Lib', 'C:\\Users\\carlo\\Desktop\\ve_MC\\Minecraft_AI\\venv\\Scripts'],
              binaries=[],
              datas=added_files,
              hiddenimports=hidden_imports,
