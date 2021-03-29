@@ -6,8 +6,8 @@ from PyInstaller.utils.hooks import collect_submodules
 
 hidden_imports = collect_submodules('sklearn')
 hidden_imports.append('json')
-hidden_imports.append('asyncio')
 hidden_imports.append('websockets')
+hidden_imports.append('asyncio')
 
 added_files = [('back_end', 'back_end'), 
     ('front_end', 'front_end')
