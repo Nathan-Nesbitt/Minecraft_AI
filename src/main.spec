@@ -44,6 +44,7 @@ exe = EXE(pyz,
           console=True )
 
 coll = COLLECT(exe,
+               a.scripts,
                a.binaries,
                a.zipfiles,
                a.datas,
