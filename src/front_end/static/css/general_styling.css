@@ -156,6 +156,13 @@ body {
     width: 185px;
     font-size: 160%;
 }
+#run:hover {
+    background-color: #4dd728;
+    color: #252526;
+    height: 55px;
+    width: 185px;
+    font-size: 160%;
+}
 
 
 #buttonM {
@@ -254,7 +261,7 @@ div.modeldesc p {
 }
 
 .modelsimg {
-    width: 400px;
+    width: 30%;
     border: solid;
     border-color: #252526;
 
@@ -273,6 +280,24 @@ div.modeldesc p {
     margin-top: 22px;
     position: absolute;
     left: 13px;
+}
+#nextbutton {
+    width: 38%;
+    position: relative;
+    float: right;
+    /* margin-bottom: 1%; */
+    margin-top: 0.5%;
+    color: #252526;
+    /* margin-right: 4px; */
+}
+#run {
+    width: 38%;
+    position: relative;
+    float: right;
+    margin-bottom: 1%;
+    color: #4dd728;
+    background-color: grey;
+
 }
 
 #questionmrk {
@@ -304,9 +329,20 @@ div.modeldesc p {
     #buttonL {
         margin-top: 20%;
     }
+    #run{
+        width: 69%;
+    }
+    #run:hover{
+        height: 55px;
+        width: 69%;
+    }
+    #nextbutton{
+        width: 69%;
+    }
 
     .modelsimg {
-        width: 360px;
+        width: 58%;
+        height: 60%;
     }
 
     figure{
@@ -319,7 +355,8 @@ div.modeldesc p {
     }
 
     .modelsimg:hover {
-        width: 380px;
+        width: 63%;
+        height: 65%;
     }
 
     .model {
@@ -359,36 +396,14 @@ div.modeldesc p {
     color: #252526;
 }
 
-#nextbutton {
-    width: 35%;
-    position: relative;
-    float: right;
-    /* margin-bottom: 1%; */
-    margin-top: 0.5%;
-    color: #252526;
-    /* margin-right: 4px; */
-}
+
 #previousbutton {
     margin-top: 0.5%;
 }
 
-#run {
-    min-width: 35%;
-    position: relative;
-    float: right;
-    margin-bottom: 1%;
-    color: #4dd728;
-    background-color: grey;
 
-}
 
-#run:hover {
-    background-color: #4dd728;
-    color: #252526;
-    height: 55px;
-    width: 185px;
-    font-size: 160%;
-}
+
 
 
 #backbutton {

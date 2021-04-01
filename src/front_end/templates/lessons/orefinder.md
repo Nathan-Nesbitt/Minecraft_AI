@@ -22,14 +22,14 @@ Follow the splits in the tree for the material you want. The depth is listed bel
 
 ## Lesson
 ### Create Connection
-First we create a connection to the game. Click NEXT to see the next step
+First we create a connection to the game. Click "Create Model" to see the next step
 ```
 // Create connection to game and back end //
 var minecraft_api = new MinecraftAPIClient();
 ```
 
 ### Create Model
-Then we create a new model. Click NEXT to see the next step
+Then we create a new model. Click "Determine Prediction" to see the next step
 
 ```
 var args = {
@@ -47,7 +47,7 @@ var minecraft_learns = new MinecraftLearns(args);
 ### Determine Prediction
 We determine what we want to predict and what to do when we have the prediction.
 
-Add the resource you want to predict, then click NEXT to see the next step
+Add the resource you want to predict, then click "Process Data and Train Model" to see the next step
 
 ```
 // Create a callback function that makes a prediction based on the game data //
