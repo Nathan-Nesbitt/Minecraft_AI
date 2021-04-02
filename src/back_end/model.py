@@ -187,9 +187,9 @@ class Model:
             makedirs(filepath)
 
         if filename:
-            filepath += filename + ".sav"
+            filepath += filename + ".png"
         else:
-            filepath += str(uuid4()) + ".sav"
+            filepath += str(uuid4()) + ".png"
 
         # save the plot and return the location
         self.model.plot(location=filepath)
@@ -199,7 +199,10 @@ class Model:
         """
         load the model in filename
         """
-        self.model.load_model(self._get_default_location() + filename)
+        filepath = self._get_default_location() + filename
+        if ".sav" not in filename:
+            filename += ".sav"
+        self.model.load_model(filepath)
 
     def save_model(self, filename=None):
         """
