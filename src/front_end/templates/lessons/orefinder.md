@@ -41,7 +41,6 @@ var args = {
 }
 
 var minecraft_learns = new MinecraftLearns(args);
-
 ```
 
 ### Determine Prediction
@@ -58,9 +57,9 @@ var predict_function = function(data) {
         result => {
             // Then use the response to tell the user where to do in the game //
             if(data.body.properties.FeetPosY == result.body.prediction.FeetPosY)
-                minecraftAPI.Say(["Mine here to find: ", resource]);
+                minecraft_api.Say(["Mine here to find: ", resource]);
             else
-                minecraftAPI.Say(["You are at Y:"+ data.body.properties.FeetPosY + " to mine this resource go to Y:", result.body.prediction.FeetPosY]);
+                minecraft_api.Say(["You are at Y:"+ data.body.properties.FeetPosY + " to mine this resource go to Y:", result.body.prediction.FeetPosY]);
         }
     );
 }
@@ -76,6 +75,6 @@ minecraft_learns.process_data()
     .then(minecraft_learns.train())
     .then(() => {
         // Then we create an event handler for the game event //
-        minecraftAPI.PlayerTravelledEvent(predict_function);
+        minecraft_api.PlayerTravelledEvent(predict_function);
     });
 ```
