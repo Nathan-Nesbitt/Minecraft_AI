@@ -174,13 +174,13 @@ class Broker:
                 return e
         elif function == "plot":
             try:
-                return self.models[UUID].plot(location=data)
+                return self.models[UUID].plot(filename=data)
             except Exception as e:
                 print(str(e))
                 return Exception("Error creating graph")
         elif function == "save":
             try:
-                return self.models[UUID].save_model(location=data)
+                return self.models[UUID].save_model(filename=data)
             except Exception as e:
                 print(str(e))
                 return Exception("Error saving model")
