@@ -176,31 +176,45 @@ class Model:
             location += "\\Documents\\minecraft_ai\\"
         return location
 
-    def plot(self, filepath=None):
+    def plot(self, filename=None):
         """
         plot and save the file
+        if the default filepath doesn't exist, create it
         """
-        if filepath is None:
-            filepath = self._get_default_location()
+        filepath = self._get_default_location()
 
         if not path.exists(filepath):
             makedirs(filepath)
 
-        filename = "" + filepath + str(uuid4()) + ".png"
+        if filename:
+            filepath += filename + ".sav"
+        else:
+            filepath += str(uuid4()) + ".sav"
 
         # save the plot and return the location
-        self.model.plot(location=filename)
+        self.model.plot(location=filepath)
         return filename
 
-    def load_model(self, filepath):
-        self.model.load_model(filepath)
+    def load_model(self, filename):
+        """
+        load the model in filename
+        """
+        self.model.load_model(self._get_default_location() + filename)
 
-    def save_model(self, filepath=None):
-        if filepath is None:
-            filepath = self._get_default_location() + str(uuid4()) + ".sav"
+    def save_model(self, filename=None):
+        """
+        plot and save the file
+        if the default filepath doesn't exist, create it
+        """
+        filepath = self._get_default_location()
 
         if not path.exists(filepath):
             makedirs(filepath)
+
+        if filename:
+            filepath += filename + ".sav"
+        else:
+            filepath += str(uuid4()) + ".sav"
 
         self.model.save_model(filepath)
         return filepath
