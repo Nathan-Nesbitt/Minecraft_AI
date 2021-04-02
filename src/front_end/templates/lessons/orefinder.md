@@ -47,22 +47,22 @@ var minecraft_learns = new MinecraftLearns(args);
 ### Determine Prediction
 We determine what we want to predict and what to do when we have the prediction.
 
-Add the resource you want to predict, then click "Process Data and Train Model" to see the next step
+Add the ore you want to predict, such as "diamond_ore", then click "Process Data and Train Model" to see the next step
 
 ```
 // Create a callback function that makes a prediction based on the game data //
-var callback_function_3 = function(data) {
+var predict_function = function(data) {
     var resource = ""
     minecraft_learns.predict(data, [resource])
     .then(
         result => {
             // Then use the response to tell the user where to do in the game //
             if(data.body.properties.FeetPosY == result.body.prediction.FeetPosY)
-                new Command(minecraft_api, "Say", ["Mine here to find: ", resource]);
+                minecraftAPI.Say(["Mine here to find: ", resource]);
             else
-                new Command(minecraft_api, "Say", ["You are at Y:"+ data.body.properties.FeetPosY + " to mine this resource go to Y:", result.body.prediction.FeetPosY]);
-        }            
-    )
+                minecraftAPI.Say(["You are at Y:"+ data.body.properties.FeetPosY + " to mine this resource go to Y:", result.body.prediction.FeetPosY]);
+        }
+    );
 }
 ```
 
@@ -76,6 +76,6 @@ minecraft_learns.process_data()
     .then(minecraft_learns.train())
     .then(() => {
         // Then we create an event handler for the game event //
-        new EventHandler(minecraft_api, "PlayerTravelled", callback_function_3)
-    })
+        minecraftAPI.PlayerTravelledEvent(predict_function);
+    });
 ```
