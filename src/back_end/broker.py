@@ -141,6 +141,7 @@ class Broker:
         params = json_dictionary["header"].get("params")
         response_variables = json_dictionary["header"].get("response_variables")
         value = json_dictionary["body"].get("value")
+        data = json_dictionary["body"].get("data")
 
         # Checks the UUID to see if the model exists, if not add it to the dictionary
         if not UUID in self.models:
@@ -173,10 +174,23 @@ class Broker:
                 return e
         elif function == "plot":
             try:
-                return self.models[UUID].plot(location=file_name)
+                return self.models[UUID].plot(filename=data)
             except Exception as e:
                 print(str(e))
                 return Exception("Error creating graph")
+        elif function == "save":
+            try:
+                return self.models[UUID].save_model(filename=data)
+            except Exception as e:
+                print(str(e))
+                return Exception("Error saving model")
+        elif function == "load":
+            print("loading")
+            try:
+                return self.models[UUID].load_model(filename=data)
+            except Exception as e:
+                print(str(e))
+                return Exception("Error loading model")
 
         print("Sent to Minecraft Learns")
         return True
