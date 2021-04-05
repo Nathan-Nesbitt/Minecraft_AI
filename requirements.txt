@@ -5,6 +5,5 @@ flask
 PyInstaller
 tornado
 matplotlib
-wx
 IPython
 cairo
