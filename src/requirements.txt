@@ -1,0 +1,8 @@
+jsonlines
+websockets
+minecraft_learns
+flask
+PyInstaller
+tornado
+matplotlib
+IPython
