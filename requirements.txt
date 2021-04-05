@@ -3,3 +3,4 @@ websockets
 minecraft_learns
 flask
 PyInstaller
+tornado
