@@ -20,14 +20,12 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - uses: ilammy/msvc-dev-cmd@v1  
       - name: PyInstaller Windows
-        run: |
-          cd src
-          pyinstaller --onefile --log-level=DEBUG main.spec
-          
+        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
+        with:
+          path: src
       
       - uses: actions/upload-artifact@v2
         with:
           name: Minecraft-TeamB
-          path: src/dist
+          path: src/dist/windows
