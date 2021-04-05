@@ -17,7 +17,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['../venv/Lib', '../venv/Scripts', '.'],
+             pathex=['..\\venv\\Lib', '..\\venv\\Scripts', '.'],
              binaries=[],
              datas=added_files,
              hiddenimports=hidden_imports,
