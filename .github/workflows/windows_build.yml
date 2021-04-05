@@ -21,7 +21,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: PyInstaller Windows
-      - run: |
+        run: |
           pyinstaller --onefile main.spec
       
       - uses: actions/upload-artifact@v2
