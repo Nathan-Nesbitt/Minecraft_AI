@@ -21,9 +21,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: PyInstaller Windows
-        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
-        with:
-          path: src
+      - uses: actions/checkout@v1
+        - run: |
+          pyinstaller --onefile main.spec
       
       - uses: actions/upload-artifact@v2
         with:
