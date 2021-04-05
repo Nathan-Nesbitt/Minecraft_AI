@@ -22,9 +22,10 @@ jobs:
 
       - name: PyInstaller Windows
         run: |
+          cd src
           pyinstaller --onefile main.spec
       
       - uses: actions/upload-artifact@v2
         with:
           name: Minecraft-TeamB
-          path: src/dist/windows
+          path: src/dist
