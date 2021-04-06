@@ -6,3 +6,5 @@ PyInstaller
 tornado
 matplotlib
 IPython
+pylibdmtx
+pyzbar
