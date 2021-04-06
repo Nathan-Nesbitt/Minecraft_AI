@@ -3,6 +3,11 @@ import sys
 sys.setrecursionlimit(5000)
 
 from PyInstaller.utils.hooks import collect_submodules
+from pathlib import Path
+
+from pylibdmtx import pylibdmtx
+from pyzbar import pyzbar
+
 
 hidden_imports = collect_submodules('sklearn')
 hidden_imports.append('json')
@@ -30,6 +35,12 @@ a = Analysis(['main.py'],
              noarchive=False)
 pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
+
+a.binaries += TOC([
+    (Path(dep._name).name, dep._name, 'BINARY')
+    for dep in pylibdmtx.EXTERNAL_DEPENDENCIES + pyzbar.EXTERNAL_DEPENDENCIES
+])
+
 exe = EXE(pyz,
           a.scripts,
           a.binaries,
