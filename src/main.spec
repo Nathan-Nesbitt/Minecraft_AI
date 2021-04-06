@@ -15,11 +15,9 @@ added_files = [('back_end', 'back_end'),
 
 block_cipher = None
 
-b = [('..\\venv\Lib\site-packages\sklearn\\.libs\\vcomp140.dll')]
-
 a = Analysis(['main.py'],
              pathex=['..\\venv\\Lib', '..\\venv\\Scripts', '.'],
-             binaries=b,
+             binaries=[],
              datas=added_files,
              hiddenimports=hidden_imports,
              hookspath=[],
