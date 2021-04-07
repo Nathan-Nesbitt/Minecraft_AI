@@ -22,7 +22,7 @@ First we create a connection to the game. Click "Create storage" to see the next
 // Create connection to game and back end //
 var minecraft_api = new MinecraftAPIClient();
 // tell the user to break a block
-new Command(minecraft_api, "Say", ["Break", "a", "block"]);
+minecraft_api.Say("Break", "a", "block"]);
 ```
 
 ### Create storage
@@ -61,5 +61,5 @@ Fill in the event as "BlockBroken" and click "RUN" to execute the model
 
 ```
 var event_name = ""
-new EventHandler(minecraft_api, event_name, store_data_function)
+minecraft_api.EventHandler(event_name, store_data_function)
 ```
