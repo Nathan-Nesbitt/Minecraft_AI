@@ -2,9 +2,10 @@
 import sys
 sys.setrecursionlimit(5000)
 
-from PyInstaller.utils.hooks import collect_submodules
+from PyInstaller.utils.hooks import collect_submodules, collect_data_files
 
 hidden_imports = collect_submodules('sklearn')
+hidden_imports.append(collect_data_files('sklearn'))
 hidden_imports.append('json')
 hidden_imports.append('websockets')
 hidden_imports.append('asyncio')
