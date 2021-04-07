@@ -11,9 +11,8 @@ hidden_imports.append('asyncio')
 
 added_files = collect_data_files('sklearn')
 
-added_files.append([('back_end', 'back_end'), 
-    ('front_end', 'front_end')
-])
+added_files.append(('back_end', 'back_end'))
+added_files.append(('front_end', 'front_end'))
 
 block_cipher = None
 
