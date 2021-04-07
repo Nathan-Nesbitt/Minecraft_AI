@@ -59,7 +59,7 @@ var predict_function = function(data) {
             if(data.body.properties.FeetPosY == result.body.prediction.FeetPosY)
                 minecraft_api.Say(["Mine here to find: ", resource]);
             else
-                minecraft_api.Say(["You are at Y:"+ data.body.properties.FeetPosY + " to mine this resource go to Y:", result.body.prediction.FeetPosY]);
+                minecraft_api.Say(["You are at Y:"+ data.body.properties.FeetPosY + " to mine " + resource + " go to Y:", result.body.prediction.FeetPosY]);
         }
     );
 }
