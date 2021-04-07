@@ -8,8 +8,10 @@ hidden_imports= collect_submodules('sklearn')
 hidden_imports.append('json')
 hidden_imports.append('websockets')
 hidden_imports.append('asyncio')
+hidden_imports += collect_submodules('scipy')
 
 added_files = collect_data_files('sklearn')
+added_files += collect_data_files('scipy')
 
 added_files.append(('back_end', 'back_end'))
 added_files.append(('front_end', 'front_end'))
