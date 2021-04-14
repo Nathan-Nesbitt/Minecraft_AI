@@ -42,4 +42,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           automatic_release_tag: latest
-          files: Minecraft-TeamB
+          files: /home/runner/work/Minecraft_AI/Minecraft_AI/src/dist/windows/Minecraft-TeamB
