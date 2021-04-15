@@ -4,10 +4,10 @@ name: Windows Build
 on:
   push:
     branches: 
-      - testing-build
+      - development
   pull_request:
     branches: 
-      - testing-build
+      - development
 
 jobs:
   release-project:
@@ -42,7 +42,7 @@ jobs:
         with:
           upload_url: ${{ steps.create-new-release.outputs.upload_url }}
           asset_path: ./application.zip
-          asset_name: application-v${{ github.run_number}}.zip
+          asset_name: MinecraftAI_v${{ github.run_number}}.zip
           asset_content_type: application/zip
 
   build-project:
