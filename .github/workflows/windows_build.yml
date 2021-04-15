@@ -25,20 +25,9 @@ jobs:
         with:
           path: src
       
-      - name: Upload a singe artifact
-        uses: actions/upload-artifact@v2
+      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          name: Minecraft-TeamB
-          path: src/dist/windows
-
-      - name: Download a single artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: Minecraft-TeamB
-          path: src/dist/windows
-
-      - name: release
-        uses: ncipollo/release-action@v1
-      	with:
-          artifacts: "Minecraft-TeamB.tar.gz"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          automatic_release_tag: latest
+          files: Minecraft-TeamB
