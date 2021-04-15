@@ -10,7 +10,43 @@ on:
       - testing-build
 
 jobs:
-  build:
+  release-project:
+    name: Release executable
+    runs-on: ubuntu-latest
+    needs: build-project
+
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: Minecraft-TeamB
+
+      - name: Archive content
+        uses: thedoctor0/zip-release@master
+        with:
+          filename: application.zip
+
+      - name: Create github release
+        id: create-new-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        with:
+          tag_name: v${{ github.run_number}}
+          release_name: Release V${{ github.run_number }}
+
+      - name: Upload asset to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-new-release.upload_url }}
+          asset_path: ./application.zip
+          asset_name: application-v${{ github.run_number}}.zip
+          asset_content_type: application/zip
+
+  build-project:
+    name: Build executable
     runs-on: ubuntu-latest
 
     steps: 
@@ -30,15 +66,3 @@ jobs:
         with:
           name: Minecraft-TeamB
           path: src/dist/windows
-
-      - name: Download a single artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: Minecraft-TeamB
-          path: src/dist/windows
-
-      - name: release
-        uses: ncipollo/release-action@v1
-      	with:
-          artifacts: "Minecraft-TeamB.tar.gz"
-          token: ${{ secrets.GITHUB_TOKEN }}
