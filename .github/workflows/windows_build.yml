@@ -38,23 +38,7 @@ jobs:
           path: src/dist/windows
 
       - name: release
-        uses: actions/create-release@v1
-        id: create_release
-        with:
-          draft: false
-          prerelease: false
-          release_name: ${{ steps.version.outputs.version }}
-          tag_name: latest
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./Minecraft-TeamB.zip
-          asset_name: Minecraft-TeamB.zip
-          asset_content_type: application/zip
+        uses: ncipollo/release-action@v1
+      	with:
+          artifacts: "Minecraft-TeamB.tar.gz"
+          token: ${{ secrets.GITHUB_TOKEN }}
