@@ -1,0 +1,21 @@
+
+name: Macos Build
+
+on:
+  push:
+    branches: 
+      - testing-build
+  pull_request:
+    branches: 
+      - testing-build
+
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps: 
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Installing dependencies
+        run: pip3 install -r requirements.txt
