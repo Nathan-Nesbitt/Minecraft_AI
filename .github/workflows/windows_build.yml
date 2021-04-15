@@ -16,16 +16,18 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       
-      - name: PyInstaller Windows
-        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
-        with:
-          path: src
-      
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Minecraft-TeamB
-          path: src/dist/windows
-
       - uses: actions/setup-node@v1
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: PyInstaller Windows
+        uses: JackMcKew/pyinstaller-action-windows@main
+        with:
+          path: src
+      
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          automatic_release_tag: latest
+          files: Minecraft-TeamB
