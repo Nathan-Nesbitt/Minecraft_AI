@@ -1,114 +1,57 @@
 # Minecraft_AI
-An in game AI implementation for Minecraft Education
+An API that connects to the Minecraft Education edition platform allowing users to generate machine learning and AI models that can predict and manipulate the game. 
 
-## Frontend Design
+## Team
+The members of Minecraft Education B are as follows:
+* **Carlos Rueda-Carrasco** - [Carlos-Rueda-Carrasco](https://github.com/Carlos-Rueda-Carrasco)
+* **Kathryn Lecha** - [kzlecha](https://github.com/kzlecha)
+* **Nathan Nesbitt** - [Nathan-Nesbitt](https://github.com/Nathan-Nesbitt)
+* **Adrian Morillo** - [sonorousAd](https://github.com/sonorousAd)
 
-## Backend Design
+## Frontend Design Overview
+The front end of the application runs on a combination of HTML,CSS and JavaScript that use Bootstrap as the underlying toolkit. The page is made to be displayed ‘in-game’ and maintains consistency with the minecraft theme and overall feel.
 
-### Broker
-Has the following attributes:
-- `models`: A dictionary of model type objects. This will allow for processes to run dynamically between the front and backend by keeping track of them using a UUID.  
+### Its components are the following:
 
-- `storage`: A Minecraft_Store object. 
+#### Home page (Main_page.html)
+- This is the home page of our system where the user will land as they first open the application. It allows the user to choose between `Free Code` and `Lessons` options.
 
-Has the following methods:
-- `establish_connection`: Start the connection with the client side and listen in for incoming commands that are being sent over.
+#### Lessons page (Lessons_page.html)
+- This page contains the various lessons available to the user, they are presented in a carousel style where each lesson appears in the center of the page and the user can slide left or right to display the different lessons.
+Custom lessons can be created and integrated into the game by downloading them or linking them from within the game..
 
-- `response`: Handles the commands sent from the client by converting the json object into a dictionary.
+#### Lesson overview (lesson_overview.html)
+- This page contains an overview of the selected lesson that will explain to the user what will be done in the lesson and what its goal is.
 
-- `targetProcessId`: Handles the dictionary and extracts the information from the header and sends it over to `store` of `minecraft_learns`.
+#### Lesson Explanation (lesson_explained.html)
+- This page will display a more in depth explanation of the lesson and the appropriate AI concept and the tools used to solve the underlying problem. It will usually contain a graph that illustrates the AI concept used and its application to the lesson.
 
-- `message_sent_back`: Handles the message that will be sent back to the front end, stating which specific message was successful or failed in being processed by the backend.
+#### Coding page (Code_page.html)
+- This page contains the code editor embedded in the page where the user will implement the AI concept and solve the task at hand. Instructions are found in the top right corner under the question mark symbol and will change as the user advances through the lesson. The code will auto fill by clicking on the indicated button thus allowing the user to understand the purpose of the added code and follow the step by step guide of its implementation.
 
-- `store`: Calls on the Store class to store the command with the game data into the clients local computer.
+#### Free code(Free_Code_page.html)
+- This page follows a similar design then `Code` page. Here, users can freely code and explore Minecraft by writing any javascript code in the editor and implementing it in the game, this page also provides instructions on how to utilize various commands and functions.
+Below the coding environment a terminal is located, here the user can see the more technical details of their code and further work on their ideas.
 
-- `minecraft_learns`: Calls on the `Minecraft_Learns` class to manipulate the data in the command to produce machine learning models.
+## Backend Design Overview
 
-- `add_model`: Based on the UUID sent from the user this method adds a model type object to the `models` dictionary.
+The back end of the application communicates with the frontend and handles incoming requests. Such requests are to either store and handle data from the game or to manipulate the data and perform a statistical analysis. It is composed of three major components:
 
-### Minecraft_Store
-Has the following attributes:
-- `files`: A dictionary that stores file names and UUIDs for the files the user wants to manipulate (either store data or have it be processed through our AI, Minecraft Learns).
+The first being the `Broker` that communicates with the backend and channels requests to the appropriate libraries. The second being the `Minecraft_Store` and `Data` that processes, stores and formats the data in a CSV format for the `Minecraft Learns` AI library to use. Lastly, there is the Model Minecraft_Learns library that is called and used to process, train, model, and then predict a response variable. 
 
-Has the following methods:
-- `store_filesystem`: Takes in parameters that the user specified in the frontend and calls a function to store the data into a local directory.
 
-- `add_file`: Adds a `Data` type object which resembles a file to the `files` dictionary. This will help keep track of which file is being modified.
+## How to get the API running
+Step 1:
+- Download the newest release
 
-### Data
-Has the following attributes:
-- `location`: A string path to the location of the directory in which the user wants to access and potentially modify.
+Step 2:
+- Unzip the the MinecraftAI_v***.zip folder 
 
-- `filename`: A string name for the file the user wants to access and potentially modify.
+Step 3:
+- Open Terminal/Command line
 
-Has the following methods:
-- `save_observation`: Saves event data for a specific observation that is being received from the frontend through a json object.
+Step 4:
+- `cd` to the directory of the contents from the zip folder
 
-- `add_observation`: Adds the event data for an observation that is being received from the frontend through a json object (for single event responses).  
-
-- `delete_data`: This method deletes a data file, removes it from its directory.
-
-- `absolute_path`: This method returns the absolute path of a file as a string.
-
-- `rename_file`: This method renames a preexisting file.
-
-### Model
-Has the following attributes:
-- `model`: A model type object that is manipulated for machine learning processing. 
-
-Has the following methods:
-- `pick_model`: This method sets the model object to the chosen model name such as linear regressions, decision tree regression, etc.
-
-- `set_parameters`: This method sets the appropriate parameters for the specified model.
-
-- `process_data`: This method reads in the data from a specific file and extracts the relevant information needed.
-
-- `train_model`: This method trains the model with the data that was processed in a previous step.
-
-- `predict`: This method predicts and returns a response on the data being inputted.
-
-- `game_response`: This method triggers and returns a response from the Minecraft Education game.  
-
-- `plot`: This method plots a graph for the user and saves it in a file. The name of the file in which the plot was saved is returned.
-
-- `load_model`: This method loads a model object from a specific file location.
-
-- `save_model`: This method saves the model object at a given file location.
-
-### Message Command
-
-The json format sent from the client side to the broker.
-
-```py
-message = {
-	    "header": {
-			"UUID": "<XXXX....>",
-		    "targetProcess": "MinecraftLearns",
-		    "fileName": "MyData",
-			"model_type": "Linear Regression"
-	    },
-	    "body": {
-		    "???": {
-
-			}
-	    }
-}
-```
-From the header:
-- `UUID`: An ID to identify the specific messages being pass between the interfaces.
-- `targetProcess`: Where the command needs to be sent to either Storage of MinecraftLearns for further processing.
-- `fileName`: The file in which the game data is to be stored or used to make machine learning models.
-- `model_type`: The model (function) that the AI will call on.
-
-From the body (`???`):
-- `features`: The columns of data that we want to use for processing the data for our machine learning models.
-
-- `features_drop`: The columns of data that we want to not included when processing data for our machine learning models.
-
-- `function`: A keyword that determines what `Minecraft_Learns` will do, either process, train, predict, or plot the data.
-
-- `params`: The parameters that are needed for the given model object.
-
-- `response_variables`: The response variables needed to process the data for our machine learning models.
-
-- `value`: The specific value we want to predict using our machine learning models.
+Step 4:
+- Once there simple run `./main.exe` to start the api running
