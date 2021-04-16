@@ -25,7 +25,7 @@ Step 4:
 - Once there simply run `./main.exe` to start the api running
 
 ## Frontend Design Overview
-The front end of the application runs on a combination of HTML,CSS and JavaScript that use Bootstrap as the underlying toolkit. The page is made to be displayed ‘in-game’ and maintains consistency with the minecraft theme and overall feel.
+The front end of the application runs on a combination of HTML,CSS and JavaScript that use Bootstrap as the underlying toolkit. The page is made to be displayed ‘in-game’ and maintains consistency with the Minecraft theme and overall feel.
 
 ### Its components are the following:
 
@@ -35,6 +35,7 @@ The front end of the application runs on a combination of HTML,CSS and JavaScrip
 #### Lessons page (Lessons_page.html)
 - This page contains the various lessons available to the user, they are presented in a carousel style where each lesson appears in the center of the page and the user can slide left or right to display the different lessons.
 Custom lessons can be created and integrated into the game by downloading them or linking them from within the game.
+- One core feature to this page is that it allows the user to import lessons other than the pre build ones. The lessons have to be written in a markdown file. This allows for anybody to write custom lessons on the platform.
 
 #### Lesson overview (lesson_overview.html)
 - This page contains an overview of the selected lesson that will explain to the user what will be done in the lesson and what its goal is.
