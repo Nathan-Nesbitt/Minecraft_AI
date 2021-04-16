@@ -35,7 +35,6 @@ The front end of the application runs on a combination of HTML,CSS and JavaScrip
 #### Lessons page (Lessons_page.html)
 - This page contains the various lessons available to the user, they are presented in a carousel style where each lesson appears in the center of the page and the user can slide left or right to display the different lessons.
 Custom lessons can be created and integrated into the game by downloading them or linking them from within the game.
-- A great feature 
 
 #### Lesson overview (lesson_overview.html)
 - This page contains an overview of the selected lesson that will explain to the user what will be done in the lesson and what its goal is.
