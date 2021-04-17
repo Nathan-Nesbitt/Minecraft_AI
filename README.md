@@ -1,4 +1,6 @@
 # Minecraft_AI
+![](https://i.imgur.com/BZEw7mA.png)
+
 An API that connects to the Minecraft Education edition platform allowing users to generate machine learning and AI models that can predict and manipulate the game. The purpose of this project was to education and introduce machine learning concepts to high schoolers. As a team we wanted to achieve our goal while still keeping the fun and creative aspects that the Minecraft world brings. Minecraft Education team B has made a tool that helps the users and developers connect, communicate, and analyze while navigating the Minecraft education world. 
 
 ## Team
@@ -9,11 +11,13 @@ The members of Minecraft Education B are as follows:
 * **Adrian Morillo** - [sonorousAd](https://github.com/sonorousAd)
 
 ## How to get the API running
+![](https://media2.giphy.com/media/dZMW8MJLBjoOVzDtK1/giphy.gif)
+
 Step 1:
 - Download the newest release
 
 Step 2:
-- Unzip the the MinecraftAI_v***.zip folder 
+- Unzip the the MinecraftAI_v***.zip folder and double click `main.exe` or you can also open the application through step 3-5.
 
 Step 3:
 - Open Terminal/Command line
@@ -21,7 +25,7 @@ Step 3:
 Step 4:
 - `cd` to the directory of the contents from the zip folder
 
-Step 4:
+Step 5:
 - Once there simply run `./main.exe` to start the api running
 
 ## Frontend Design Overview
@@ -40,7 +44,7 @@ Custom lessons can be created and integrated into the game by downloading them o
 #### Lesson overview (lesson_overview.html)
 - This page contains an overview of the selected lesson that will explain to the user what will be done in the lesson and what its goal is.
 
-Examples of lessons:
+##### Examples of lessons:
 - Ore Finder: `we are looking for a depth. This can be any value on the number line. Since we are looking for a value on the number line and not a group, this is a REGRESSION problem. This model will make the bot mine at the predicted depth and biome.`
 
 - Data Collection: `we are looking to pull in data from the game for the block broken event. Whenever this happens in the game, we want to save the information relating to that event, such as the type of block that was broken and where it was broken.`
