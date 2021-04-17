@@ -40,6 +40,11 @@ Custom lessons can be created and integrated into the game by downloading them o
 #### Lesson overview (lesson_overview.html)
 - This page contains an overview of the selected lesson that will explain to the user what will be done in the lesson and what its goal is.
 
+Examples of lessons:
+- Ore Finder: `we are looking for a depth. This can be any value on the number line. Since we are looking for a value on the number line and not a group, this is a REGRESSION problem. This model will make the bot mine at the predicted depth and biome.`
+
+- Data Collection: `we are looking to pull in data from the game for the block broken event. Whenever this happens in the game, we want to save the information relating to that event, such as the type of block that was broken and where it was broken.`
+
 #### Lesson Explanation (lesson_explained.html)
 - This page will display a more in depth explanation of the lesson and the appropriate AI concept and the tools used to solve the underlying problem. It will usually contain a graph that illustrates the AI concept used and its application to the lesson.
 
