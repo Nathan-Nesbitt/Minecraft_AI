@@ -15,7 +15,7 @@ The members of Minecraft Education B are as follows:
 
 ## How to get the API running
 <p align="center">
-    <img src="https://media2.giphy.com/media/dZMW8MJLBjoOVzDtK1/giphy.gif" width="450px" alt="Logo for MinecraftAI">
+    <img src="https://media2.giphy.com/media/dZMW8MJLBjoOVzDtK1/giphy.gif" width="550px" alt="Logo for MinecraftAI">
 </p>
 
 Step 1:
