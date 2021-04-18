@@ -4,7 +4,7 @@
     <img src="https://i.imgur.com/BZEw7mA.png" width="300px" alt="Logo for MinecraftAI">
 </p>
 
-An API that connects to the Minecraft Education edition platform allowing users to generate machine learning and AI models that can predict and manipulate the game. The purpose of this project was to education and introduce machine learning concepts to high schoolers. As a team we wanted to achieve our goal while still keeping the fun and creative aspects that the Minecraft world brings. Minecraft Education team B has made a tool that helps the users and developers connect, communicate, and analyze while navigating the Minecraft education world. 
+MinecraftAI is an add-on to Minecraft Education edition allowing users to generate machine learning and AI models that can predict and manipulate the game. The purpose of this project was to education and introduce machine learning concepts to high schoolers. As a team we wanted to achieve our goal while still keeping the fun and creative aspects that the Minecraft world brings. Minecraft Education team B has made a tool that helps the users and developers connect, communicate, and analyze while navigating the Minecraft education world. 
 
 ## Team
 The members of Minecraft Education B are as follows:
