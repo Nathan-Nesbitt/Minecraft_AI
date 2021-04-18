@@ -4,10 +4,10 @@ name: Macos Build
 on:
   push:
     branches: 
-      - testing-build
+      - development
   pull_request:
     branches: 
-      - testing-build
+      - development
 
 
 jobs:
