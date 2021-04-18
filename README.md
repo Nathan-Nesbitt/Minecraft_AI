@@ -5,9 +5,9 @@ An API that connects to the Minecraft Education edition platform allowing users 
 
 ## Team
 The members of Minecraft Education B are as follows:
-* **Carlos Rueda-Carrasco** - [Carlos-Rueda-Carrasco](https://github.com/Carlos-Rueda-Carrasco)
-* **Kathryn Lecha** - [kzlecha](https://github.com/kzlecha)
 * **Nathan Nesbitt** - [Nathan-Nesbitt](https://github.com/Nathan-Nesbitt)
+* **Kathryn Lecha** - [kzlecha](https://github.com/kzlecha)
+* **Carlos Rueda Carrasco** - [Carlos-Rueda-Carrasco](https://github.com/Carlos-Rueda-Carrasco)
 * **Adrian Morillo** - [sonorousAd](https://github.com/sonorousAd)
 
 ## How to get the API running
