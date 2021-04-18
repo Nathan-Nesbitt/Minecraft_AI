@@ -14,7 +14,9 @@ The members of Minecraft Education B are as follows:
 * **Adrian Morillo** - [sonorousAd](https://github.com/sonorousAd)
 
 ## How to get the API running
-![](https://media2.giphy.com/media/dZMW8MJLBjoOVzDtK1/giphy.gif)
+<p align="center">
+    <img src="https://media2.giphy.com/media/dZMW8MJLBjoOVzDtK1/giphy.gif" width="450px" alt="Logo for MinecraftAI">
+</p>
 
 Step 1:
 - Download the newest release
